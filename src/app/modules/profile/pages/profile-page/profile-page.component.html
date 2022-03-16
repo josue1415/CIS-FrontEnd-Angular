@@ -1,0 +1,261 @@
+<!-- Menu header -->
+<app-header-menu [isMain]="true"></app-header-menu>
+
+<!-- Body page principal -->
+<div class="main-banner wow fadeIn" id="top" data-wow-duration="1s" data-wow-delay="0.5s">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="row">
+          <div class="col-lg-7 align-self-center">
+            <div class="left-content show-up header-text wow fadeInLeft fadeRight">
+              <div class="row">
+                <div class="col-lg-12">
+                  <h6>{{"HOME_SUBTITLE" | translate}}</h6>
+                  <h2>{{"HOME_TITLE" | translate}}</h2>
+                  <p>{{"HOME_P" | translate}}</p>
+                </div>
+                <div class="col-lg-12">
+                  <div class="border-first-button scroll-to-section">
+                    <a target=”_blank” href="https://www.cis-elsalvador.org/youth-scholarships-and-development">
+                      {{"SEE_MORE" | translate}}</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-5">
+            <div class="right-image wow fadeInRight fadeLeft">
+              <img src="assets/images/cis-logo.png" alt="Logo CIS - El Salvador">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div id="profiles" class="our-portfolio">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-7">
+        <div class="section-heading flatMarginTop" data-aos="fade-right">
+          <h6>{{"OUR_PROFILES"| translate}}</h6>
+          <h4>{{"RECENT_PROFILES"| translate}} <em>{{"RECENT_PROFILES2"|translate}}</em>
+            <div class="border-first-button scroll-to-section">
+              <a [routerLink]="['/profiles']">{{"SEE_ALL"|translate}}</a>
+            </div>
+          </h4>
+          <div class="line-dec"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-12">
+        <ng-container *ngIf="isLoading; else elseTemplate">
+          <div class="center">
+            <div class="lds-roller">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+          </div>
+        </ng-container>
+
+
+
+        <ng-template #elseTemplate>
+          <div class="slider">
+            <div class="slide-track">
+              <div class="div" *ngFor="let item of becados">
+                <div class="slide">
+                  <div class="">
+                    <h4>{{item?.nombre_completo}}</h4>
+                    <img [src]="(item?.foto) == null ? '../../../../../assets/images/sin-foto.png' : item?.foto" alt="">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <div id="projects" class="blog">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-5 offset-lg-4 wow fadeInDown" data-aos="fade-down">
+        <div class="section-heading">
+          <h6>Recent Projects</h6>
+          <h4>Check Our Projects <em>Posts</em></h4>
+          <div class="line-dec"></div>
+        </div>
+      </div>
+      <div class="col-lg-6 show-up wow fadeInUp" data-aos="fade-down-right" data-aos-once="true">
+        <div class="blog-post">
+          <div class="thumb">
+            <a href="#"><img src="assets/images/LocalSalvadoranComittee.jpg" alt="Local Salvadoran Comittee"></a>
+          </div>
+          <div class="down-content">
+            <span class="category">SEO Analysis</span>
+            <span class="date">03 August 2021</span>
+            <a href="#">
+              <h4>The Local Salvadoran Committee</h4>
+            </a>
+            <p>Each community where the CIS works forms a local scholarship committee.
+              It meets to supervise the community service projects,
+              organize leadership development training and
+              activities, visit each student’s home, and resolve relevant issues.</p>
+            <span class="author"><img src="assets/images/author-post.jpg" alt="">By: Andrea Mentuzi</span>
+            <div class="border-first-button"><a href="#">Discover More</a></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.3s">
+        <div class="blog-posts">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="post-item">
+                <div class="thumb">
+                  <a href="#"><img src="assets/images/blog-post-04.jpg" alt=""></a>
+                </div>
+                <div class="right-content">
+                  <span class="category">SEO Analysis</span>
+                  <span class="date">24 September 2021</span>
+                  <a href="#">
+                    <h4>Lorem Ipsum Dolor Sit Amei Eiusmod Tempor</h4>
+                  </a>
+                  <p>Lorem ipsum dolor sit amet, cocteturi adipiscing eliterski.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-12">
+              <div class="post-item">
+                <div class="thumb">
+                  <a href="#"><img src="assets/images/blog-post-04.jpg" alt=""></a>
+                </div>
+                <div class="right-content">
+                  <span class="category">SEO Analysis</span>
+                  <span class="date">24 September 2021</span>
+                  <a href="#">
+                    <h4>Lorem Ipsum Dolor Sit Amei Eiusmod Tempor</h4>
+                  </a>
+                  <p>Lorem ipsum dolor sit amet, cocteturi adipiscing eliterski.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-12">
+              <div class="post-item last-post-item">
+                <div class="thumb">
+                  <a href="#"><img src="assets/images/blog-post-04.jpg" alt=""></a>
+                </div>
+                <div class="right-content">
+                  <span class="category">SEO Analysis</span>
+                  <span class="date">24 September 2021</span>
+                  <a href="#">
+                    <h4>Lorem Ipsum Dolor Sit Amei Eiusmod Tempor</h4>
+                  </a>
+                  <p>Lorem ipsum dolor sit amet, cocteturi adipiscing eliterski.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<div id="contact" class="contact-us section">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 offset-lg-3">
+        <div class="section-heading wow fadeIn" data-aos="fade-right">
+          <h6>{{"CONTACT_US"|translate}}</h6>
+          <h4>{{"TITLE_CONTACT"|translate}} <em>{{"Now"|translate}}</em></h4>
+          <div class="line-dec"></div>
+        </div>
+      </div>
+      <div class="col-lg-12 wow fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.25s">
+        <form id="contact" action="" method="post">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="contact-dec">
+                <img src="assets/images/contact-dec-v3.png" alt="">
+              </div>
+            </div>
+            <div class="col-lg-5">
+              <div id="map">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d968.9816891708826!2d-89.21128437081843!3d13.72288409939789!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f63307e7b6d6f75%3A0xfc6d5185606560b6!2sAv.%20Bolivar%2C%20San%20Salvador!5e0!3m2!1ses!2ssv!4v1646437667164!5m2!1ses!2ssv"
+                  width="100%" height="636px" frameborder="0" style="border:0" allowfullscreen loading="lazy"></iframe>
+
+              </div>
+            </div>
+            <div class="col-lg-7">
+              <div class="fill-form">
+                <div class="row">
+                  <div class="col-lg-4">
+                    <div class="info-post">
+                      <div class="icon">
+                        <img src="assets/images/phone-icon.png" alt="">
+                        <a href="#">(503) 2226-5362</a>
+                        <a href="#">(503) 2235-1330</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-4">
+                    <div class="info-post">
+                      <div class="icon">
+                        <img src="assets/images/email-icon.png" alt="">
+                        <a href="#">info@cis-elsalvador.org</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-4">
+                    <div class="info-post">
+                      <div class="icon">
+                        <img src="assets/images/location-icon.png" alt="">
+                        <a href="#">Colonia Libertad Avenida Bolívar #103 San Salvador El Salvador</a>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-lg-12">
+                    <hr><br>
+                    <a href="www.ciselsal.blogspot.com">{{"VISIT_BLOG"|translate}}:
+                      www.ciselsal.blogspot.com</a>
+                    <br><br>
+                    <hr>
+                    <p>
+                     {{"US_ADDRESS"|translate}}:
+                      Los Olivos CIS
+                      PO Box 76
+                      Westmont, IL
+                      60559-0076
+                      USA
+                      Toll-Free in US:
+                      1-866-887-2665</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
