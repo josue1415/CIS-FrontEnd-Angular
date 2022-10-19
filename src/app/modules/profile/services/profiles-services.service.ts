@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class ProfilesServicesService {
 
-  private readonly URL = 'http://127.0.0.1:8000/api/public';
+  private readonly URL = 'https://elsalvador-cis.com/api/public';
 
   constructor(private http: HttpClient) { }
 

@@ -65,3 +65,7 @@ hr {
     padding: 20px;
     line-height: normal;
   }
+
+  .mat-tab-group {
+    margin-bottom: 48px;
+  }

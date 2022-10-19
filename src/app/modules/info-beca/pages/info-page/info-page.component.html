@@ -61,8 +61,8 @@
         </h5>
       </div>
     </div>
-    <div class="shadowInformationPersonal row col-12">
-      <div class="col-lg-5 container pdding">
+    <div class="shadowInformationPersonal row col-auto justify-content-center m-0">
+      <div class="col-lg-5 container m-0 justify-content-center text-center">
         <h5 [hidden]="settings?.institucion ? '' : 'hidden'" class="lessLineHeight">
           <b>{{ "Institution"|translate }}:
           </b>{{ isLangEnglish == 'en' ? scholarchip?.institucion : becado?.institucion }}
@@ -100,15 +100,22 @@
       <div class="col-lg-4">
         <h5 [hidden]="settings?.horario ? '' : 'hidden'" class="lessLineHeight ">
           <b>{{ "Schedule"|translate }}:
-            <br></b>{{ isLangEnglish == 'en' ? scholarchip?.horario : becado?.horario }}
+            <br></b>
+          <h5 class="inherit"
+            [innerHTML]="isLangEnglish == 'en' ? (scholarchip?.horario ? (scholarchip?.horario | striphtml) : '') : (becado?.horario | striphtml)">
+          </h5>
         </h5>
         <h5 [hidden]="settings?.horario_salida_casa ? '' : 'hidden'" class="lessLineHeight ">
-          <b>{{ "TIME_LEAVE_HOME"|translate }}: <br></b>{{isLangEnglish == 'en' ?
-                    scholarchip?.horario_salida_casa : becado?.horario_salida_casa}}
+          <b>{{ "TIME_LEAVE_HOME"|translate }}: <br></b>
+          <h5 class="inherit"
+            [innerHTML]="isLangEnglish == 'en' ? (scholarchip?.horario_salida_casa ? (scholarchip?.horario_salida_casa | striphtml) : '') : (becado?.horario_salida_casa | striphtml)">
+          </h5>
         </h5>
         <h5 [hidden]="settings?.horario_regreso_casa ? '' : 'hidden'" class="lessLineHeight ">
-          <b>{{ "TIME_GO_HOME"|translate }}: <br> </b>{{isLangEnglish == 'en' ?
-                    scholarchip?.horario_regreso_casa : becado?.horario_regreso_casa}}
+          <b>{{ "TIME_GO_HOME"|translate }}: <br> </b>
+          <h5 class="inherit"
+            [innerHTML]="isLangEnglish == 'en' ? (scholarchip?.horario_regreso_casa ? (scholarchip?.horario_regreso_casa | striphtml) : '') : (becado?.horario_regreso_casa | striphtml)">
+          </h5>
         </h5>
       </div>
       <div class="col-lg-3">
@@ -120,185 +127,52 @@
         !settings?.obstaculos_educacion &&
         !settings?.propositos_finalizar ? 'hidden' : ''">
       <br>
-      <mat-accordion>
-        <mat-expansion-panel>
-          <mat-expansion-panel-header>
-            <mat-panel-title>A</mat-panel-title>
-          </mat-expansion-panel-header>
-          <h5 [hidden]="settings?.impacto_vida ? '' : 'hidden'" class="justifyText lessLineHeight"><b>
-              ¿{{ "DESCRIPCION1"|translate }}?</b>
-            <br>
-            <h5 class="inherit"
-              [innerHTML]="isLangEnglish == 'en' ? (scholarchip?.impacto_vida ? (scholarchip?.impacto_vida | striphtml) : '') : (becado?.impacto_vida | striphtml)">
-            </h5>
-          </h5>
-          <hr class="shadowHr">
+      <mat-tab-group mat-align-tabs="center">
+        <mat-tab label="First">Content 1</mat-tab>
+        <mat-tab label="Second">Content 2</mat-tab>
+        <mat-tab label="Third">Content 3</mat-tab>
+      </mat-tab-group>
 
-          <h5 [hidden]="settings?.impacto_comunidad ? '' : 'hidden'" class="justifyText lessLineHeight"><b>
-              ¿{{ "DESCRIPCION2"|translate }}?
-            </b>
-            <br>
-            <h5 class="inherit"
-              [innerHTML]="isLangEnglish == 'en' ? (scholarchip?.impacto_comunidad ? (scholarchip?.impacto_comunidad | striphtml) : '') : (becado?.impacto_comunidad | striphtml)">
-            </h5>
-          </h5>
-          <hr class="shadowHr">
+      <hr class="shadowHr">
 
-          <h5 [hidden]="settings?.obstaculos_educacion ? '' : 'hidden'" class="justifyText lessLineHeight">
-            <b> ¿{{ "DESCRIPCION3"|translate }}? </b>
-            <br>
-            <h5 class="inherit"
-              [innerHTML]="isLangEnglish == 'en' ? (scholarchip?.obstaculos_educacion ? (scholarchip?.obstaculos_educacion | striphtml): '') : (becado?.obstaculos_educacion | striphtml)">
-            </h5>
-          </h5>
-          <hr class="shadowHr">
+      <h5 [hidden]="settings?.impacto_vida ? '' : 'hidden'" class="justifyText lessLineHeight"><b>
+          ¿{{ "DESCRIPCION1"|translate }}?</b>
+        <br>
+        <h5 class="inherit"
+          [innerHTML]="isLangEnglish == 'en' ? (scholarchip?.impacto_vida ? (scholarchip?.impacto_vida | striphtml) : '') : (becado?.impacto_vida | striphtml)">
+        </h5>
+      </h5>
+      <hr class="shadowHr">
 
-          <h5 [hidden]="settings?.propositos_finalizar ? '' : 'hidden'" class="justifyText lessLineHeight"><b>
-              ¿{{ "DESCRIPCION4"|translate }}?
-            </b>
-            <br>
-            <h5 class="inherit" [innerHTML]="isLangEnglish == 'en' ? (scholarchip?.propositos_finalizar ? (scholarchip?.propositos_finalizar | striphtml) : '') 
+      <h5 [hidden]="settings?.impacto_comunidad ? '' : 'hidden'" class="justifyText lessLineHeight"><b>
+          ¿{{ "DESCRIPCION2"|translate }}?
+        </b>
+        <br>
+        <h5 class="inherit"
+          [innerHTML]="isLangEnglish == 'en' ? (scholarchip?.impacto_comunidad ? (scholarchip?.impacto_comunidad | striphtml) : '') : (becado?.impacto_comunidad | striphtml)">
+        </h5>
+      </h5>
+      <hr class="shadowHr">
+
+      <h5 [hidden]="settings?.obstaculos_educacion ? '' : 'hidden'" class="justifyText lessLineHeight">
+        <b> ¿{{ "DESCRIPCION3"|translate }}? </b>
+        <br>
+        <h5 class="inherit"
+          [innerHTML]="isLangEnglish == 'en' ? (scholarchip?.obstaculos_educacion ? (scholarchip?.obstaculos_educacion | striphtml): '') : (becado?.obstaculos_educacion | striphtml)">
+        </h5>
+      </h5>
+      <hr class="shadowHr">
+
+      <h5 [hidden]="settings?.propositos_finalizar ? '' : 'hidden'" class="justifyText lessLineHeight"><b>
+          ¿{{ "DESCRIPCION4"|translate }}?
+        </b>
+        <br>
+        <h5 class="inherit" [innerHTML]="isLangEnglish == 'en' ? (scholarchip?.propositos_finalizar ? (scholarchip?.propositos_finalizar | striphtml) : '') 
                      : (becado?.propositos_finalizar | striphtml)">
-            </h5>
-          </h5>
-        </mat-expansion-panel>
-      </mat-accordion>
-      <br>
-      <mat-accordion>
-        <mat-expansion-panel>
-          <mat-expansion-panel-header>
-            <mat-panel-title>B</mat-panel-title>
-          </mat-expansion-panel-header>
-          <h5 [hidden]="settings?.impacto_vida ? '' : 'hidden'" class="justifyText lessLineHeight"><b>
-              ¿{{ "DESCRIPCION1"|translate }}?</b>
-            <br>
-            <h5 class="inherit"
-              [innerHTML]="isLangEnglish == 'en' ? (scholarchip?.impacto_vida ? (scholarchip?.impacto_vida | striphtml) : '') : (becado?.impacto_vida | striphtml)">
-            </h5>
-          </h5>
-          <hr class="shadowHr">
-
-          <h5 [hidden]="settings?.impacto_comunidad ? '' : 'hidden'" class="justifyText lessLineHeight"><b>
-              ¿{{ "DESCRIPCION2"|translate }}?
-            </b>
-            <br>
-            <h5 class="inherit"
-              [innerHTML]="isLangEnglish == 'en' ? (scholarchip?.impacto_comunidad ? (scholarchip?.impacto_comunidad | striphtml) : '') : (becado?.impacto_comunidad | striphtml)">
-            </h5>
-          </h5>
-          <hr class="shadowHr">
-
-          <h5 [hidden]="settings?.obstaculos_educacion ? '' : 'hidden'" class="justifyText lessLineHeight">
-            <b> ¿{{ "DESCRIPCION3"|translate }}? </b>
-            <br>
-            <h5 class="inherit"
-              [innerHTML]="isLangEnglish == 'en' ? (scholarchip?.obstaculos_educacion ? (scholarchip?.obstaculos_educacion | striphtml): '') : (becado?.obstaculos_educacion | striphtml)">
-            </h5>
-          </h5>
-          <hr class="shadowHr">
-
-          <h5 [hidden]="settings?.propositos_finalizar ? '' : 'hidden'" class="justifyText lessLineHeight"><b>
-              ¿{{ "DESCRIPCION4"|translate }}?
-            </b>
-            <br>
-            <h5 class="inherit" [innerHTML]="isLangEnglish == 'en' ? (scholarchip?.propositos_finalizar ? (scholarchip?.propositos_finalizar | striphtml) : '') 
-                     : (becado?.propositos_finalizar | striphtml)">
-            </h5>
-          </h5>
-        </mat-expansion-panel>
-      </mat-accordion>
-      <br>
-      <mat-accordion>
-        <mat-expansion-panel>
-          <mat-expansion-panel-header>
-            <mat-panel-title>C</mat-panel-title>
-          </mat-expansion-panel-header>
-          <h5 [hidden]="settings?.impacto_vida ? '' : 'hidden'" class="justifyText lessLineHeight"><b>
-              ¿{{ "DESCRIPCION1"|translate }}?</b>
-            <br>
-            <h5 class="inherit"
-              [innerHTML]="isLangEnglish == 'en' ? (scholarchip?.impacto_vida ? (scholarchip?.impacto_vida | striphtml) : '') : (becado?.impacto_vida | striphtml)">
-            </h5>
-          </h5>
-          <hr class="shadowHr">
-
-          <h5 [hidden]="settings?.impacto_comunidad ? '' : 'hidden'" class="justifyText lessLineHeight"><b>
-              ¿{{ "DESCRIPCION2"|translate }}?
-            </b>
-            <br>
-            <h5 class="inherit"
-              [innerHTML]="isLangEnglish == 'en' ? (scholarchip?.impacto_comunidad ? (scholarchip?.impacto_comunidad | striphtml) : '') : (becado?.impacto_comunidad | striphtml)">
-            </h5>
-          </h5>
-          <hr class="shadowHr">
-
-          <h5 [hidden]="settings?.obstaculos_educacion ? '' : 'hidden'" class="justifyText lessLineHeight">
-            <b> ¿{{ "DESCRIPCION3"|translate }}? </b>
-            <br>
-            <h5 class="inherit"
-              [innerHTML]="isLangEnglish == 'en' ? (scholarchip?.obstaculos_educacion ? (scholarchip?.obstaculos_educacion | striphtml): '') : (becado?.obstaculos_educacion | striphtml)">
-            </h5>
-          </h5>
-          <hr class="shadowHr">
-
-          <h5 [hidden]="settings?.propositos_finalizar ? '' : 'hidden'" class="justifyText lessLineHeight"><b>
-              ¿{{ "DESCRIPCION4"|translate }}?
-            </b>
-            <br>
-            <h5 class="inherit" [innerHTML]="isLangEnglish == 'en' ? (scholarchip?.propositos_finalizar ? (scholarchip?.propositos_finalizar | striphtml) : '') 
-                     : (becado?.propositos_finalizar | striphtml)">
-            </h5>
-          </h5>
-        </mat-expansion-panel>
-      </mat-accordion>
-      <br>
-      <mat-accordion>
-        <mat-expansion-panel>
-          <mat-expansion-panel-header>
-            <mat-panel-title>C</mat-panel-title>
-          </mat-expansion-panel-header>
-          <h5 [hidden]="settings?.impacto_vida ? '' : 'hidden'" class="justifyText lessLineHeight"><b>
-              ¿{{ "DESCRIPCION1"|translate }}?</b>
-            <br>
-            <h5 class="inherit"
-              [innerHTML]="isLangEnglish == 'en' ? (scholarchip?.impacto_vida ? (scholarchip?.impacto_vida | striphtml) : '') : (becado?.impacto_vida | striphtml)">
-            </h5>
-          </h5>
-          <hr class="shadowHr">
-
-          <h5 [hidden]="settings?.impacto_comunidad ? '' : 'hidden'" class="justifyText lessLineHeight"><b>
-              ¿{{ "DESCRIPCION2"|translate }}?
-            </b>
-            <br>
-            <h5 class="inherit"
-              [innerHTML]="isLangEnglish == 'en' ? (scholarchip?.impacto_comunidad ? (scholarchip?.impacto_comunidad | striphtml) : '') : (becado?.impacto_comunidad | striphtml)">
-            </h5>
-          </h5>
-          <hr class="shadowHr">
-
-          <h5 [hidden]="settings?.obstaculos_educacion ? '' : 'hidden'" class="justifyText lessLineHeight">
-            <b> ¿{{ "DESCRIPCION3"|translate }}? </b>
-            <br>
-            <h5 class="inherit"
-              [innerHTML]="isLangEnglish == 'en' ? (scholarchip?.obstaculos_educacion ? (scholarchip?.obstaculos_educacion | striphtml): '') : (becado?.obstaculos_educacion | striphtml)">
-            </h5>
-          </h5>
-          <hr class="shadowHr">
-
-          <h5 [hidden]="settings?.propositos_finalizar ? '' : 'hidden'" class="justifyText lessLineHeight"><b>
-              ¿{{ "DESCRIPCION4"|translate }}?
-            </b>
-            <br>
-            <h5 class="inherit" [innerHTML]="isLangEnglish == 'en' ? (scholarchip?.propositos_finalizar ? (scholarchip?.propositos_finalizar | striphtml) : '') 
-                     : (becado?.propositos_finalizar | striphtml)">
-            </h5>
-          </h5>
-        </mat-expansion-panel>
-      </mat-accordion>
-
+        </h5>
+      </h5>
     </div>
-
-    <br class="shadowHr">
+    <hr class="shadowHr">
 
     <div class="shadowInformationPersonal col-12" [hidden]="!settings?.medios_transporte && 
             !settings?.gastos_mensuales && 
