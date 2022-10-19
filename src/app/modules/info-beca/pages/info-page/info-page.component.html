@@ -1,284 +1,436 @@
 <app-header-menu [isMain]="false" [isDetail]="true"></app-header-menu>
 
 <div class="main-banner">
-    <ng-container *ngIf="isWaiting; else elseTemplate">
-        <div class="center">
-            <div class="lds-roller">
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-            </div>
-        </div>
-    </ng-container>
-    <ng-template #elseTemplate>
-        <div class="row lessTopMargin shadowInformationPersonal">
-            <div class="col-lg-4">
-                <img class="sizePerfilImg" [src]="(settings?.foto) == true ?
+  <ng-container *ngIf="isWaiting; else elseTemplate">
+    <div class="center">
+      <div class="lds-roller">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+  </ng-container>
+  <ng-template #elseTemplate>
+    <div class="row lessTopMargin shadowInformationPersonal">
+      <div class="col-lg-4">
+        <img class="sizePerfilImg" [src]="(settings?.foto) == true ?
                      ((becado?.foto) == null ? 
                      '../../../../../assets/images/sin-foto.png' : becado?.foto) : 
                      '../../../../../assets/images/sin-foto.png'" alt="IMG-Becado">
-            </div>
-            <div class="col-lg-8">
-                <h4 [hidden]="settings?.nombre_completo ? '' : 'hidden'">{{"FULL_NAME"|translate}}:
-                    <b>{{becado?.nombre_completo}}</b>
-                </h4>
-                <hr class="shadowHr">
-                <div *ngIf="settings?.comunidad_id">
-                    <h5 class="lessLineHeight"><b>{{"COMMUNITY"|translate}}: </b>{{becado?.nombre_comunidad}}</h5>
-                    <h5 class="lessLineHeight"><b>{{"Department"|translate}}:</b> {{becado?.departamento}}</h5>
-                    <h5 class="lessLineHeight"><b>{{"Municipalities"|translate}}: </b>{{becado?.municipio}}</h5>
-                </div>
-                <br>
-                <h5 [hidden]="settings?.fecha_nacimiento ? '' : 'hidden'" class="lessLineHeight">
-                    <b>{{"BIRTHDAY_DATE"|translate}}:</b>
-                    {{becado?.fecha_nacimiento | date: 'longDate'}}
-                </h5>
-                <h5 [hidden]="settings?.correo ? '' : 'hidden'" class="lessLineHeight"><b>{{"Email"|translate}}:</b>
-                    {{becado?.correo}}</h5>
-                <h5 [hidden]="settings?.telefono ? '' : 'hidden'" class="lessLineHeight">
-                    <b>{{"phonenumber"|translate}}:</b>
-                    {{becado?.telefono}}
-                </h5>
-                <h5 [hidden]="settings?.inicio_programa ? '' : 'hidden'"><b>{{"PROGRAM_START"|translate}}:</b>
-                    {{becado?.inicio_programa}}</h5> <br>
-                <br>
-                <h5 [hidden]="settings?.num_materias ? '' : 'hidden'" class="lessLineHeight">
-                    <b>{{"NUMBER_SUBJECTS"|translate}}</b>
-                    {{becado?.num_materias}}
-                </h5>
-                <h5 [hidden]="settings?.materias_aprobadas ? '' : 'hidden'" class="lessLineHeight">
-                    <b>{{"APROVED_SUBJECTS"|translate}}:</b> {{becado?.materias_aprobadas}}
-                </h5>
-            </div>
+      </div>
+      <div class="col-lg-8">
+        <h4 [hidden]="settings?.nombre_completo ? '' : 'hidden'">{{ "FULL_NAME"|translate }}:
+          <b>{{ becado?.nombre_completo }}</b>
+        </h4>
+        <hr class="shadowHr">
+        <div *ngIf="settings?.comunidad_id">
+          <h5 class="lessLineHeight"><b>{{ "COMMUNITY"|translate }}:
+            </b>{{ becado?.nombre_comunidad }}</h5>
+          <h5 class="lessLineHeight"><b>{{ "Department"|translate }}:</b> {{ becado?.departamento }}
+          </h5>
+          <h5 class="lessLineHeight"><b>{{ "Municipalities"|translate }}:
+            </b>{{ becado?.municipio }}</h5>
         </div>
-        <div class="shadowInformationPersonal row col-12">
-            <div class="col-lg-5 container pdding">
-                <h5 [hidden]="settings?.institucion ? '' : 'hidden'" class="lessLineHeight">
-                    <b>{{"Institution"|translate}}:
-                    </b>{{isLangEnglish == 'en' ? scholarchip?.institucion : becado?.institucion}}
-                </h5>
-                <!-- <h5 [hidden]="settings?.formacion_actual ? '' : 'hidden'" class="lessLineHeight"><b>Current lineup :
-                    </b>{{becado?.formacion_actual}} </h5> -->
-                <h5 [hidden]="settings?.opcion ? '' : 'hidden'" class="lessLineHeight">
-                    <b>{{"Career"|translate}}: </b>{{isLangEnglish == 'en' ? scholarchip?.opcion : becado?.opcion}}
-                </h5>
-                <h5 [hidden]="settings?.estudiando_actualmente ? '' : 'hidden'" class="lessLineHeight">
-                    <b>¿{{"STUDYING"|translate}}? </b>{{isLangEnglish == 'en' ? scholarchip?.estudiando_actualmente :
+        <br>
+        <h5 [hidden]="settings?.fecha_nacimiento ? '' : 'hidden'" class="lessLineHeight">
+          <b>{{ "BIRTHDAY_DATE"|translate }}:</b>
+          {{ becado?.fecha_nacimiento | date: 'longDate' }}
+        </h5>
+        <h5 [hidden]="settings?.correo ? '' : 'hidden'" class="lessLineHeight">
+          <b>{{ "Email"|translate }}:</b>
+          {{ becado?.correo }}</h5>
+        <h5 [hidden]="settings?.telefono ? '' : 'hidden'" class="lessLineHeight">
+          <b>{{ "phonenumber"|translate }}:</b>
+          {{ becado?.telefono }}
+        </h5>
+        <h5 [hidden]="settings?.inicio_programa ? '' : 'hidden'">
+          <b>{{ "PROGRAM_START"|translate }}:</b>
+          {{ becado?.inicio_programa }}</h5> <br>
+        <br>
+        <h5 [hidden]="settings?.num_materias ? '' : 'hidden'" class="lessLineHeight">
+          <b>{{ "NUMBER_SUBJECTS"|translate }}</b>
+          {{ becado?.num_materias }}
+        </h5>
+        <h5 [hidden]="settings?.materias_aprobadas ? '' : 'hidden'" class="lessLineHeight">
+          <b>{{ "APROVED_SUBJECTS"|translate }}:</b> {{ becado?.materias_aprobadas }}
+        </h5>
+      </div>
+    </div>
+    <div class="shadowInformationPersonal row col-12">
+      <div class="col-lg-5 container pdding">
+        <h5 [hidden]="settings?.institucion ? '' : 'hidden'" class="lessLineHeight">
+          <b>{{ "Institution"|translate }}:
+          </b>{{ isLangEnglish == 'en' ? scholarchip?.institucion : becado?.institucion }}
+        </h5>
+        <!-- <h5 [hidden]="settings?.formacion_actual ? '' : 'hidden'" class="lessLineHeight"><b>Current lineup :
+                    </b>{{ becado?.formacion_actual }} </h5> -->
+        <h5 [hidden]="settings?.opcion ? '' : 'hidden'" class="lessLineHeight">
+          <b>{{ "Career"|translate }}:
+          </b>{{ isLangEnglish == 'en' ? scholarchip?.opcion : becado?.opcion }}
+        </h5>
+        <h5 [hidden]="settings?.estudiando_actualmente ? '' : 'hidden'" class="lessLineHeight">
+          <b>¿{{ "STUDYING"|translate }}? </b>{{isLangEnglish == 'en' ? scholarchip?.estudiando_actualmente :
                     becado?.estudiando_actualmente}}
-                </h5>
-                <h5 [hidden]="settings?.fecha_graduacion ? '' : 'hidden'" class="lessLineHeight ">
-                    <b>{{"GRADUATION"|translate}}:<br> </b>{{isLangEnglish == 'en' ? (scholarchip?.fecha_graduacion) :
+        </h5>
+        <h5 [hidden]="settings?.fecha_graduacion ? '' : 'hidden'" class="lessLineHeight ">
+          <b>{{ "GRADUATION"|translate }}:<br> </b>{{isLangEnglish == 'en' ? (scholarchip?.fecha_graduacion) :
                     (becado?.fecha_graduacion | date: 'longDate')}}
-                </h5>
-                <h5 [hidden]="settings?.promedio_notas ? '' : 'hidden'" class="lessLineHeight ">
-                    <b>{{"CALIFICATION"|translate}}:<br></b>{{becado?.promedio_notas}}
-                </h5>
+        </h5>
+        <h5 [hidden]="settings?.promedio_notas ? '' : 'hidden'" class="lessLineHeight ">
+          <b>{{ "CALIFICATION"|translate }}:<br></b>{{ becado?.promedio_notas }}
+        </h5>
 
-                <hr class="shadowHr">
-                <h5 [hidden]="settings?.tipo_servicio ? '' : 'hidden'" class="lessLineHeight"><b>{{"TOILET"|translate}}:
-                    </b>{{becado?.tipo_servicio}} </h5>
-                <h5 [hidden]="settings?.agua_potable ? '' : 'hidden'" class="lessLineHeight"><b>{{"WATER"|translate}}:
-                    </b>{{becado?.agua_potable}} </h5>
-                <h5 [hidden]="settings?.energia ? '' : 'hidden'" class="lessLineHeight"><b>{{"ENERGY"|translate}}:
-                    </b>{{becado?.energia}} </h5>
+        <hr class="shadowHr">
+        <h5 [hidden]="settings?.tipo_servicio ? '' : 'hidden'" class="lessLineHeight">
+          <b>{{ "TOILET"|translate }}:
+          </b>{{ becado?.tipo_servicio }} </h5>
+        <h5 [hidden]="settings?.agua_potable ? '' : 'hidden'" class="lessLineHeight">
+          <b>{{ "WATER"|translate }}:
+          </b>{{ becado?.agua_potable }} </h5>
+        <h5 [hidden]="settings?.energia ? '' : 'hidden'" class="lessLineHeight">
+          <b>{{ "ENERGY"|translate }}:
+          </b>{{ becado?.energia }} </h5>
 
-            </div>
-            <div class="col-lg-4">
-                <h5 [hidden]="settings?.horario ? '' : 'hidden'" class="lessLineHeight "><b>{{"Schedule"|translate}}:
-                        <br></b>{{isLangEnglish == 'en' ? scholarchip?.horario : becado?.horario}}</h5>
-                <h5 [hidden]="settings?.horario_salida_casa ? '' : 'hidden'" class="lessLineHeight ">
-                    <b>{{"TIME_LEAVE_HOME"|translate}}: <br></b>{{isLangEnglish == 'en' ?
+      </div>
+      <div class="col-lg-4">
+        <h5 [hidden]="settings?.horario ? '' : 'hidden'" class="lessLineHeight ">
+          <b>{{ "Schedule"|translate }}:
+            <br></b>{{ isLangEnglish == 'en' ? scholarchip?.horario : becado?.horario }}
+        </h5>
+        <h5 [hidden]="settings?.horario_salida_casa ? '' : 'hidden'" class="lessLineHeight ">
+          <b>{{ "TIME_LEAVE_HOME"|translate }}: <br></b>{{isLangEnglish == 'en' ?
                     scholarchip?.horario_salida_casa : becado?.horario_salida_casa}}
-                </h5>
-                <h5 [hidden]="settings?.horario_regreso_casa ? '' : 'hidden'" class="lessLineHeight ">
-                    <b>{{"TIME_GO_HOME"|translate}}: <br> </b>{{isLangEnglish == 'en' ?
+        </h5>
+        <h5 [hidden]="settings?.horario_regreso_casa ? '' : 'hidden'" class="lessLineHeight ">
+          <b>{{ "TIME_GO_HOME"|translate }}: <br> </b>{{isLangEnglish == 'en' ?
                     scholarchip?.horario_regreso_casa : becado?.horario_regreso_casa}}
-                </h5>
-            </div>
-            <div class="col-lg-3">
-                <img class="sizeLogoImg" src="../../../../../assets/images/cis-logo.png" alt="CIS-LOGO">
-            </div>
-        </div>
-        <div class="col-12 pdding1 container" [hidden]="!settings?.impacto_vida &&
+        </h5>
+      </div>
+      <div class="col-lg-3">
+        <img class="sizeLogoImg" src="../../../../../assets/images/cis-logo.png" alt="CIS-LOGO">
+      </div>
+    </div>
+    <div class="col-12 pdding1 container" [hidden]="!settings?.impacto_vida &&
         !settings?.impacto_comunidad &&
         !settings?.obstaculos_educacion &&
         !settings?.propositos_finalizar ? 'hidden' : ''">
+      <br>
+      <mat-accordion>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>A</mat-panel-title>
+          </mat-expansion-panel-header>
+          <h5 [hidden]="settings?.impacto_vida ? '' : 'hidden'" class="justifyText lessLineHeight"><b>
+              ¿{{ "DESCRIPCION1"|translate }}?</b>
             <br>
-            <h5 [hidden]="settings?.impacto_vida ? '' : 'hidden'" class="justifyText lessLineHeight"><b>
-                    ¿{{"DESCRIPCION1"|translate}}?</b>
-                <br>
-                <h5 class="inherit"
-                    [innerHTML]="isLangEnglish == 'en' ? (scholarchip?.impacto_vida ? (scholarchip?.impacto_vida | striphtml) : '') : (becado?.impacto_vida | striphtml)">
-                </h5>
+            <h5 class="inherit"
+              [innerHTML]="isLangEnglish == 'en' ? (scholarchip?.impacto_vida ? (scholarchip?.impacto_vida | striphtml) : '') : (becado?.impacto_vida | striphtml)">
             </h5>
-            <hr class="shadowHr">
+          </h5>
+          <hr class="shadowHr">
 
-            <h5 [hidden]="settings?.impacto_comunidad ? '' : 'hidden'" class="justifyText lessLineHeight"><b>
-                    ¿{{"DESCRIPCION2"|translate}}?
-                </b>
-                <br>
-                <h5 class="inherit"
-                    [innerHTML]="isLangEnglish == 'en' ? (scholarchip?.impacto_comunidad ? (scholarchip?.impacto_comunidad | striphtml) : '') : (becado?.impacto_comunidad | striphtml)">
-                </h5>
+          <h5 [hidden]="settings?.impacto_comunidad ? '' : 'hidden'" class="justifyText lessLineHeight"><b>
+              ¿{{ "DESCRIPCION2"|translate }}?
+            </b>
+            <br>
+            <h5 class="inherit"
+              [innerHTML]="isLangEnglish == 'en' ? (scholarchip?.impacto_comunidad ? (scholarchip?.impacto_comunidad | striphtml) : '') : (becado?.impacto_comunidad | striphtml)">
             </h5>
-            <hr class="shadowHr">
+          </h5>
+          <hr class="shadowHr">
 
-            <h5 [hidden]="settings?.obstaculos_educacion ? '' : 'hidden'" class="justifyText lessLineHeight">
-                <b> ¿{{"DESCRIPCION3"|translate}}? </b>
-                <br>
-                <h5 class="inherit"
-                    [innerHTML]="isLangEnglish == 'en' ? (scholarchip?.obstaculos_educacion ? (scholarchip?.obstaculos_educacion | striphtml): '') : (becado?.obstaculos_educacion | striphtml)">
-                </h5>
+          <h5 [hidden]="settings?.obstaculos_educacion ? '' : 'hidden'" class="justifyText lessLineHeight">
+            <b> ¿{{ "DESCRIPCION3"|translate }}? </b>
+            <br>
+            <h5 class="inherit"
+              [innerHTML]="isLangEnglish == 'en' ? (scholarchip?.obstaculos_educacion ? (scholarchip?.obstaculos_educacion | striphtml): '') : (becado?.obstaculos_educacion | striphtml)">
             </h5>
-            <hr class="shadowHr">
+          </h5>
+          <hr class="shadowHr">
 
-            <h5 [hidden]="settings?.propositos_finalizar ? '' : 'hidden'" class="justifyText lessLineHeight"><b>
-                    ¿{{"DESCRIPCION4"|translate}}?
-                </b>
-                <br>
-                <h5 class="inherit" [innerHTML]="isLangEnglish == 'en' ? (scholarchip?.propositos_finalizar ? (scholarchip?.propositos_finalizar | striphtml) : '') 
+          <h5 [hidden]="settings?.propositos_finalizar ? '' : 'hidden'" class="justifyText lessLineHeight"><b>
+              ¿{{ "DESCRIPCION4"|translate }}?
+            </b>
+            <br>
+            <h5 class="inherit" [innerHTML]="isLangEnglish == 'en' ? (scholarchip?.propositos_finalizar ? (scholarchip?.propositos_finalizar | striphtml) : '') 
                      : (becado?.propositos_finalizar | striphtml)">
-                </h5>
             </h5>
-        </div>
-        <hr class="shadowHr">
+          </h5>
+        </mat-expansion-panel>
+      </mat-accordion>
+      <br>
+      <mat-accordion>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>B</mat-panel-title>
+          </mat-expansion-panel-header>
+          <h5 [hidden]="settings?.impacto_vida ? '' : 'hidden'" class="justifyText lessLineHeight"><b>
+              ¿{{ "DESCRIPCION1"|translate }}?</b>
+            <br>
+            <h5 class="inherit"
+              [innerHTML]="isLangEnglish == 'en' ? (scholarchip?.impacto_vida ? (scholarchip?.impacto_vida | striphtml) : '') : (becado?.impacto_vida | striphtml)">
+            </h5>
+          </h5>
+          <hr class="shadowHr">
 
-        <div class="shadowInformationPersonal col-12" [hidden]="!settings?.medios_transporte && 
+          <h5 [hidden]="settings?.impacto_comunidad ? '' : 'hidden'" class="justifyText lessLineHeight"><b>
+              ¿{{ "DESCRIPCION2"|translate }}?
+            </b>
+            <br>
+            <h5 class="inherit"
+              [innerHTML]="isLangEnglish == 'en' ? (scholarchip?.impacto_comunidad ? (scholarchip?.impacto_comunidad | striphtml) : '') : (becado?.impacto_comunidad | striphtml)">
+            </h5>
+          </h5>
+          <hr class="shadowHr">
+
+          <h5 [hidden]="settings?.obstaculos_educacion ? '' : 'hidden'" class="justifyText lessLineHeight">
+            <b> ¿{{ "DESCRIPCION3"|translate }}? </b>
+            <br>
+            <h5 class="inherit"
+              [innerHTML]="isLangEnglish == 'en' ? (scholarchip?.obstaculos_educacion ? (scholarchip?.obstaculos_educacion | striphtml): '') : (becado?.obstaculos_educacion | striphtml)">
+            </h5>
+          </h5>
+          <hr class="shadowHr">
+
+          <h5 [hidden]="settings?.propositos_finalizar ? '' : 'hidden'" class="justifyText lessLineHeight"><b>
+              ¿{{ "DESCRIPCION4"|translate }}?
+            </b>
+            <br>
+            <h5 class="inherit" [innerHTML]="isLangEnglish == 'en' ? (scholarchip?.propositos_finalizar ? (scholarchip?.propositos_finalizar | striphtml) : '') 
+                     : (becado?.propositos_finalizar | striphtml)">
+            </h5>
+          </h5>
+        </mat-expansion-panel>
+      </mat-accordion>
+      <br>
+      <mat-accordion>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>C</mat-panel-title>
+          </mat-expansion-panel-header>
+          <h5 [hidden]="settings?.impacto_vida ? '' : 'hidden'" class="justifyText lessLineHeight"><b>
+              ¿{{ "DESCRIPCION1"|translate }}?</b>
+            <br>
+            <h5 class="inherit"
+              [innerHTML]="isLangEnglish == 'en' ? (scholarchip?.impacto_vida ? (scholarchip?.impacto_vida | striphtml) : '') : (becado?.impacto_vida | striphtml)">
+            </h5>
+          </h5>
+          <hr class="shadowHr">
+
+          <h5 [hidden]="settings?.impacto_comunidad ? '' : 'hidden'" class="justifyText lessLineHeight"><b>
+              ¿{{ "DESCRIPCION2"|translate }}?
+            </b>
+            <br>
+            <h5 class="inherit"
+              [innerHTML]="isLangEnglish == 'en' ? (scholarchip?.impacto_comunidad ? (scholarchip?.impacto_comunidad | striphtml) : '') : (becado?.impacto_comunidad | striphtml)">
+            </h5>
+          </h5>
+          <hr class="shadowHr">
+
+          <h5 [hidden]="settings?.obstaculos_educacion ? '' : 'hidden'" class="justifyText lessLineHeight">
+            <b> ¿{{ "DESCRIPCION3"|translate }}? </b>
+            <br>
+            <h5 class="inherit"
+              [innerHTML]="isLangEnglish == 'en' ? (scholarchip?.obstaculos_educacion ? (scholarchip?.obstaculos_educacion | striphtml): '') : (becado?.obstaculos_educacion | striphtml)">
+            </h5>
+          </h5>
+          <hr class="shadowHr">
+
+          <h5 [hidden]="settings?.propositos_finalizar ? '' : 'hidden'" class="justifyText lessLineHeight"><b>
+              ¿{{ "DESCRIPCION4"|translate }}?
+            </b>
+            <br>
+            <h5 class="inherit" [innerHTML]="isLangEnglish == 'en' ? (scholarchip?.propositos_finalizar ? (scholarchip?.propositos_finalizar | striphtml) : '') 
+                     : (becado?.propositos_finalizar | striphtml)">
+            </h5>
+          </h5>
+        </mat-expansion-panel>
+      </mat-accordion>
+      <br>
+      <mat-accordion>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>C</mat-panel-title>
+          </mat-expansion-panel-header>
+          <h5 [hidden]="settings?.impacto_vida ? '' : 'hidden'" class="justifyText lessLineHeight"><b>
+              ¿{{ "DESCRIPCION1"|translate }}?</b>
+            <br>
+            <h5 class="inherit"
+              [innerHTML]="isLangEnglish == 'en' ? (scholarchip?.impacto_vida ? (scholarchip?.impacto_vida | striphtml) : '') : (becado?.impacto_vida | striphtml)">
+            </h5>
+          </h5>
+          <hr class="shadowHr">
+
+          <h5 [hidden]="settings?.impacto_comunidad ? '' : 'hidden'" class="justifyText lessLineHeight"><b>
+              ¿{{ "DESCRIPCION2"|translate }}?
+            </b>
+            <br>
+            <h5 class="inherit"
+              [innerHTML]="isLangEnglish == 'en' ? (scholarchip?.impacto_comunidad ? (scholarchip?.impacto_comunidad | striphtml) : '') : (becado?.impacto_comunidad | striphtml)">
+            </h5>
+          </h5>
+          <hr class="shadowHr">
+
+          <h5 [hidden]="settings?.obstaculos_educacion ? '' : 'hidden'" class="justifyText lessLineHeight">
+            <b> ¿{{ "DESCRIPCION3"|translate }}? </b>
+            <br>
+            <h5 class="inherit"
+              [innerHTML]="isLangEnglish == 'en' ? (scholarchip?.obstaculos_educacion ? (scholarchip?.obstaculos_educacion | striphtml): '') : (becado?.obstaculos_educacion | striphtml)">
+            </h5>
+          </h5>
+          <hr class="shadowHr">
+
+          <h5 [hidden]="settings?.propositos_finalizar ? '' : 'hidden'" class="justifyText lessLineHeight"><b>
+              ¿{{ "DESCRIPCION4"|translate }}?
+            </b>
+            <br>
+            <h5 class="inherit" [innerHTML]="isLangEnglish == 'en' ? (scholarchip?.propositos_finalizar ? (scholarchip?.propositos_finalizar | striphtml) : '') 
+                     : (becado?.propositos_finalizar | striphtml)">
+            </h5>
+          </h5>
+        </mat-expansion-panel>
+      </mat-accordion>
+
+    </div>
+
+    <br class="shadowHr">
+
+    <div class="shadowInformationPersonal col-12" [hidden]="!settings?.medios_transporte && 
             !settings?.gastos_mensuales && 
             !settings?.material_casa && 
             !settings?.familia ? 'hidden' : ''">
 
-            <!-- Table medios de transporte -->
-            <div [hidden]="settings?.medios_transporte ? '' : 'hidden'" class="col-12 ">
-                <h5 class="lessLineHeight"><b>{{"Transport"|translate}}:
-                    </b></h5>
-                <table mat-table [dataSource]="transporte" class="mat-elevation-z8 col-12 ">
+      <!-- Table medios de transporte -->
+      <div [hidden]="settings?.medios_transporte ? '' : 'hidden'" class="col-12 ">
+        <h5 class="lessLineHeight"><b>{{ "Transport"|translate }}:
+          </b></h5>
+        <table mat-table [dataSource]="transporte" class="mat-elevation-z8 col-12 ">
 
-                    <!--- Note that these columns can be defined in any order.
+          <!--- Note that these columns can be defined in any order.
                       The actual rendered columns are set as a property on the row definition" -->
 
-                    <!-- transporte Column -->
-                    <ng-container matColumnDef="transporte">
-                        <th mat-header-cell *matHeaderCellDef> {{"Transport"|translate}} </th>
-                        <td mat-cell *matCellDef="let element"> {{element?.transporte}} </td>
-                    </ng-container>
+          <!-- transporte Column -->
+          <ng-container matColumnDef="transporte">
+            <th mat-header-cell *matHeaderCellDef> {{ "Transport"|translate }} </th>
+            <td mat-cell *matCellDef="let element"> {{ element?.transporte }} </td>
+          </ng-container>
 
-                    <!-- distancia Column -->
-                    <ng-container matColumnDef="distancia">
-                        <th mat-header-cell *matHeaderCellDef> {{"Distance"|translate}} </th>
-                        <td mat-cell *matCellDef="let element"> {{element?.distancia}} </td>
-                    </ng-container>
+          <!-- distancia Column -->
+          <ng-container matColumnDef="distancia">
+            <th mat-header-cell *matHeaderCellDef> {{ "Distance"|translate }} </th>
+            <td mat-cell *matCellDef="let element"> {{ element?.distancia }} </td>
+          </ng-container>
 
-                    <!-- costo_mensual Column -->
-                    <ng-container matColumnDef="costo_mensual">
-                        <th mat-header-cell *matHeaderCellDef> {{"COST"|translate}} $USD
-                        </th>
-                        <td mat-cell *matCellDef="let element"> {{element?.costo_mensual}} </td>
-                    </ng-container>
+          <!-- costo_mensual Column -->
+          <ng-container matColumnDef="costo_mensual">
+            <th mat-header-cell *matHeaderCellDef> {{ "COST"|translate }} $USD
+            </th>
+            <td mat-cell *matCellDef="let element"> {{ element?.costo_mensual }} </td>
+          </ng-container>
 
-                    <tr mat-header-row *matHeaderRowDef="displayedColumnsTransport"></tr>
-                    <tr mat-row *matRowDef="let row; columns: displayedColumnsTransport;"></tr>
-                </table>
-            </div>
-            <br>
+          <tr mat-header-row *matHeaderRowDef="displayedColumnsTransport"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumnsTransport;"></tr>
+        </table>
+      </div>
+      <br>
 
-            <div class="row col-12">
-                <!-- Tabla de gastos mensuales -->
-                <div [hidden]="settings?.gastos_mensuales ? '' : 'hidden'" class="col-lg-6 ">
-                    <h5 class="lessLineHeight"><b>{{"EXPENCES"|translate}}:
-                        </b></h5>
-                    <table mat-table [dataSource]="gastos" class="mat-elevation-z8 col-12 ">
+      <div class="row col-12">
+        <!-- Tabla de gastos mensuales -->
+        <div [hidden]="settings?.gastos_mensuales ? '' : 'hidden'" class="col-lg-6 ">
+          <h5 class="lessLineHeight"><b>{{ "EXPENCES"|translate }}:
+            </b></h5>
+          <table mat-table [dataSource]="gastos" class="mat-elevation-z8 col-12 ">
 
-                        <!--- Note that these columns can be defined in any order.
+            <!--- Note that these columns can be defined in any order.
                           The actual rendered columns are set as a property on the row definition" -->
 
-                        <!-- concepto Column -->
-                        <ng-container matColumnDef="concepto">
-                            <th mat-header-cell *matHeaderCellDef> {{"Concept"|translate}} </th>
-                            <td mat-cell *matCellDef="let element"> {{element?.concepto}} </td>
-                        </ng-container>
+            <!-- concepto Column -->
+            <ng-container matColumnDef="concepto">
+              <th mat-header-cell *matHeaderCellDef> {{ "Concept"|translate }} </th>
+              <td mat-cell *matCellDef="let element"> {{ element?.concepto }} </td>
+            </ng-container>
 
-                        <!-- costo Column -->
-                        <ng-container matColumnDef="costo">
-                            <th mat-header-cell *matHeaderCellDef> {{"Cost"|translate}} $USD</th>
-                            <td mat-cell *matCellDef="let element"> {{element?.costo}} </td>
-                        </ng-container>
+            <!-- costo Column -->
+            <ng-container matColumnDef="costo">
+              <th mat-header-cell *matHeaderCellDef> {{ "Cost"|translate }} $USD</th>
+              <td mat-cell *matCellDef="let element"> {{ element?.costo }} </td>
+            </ng-container>
 
-                        <tr mat-header-row *matHeaderRowDef="displayedColumnsGastos"></tr>
-                        <tr mat-row *matRowDef="let row; columns: displayedColumnsGastos;"></tr>
-                    </table>
-                </div>
-
-                <!-- Table de materiales de casa -->
-                <br>
-                <div [hidden]="settings?.material_casa ? '' : 'hidden'" class="col-lg-6 ">
-                    <h5 class="lessLineHeight"><b>{{"MATERIAL_HOUSE"|translate}}:
-                        </b> </h5>
-                    <table mat-table [dataSource]="materiales" class="mat-elevation-z8 col-12 ">
-
-                        <!--- Note that these columns can be defined in any order.
-                              The actual rendered columns are set as a property on the row definition" -->
-
-                        <!-- material Column -->
-                        <ng-container matColumnDef="material">
-                            <th mat-header-cell *matHeaderCellDef> {{"Materials"|translate}} </th>
-                            <td mat-cell *matCellDef="let element"> {{element?.material}} </td>
-                        </ng-container>
-
-                        <tr mat-header-row *matHeaderRowDef="displayedColumnsMaterial"></tr>
-                        <tr mat-row *matRowDef="let row; columns: displayedColumnsMaterial;"></tr>
-                    </table>
-                </div>
-            </div>
-            <br>
-            <!-- Tabla de familia -->
-            <div [hidden]="settings?.familia ? '' : 'hidden'" class="col-12 ">
-                <h5 class="lessLineHeight"><b>{{"Family"|translate}}:
-                    </b>
-                </h5>
-                <table mat-table [dataSource]="family" class="mat-elevation-z8 col-12 ">
-
-                    <!--- Note that these columns can be defined in any order.
-                      The actual rendered columns are set as a property on the row definition" -->
-
-                    <!-- nombre Column -->
-                    <ng-container matColumnDef="nombre">
-                        <th mat-header-cell *matHeaderCellDef> {{"FAMILY_NAME"|translate}} </th>
-                        <td mat-cell *matCellDef="let element"> {{element?.nombre_familiar}} </td>
-                    </ng-container>
-
-                    <!-- parentesco Column -->
-                    <ng-container matColumnDef="parentesco">
-                        <th mat-header-cell *matHeaderCellDef> {{"Relationship"|translate}} </th>
-                        <td mat-cell *matCellDef="let element"> {{element?.parentesco}} </td>
-                    </ng-container>
-
-                    <!-- educacion_completada Column -->
-                    <ng-container matColumnDef="educacion_completada">
-                        <th mat-header-cell *matHeaderCellDef> {{"EDUCATION"|translate}}
-                        </th>
-                        <td mat-cell *matCellDef="let element"> {{element?.educacion_completada}} </td>
-                    </ng-container>
-
-                    <!-- ocupacion Column -->
-                    <ng-container matColumnDef="ocupacion">
-                        <th mat-header-cell *matHeaderCellDef> {{"Occupation"|translate}} </th>
-                        <td mat-cell *matCellDef="let element"> {{element?.ocupacion}} </td>
-                    </ng-container>
-
-                    <tr mat-header-row *matHeaderRowDef="displayedColumnsFamily"></tr>
-                    <tr mat-row *matRowDef="let row; columns: displayedColumnsFamily;"></tr>
-                </table>
-            </div>
+            <tr mat-header-row *matHeaderRowDef="displayedColumnsGastos"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumnsGastos;"></tr>
+          </table>
         </div>
 
-        <button class="float-right" mat-raised-button color="accent" (click)="goBack()">Go Back</button>
+        <!-- Table de materiales de casa -->
+        <br>
+        <div [hidden]="settings?.material_casa ? '' : 'hidden'" class="col-lg-6 ">
+          <h5 class="lessLineHeight"><b>{{ "MATERIAL_HOUSE"|translate }}:
+            </b> </h5>
+          <table mat-table [dataSource]="materiales" class="mat-elevation-z8 col-12 ">
 
-    </ng-template>
+            <!--- Note that these columns can be defined in any order.
+                              The actual rendered columns are set as a property on the row definition" -->
+
+            <!-- material Column -->
+            <ng-container matColumnDef="material">
+              <th mat-header-cell *matHeaderCellDef> {{ "Materials"|translate }} </th>
+              <td mat-cell *matCellDef="let element"> {{ element?.material }} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumnsMaterial"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumnsMaterial;"></tr>
+          </table>
+        </div>
+      </div>
+      <br>
+      <!-- Tabla de familia -->
+      <div [hidden]="settings?.familia ? '' : 'hidden'" class="col-12 ">
+        <h5 class="lessLineHeight"><b>{{ "Family"|translate }}:
+          </b>
+        </h5>
+        <table mat-table [dataSource]="family" class="mat-elevation-z8 col-12 ">
+
+          <!--- Note that these columns can be defined in any order.
+                      The actual rendered columns are set as a property on the row definition" -->
+
+          <!-- nombre Column -->
+          <ng-container matColumnDef="nombre">
+            <th mat-header-cell *matHeaderCellDef> {{ "FAMILY_NAME"|translate }} </th>
+            <td mat-cell *matCellDef="let element"> {{ element?.nombre_familiar }} </td>
+          </ng-container>
+
+          <!-- parentesco Column -->
+          <ng-container matColumnDef="parentesco">
+            <th mat-header-cell *matHeaderCellDef> {{ "Relationship"|translate }} </th>
+            <td mat-cell *matCellDef="let element"> {{ element?.parentesco }} </td>
+          </ng-container>
+
+          <!-- educacion_completada Column -->
+          <ng-container matColumnDef="educacion_completada">
+            <th mat-header-cell *matHeaderCellDef> {{ "EDUCATION"|translate }}
+            </th>
+            <td mat-cell *matCellDef="let element"> {{ element?.educacion_completada }} </td>
+          </ng-container>
+
+          <!-- ocupacion Column -->
+          <ng-container matColumnDef="ocupacion">
+            <th mat-header-cell *matHeaderCellDef> {{ "Occupation"|translate }} </th>
+            <td mat-cell *matCellDef="let element"> {{ element?.ocupacion }} </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumnsFamily"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumnsFamily;"></tr>
+        </table>
+      </div>
+    </div>
+
+    <button class="float-right" mat-raised-button color="accent" (click)="goBack()">Go Back</button>
+
+  </ng-template>
 
 </div>

@@ -7,7 +7,7 @@ import { SharedModule } from '@shared/shared.module';
 import {MatButtonModule} from '@angular/material/button';
 import {MatTableModule} from '@angular/material/table';
 import { StriphtmlPipe } from '@shared/pipes/striphtml.pipe';
-
+import {MatExpansionModule} from '@angular/material/expansion';
 
 @NgModule({
   declarations: [
@@ -18,7 +18,8 @@ import { StriphtmlPipe } from '@shared/pipes/striphtml.pipe';
     InfoBecaRoutingModule,
     SharedModule,
     MatButtonModule,
-    MatTableModule
+    MatTableModule,
+    MatExpansionModule
     
   ]
 })
