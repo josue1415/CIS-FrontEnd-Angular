@@ -122,16 +122,12 @@
         <img class="sizeLogoImg" src="../../../../../assets/images/cis-logo.png" alt="CIS-LOGO">
       </div>
     </div>
+
+    <!-- Preguntas -->
     <div class="col-12 pdding1 container" [hidden]="!settings?.impacto_vida &&
         !settings?.impacto_comunidad &&
         !settings?.obstaculos_educacion &&
         !settings?.propositos_finalizar ? 'hidden' : ''">
-      <br>
-      <mat-tab-group mat-align-tabs="center">
-        <mat-tab label="First">Content 1</mat-tab>
-        <mat-tab label="Second">Content 2</mat-tab>
-        <mat-tab label="Third">Content 3</mat-tab>
-      </mat-tab-group>
 
       <hr class="shadowHr">
 
@@ -174,50 +170,55 @@
     </div>
     <hr class="shadowHr">
 
+    <!-- Tablas -->
     <div class="shadowInformationPersonal col-12" [hidden]="!settings?.medios_transporte && 
             !settings?.gastos_mensuales && 
             !settings?.material_casa && 
             !settings?.familia ? 'hidden' : ''">
 
-      <!-- Table medios de transporte -->
-      <div [hidden]="settings?.medios_transporte ? '' : 'hidden'" class="col-12 ">
-        <h5 class="lessLineHeight"><b>{{ "Transport"|translate }}:
-          </b></h5>
-        <table mat-table [dataSource]="transporte" class="mat-elevation-z8 col-12 ">
+      <br>
+      <mat-tab-group mat-align-tabs="center">
+        <mat-tab [hidden]="settings?.medios_transporte ? '' : 'hidden'"
+          label='{{ "Transport"|translate }}'>
+          <!-- Table medios de transporte -->
+          <div [hidden]="settings?.medios_transporte ? '' : 'hidden'" class="col-12 ">
+            <h5 class="lessLineHeight"><b>{{ "Transport"|translate }}:
+              </b></h5>
+            <table mat-table [dataSource]="transporte" class="mat-elevation-z8 col-12 ">
 
-          <!--- Note that these columns can be defined in any order.
+              <!--- Note that these columns can be defined in any order.
                       The actual rendered columns are set as a property on the row definition" -->
 
-          <!-- transporte Column -->
-          <ng-container matColumnDef="transporte">
-            <th mat-header-cell *matHeaderCellDef> {{ "Transport"|translate }} </th>
-            <td mat-cell *matCellDef="let element"> {{ element?.transporte }} </td>
-          </ng-container>
+              <!-- transporte Column -->
+              <ng-container matColumnDef="transporte">
+                <th mat-header-cell *matHeaderCellDef> {{ "Transport"|translate }} </th>
+                <td mat-cell *matCellDef="let element"> {{ element?.transporte }} </td>
+              </ng-container>
 
-          <!-- distancia Column -->
-          <ng-container matColumnDef="distancia">
-            <th mat-header-cell *matHeaderCellDef> {{ "Distance"|translate }} </th>
-            <td mat-cell *matCellDef="let element"> {{ element?.distancia }} </td>
-          </ng-container>
+              <!-- distancia Column -->
+              <ng-container matColumnDef="distancia">
+                <th mat-header-cell *matHeaderCellDef> {{ "Distance"|translate }} </th>
+                <td mat-cell *matCellDef="let element"> {{ element?.distancia }} </td>
+              </ng-container>
 
-          <!-- costo_mensual Column -->
-          <ng-container matColumnDef="costo_mensual">
-            <th mat-header-cell *matHeaderCellDef> {{ "COST"|translate }} $USD
-            </th>
-            <td mat-cell *matCellDef="let element"> {{ element?.costo_mensual }} </td>
-          </ng-container>
+              <!-- costo_mensual Column -->
+              <ng-container matColumnDef="costo_mensual">
+                <th mat-header-cell *matHeaderCellDef> {{ "COST"|translate }} $USD
+                </th>
+                <td mat-cell *matCellDef="let element"> {{ element?.costo_mensual }} </td>
+              </ng-container>
 
-          <tr mat-header-row *matHeaderRowDef="displayedColumnsTransport"></tr>
-          <tr mat-row *matRowDef="let row; columns: displayedColumnsTransport;"></tr>
-        </table>
-      </div>
-      <br>
-
-      <div class="row col-12">
-        <!-- Tabla de gastos mensuales -->
-        <div [hidden]="settings?.gastos_mensuales ? '' : 'hidden'" class="col-lg-6 ">
+              <tr mat-header-row *matHeaderRowDef="displayedColumnsTransport"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumnsTransport;"></tr>
+            </table>
+          </div>
+        </mat-tab>
+        <mat-tab [hidden]="settings?.gastos_mensuales ? '' : 'hidden'"
+          label='{{ "EXPENCES"|translate }}'>
+          <!-- Tabla de gastos mensuales -->
           <h5 class="lessLineHeight"><b>{{ "EXPENCES"|translate }}:
             </b></h5>
+
           <table mat-table [dataSource]="gastos" class="mat-elevation-z8 col-12 ">
 
             <!--- Note that these columns can be defined in any order.
@@ -238,12 +239,9 @@
             <tr mat-header-row *matHeaderRowDef="displayedColumnsGastos"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumnsGastos;"></tr>
           </table>
-        </div>
-
-        <!-- Table de materiales de casa -->
-        <br>
-        <div [hidden]="settings?.material_casa ? '' : 'hidden'" class="col-lg-6 ">
-          <h5 class="lessLineHeight"><b>{{ "MATERIAL_HOUSE"|translate }}:
+        </mat-tab>
+        <mat-tab [hidden]="settings?.material_casa ? '' : 'hidden'" label='{{ "MATERIAL_HOUSE"|translate }}'>
+            <h5 class="lessLineHeight"><b>{{ "MATERIAL_HOUSE"|translate }}:
             </b> </h5>
           <table mat-table [dataSource]="materiales" class="mat-elevation-z8 col-12 ">
 
@@ -259,47 +257,54 @@
             <tr mat-header-row *matHeaderRowDef="displayedColumnsMaterial"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumnsMaterial;"></tr>
           </table>
-        </div>
+        </mat-tab>
+        <mat-tab [hidden]="settings?.familia ? '' : 'hidden'" label='{{ "Family"|translate }}'>
+            <h5 class="lessLineHeight"><b>{{ "Family"|translate }}:
+            </b>
+          </h5>
+          <table mat-table [dataSource]="family" class="mat-elevation-z8 col-12 ">
+  
+            <!--- Note that these columns can be defined in any order.
+                        The actual rendered columns are set as a property on the row definition" -->
+  
+            <!-- nombre Column -->
+            <ng-container matColumnDef="nombre">
+              <th mat-header-cell *matHeaderCellDef> {{ "FAMILY_NAME"|translate }} </th>
+              <td mat-cell *matCellDef="let element"> {{ element?.nombre_familiar }} </td>
+            </ng-container>
+  
+            <!-- parentesco Column -->
+            <ng-container matColumnDef="parentesco">
+              <th mat-header-cell *matHeaderCellDef> {{ "Relationship"|translate }} </th>
+              <td mat-cell *matCellDef="let element"> {{ element?.parentesco }} </td>
+            </ng-container>
+  
+            <!-- educacion_completada Column -->
+            <ng-container matColumnDef="educacion_completada">
+              <th mat-header-cell *matHeaderCellDef> {{ "EDUCATION"|translate }}
+              </th>
+              <td mat-cell *matCellDef="let element"> {{ element?.educacion_completada }} </td>
+            </ng-container>
+  
+            <!-- ocupacion Column -->
+            <ng-container matColumnDef="ocupacion">
+              <th mat-header-cell *matHeaderCellDef> {{ "Occupation"|translate }} </th>
+              <td mat-cell *matCellDef="let element"> {{ element?.ocupacion }} </td>
+            </ng-container>
+  
+            <tr mat-header-row *matHeaderRowDef="displayedColumnsFamily"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumnsFamily;"></tr>
+          </table>
+        </mat-tab>
+      </mat-tab-group>
+
+      <div class="row col-12">
+
       </div>
       <br>
       <!-- Tabla de familia -->
       <div [hidden]="settings?.familia ? '' : 'hidden'" class="col-12 ">
-        <h5 class="lessLineHeight"><b>{{ "Family"|translate }}:
-          </b>
-        </h5>
-        <table mat-table [dataSource]="family" class="mat-elevation-z8 col-12 ">
-
-          <!--- Note that these columns can be defined in any order.
-                      The actual rendered columns are set as a property on the row definition" -->
-
-          <!-- nombre Column -->
-          <ng-container matColumnDef="nombre">
-            <th mat-header-cell *matHeaderCellDef> {{ "FAMILY_NAME"|translate }} </th>
-            <td mat-cell *matCellDef="let element"> {{ element?.nombre_familiar }} </td>
-          </ng-container>
-
-          <!-- parentesco Column -->
-          <ng-container matColumnDef="parentesco">
-            <th mat-header-cell *matHeaderCellDef> {{ "Relationship"|translate }} </th>
-            <td mat-cell *matCellDef="let element"> {{ element?.parentesco }} </td>
-          </ng-container>
-
-          <!-- educacion_completada Column -->
-          <ng-container matColumnDef="educacion_completada">
-            <th mat-header-cell *matHeaderCellDef> {{ "EDUCATION"|translate }}
-            </th>
-            <td mat-cell *matCellDef="let element"> {{ element?.educacion_completada }} </td>
-          </ng-container>
-
-          <!-- ocupacion Column -->
-          <ng-container matColumnDef="ocupacion">
-            <th mat-header-cell *matHeaderCellDef> {{ "Occupation"|translate }} </th>
-            <td mat-cell *matCellDef="let element"> {{ element?.ocupacion }} </td>
-          </ng-container>
-
-          <tr mat-header-row *matHeaderRowDef="displayedColumnsFamily"></tr>
-          <tr mat-row *matRowDef="let row; columns: displayedColumnsFamily;"></tr>
-        </table>
+        
       </div>
     </div>
 
