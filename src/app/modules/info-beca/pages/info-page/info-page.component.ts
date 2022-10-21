@@ -1,5 +1,5 @@
 import { Location } from '@angular/common';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, AfterViewInit, ElementRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { InfScholarshipService } from '@modules/info-beca/services/inf-scholarship.service';
 import { TranslateService } from '@ngx-translate/core';
@@ -9,11 +9,16 @@ import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-info-page',
   templateUrl: './info-page.component.html',
-  styleUrls: ['./info-page.component.css']
+  styleUrls: ['./info-page.component.scss']
 })
 
 
 export class InfoPageComponent implements OnInit, OnDestroy {
+
+  hideTransport: Boolean = false; // Para ocultar tabla transporte dentro del dom
+  hideExpenses: Boolean = false;
+  hideMaterialHouse: Boolean = false;
+  hideFamily: Boolean = false;
 
   becado: any; // var becados in spanish
   scholarchip: any; // var becados traducidos al ingles
@@ -37,7 +42,8 @@ export class InfoPageComponent implements OnInit, OnDestroy {
     private _location: Location,
     private activatedRoute: ActivatedRoute,
     private translate: TranslateService,
-    private serviceHeader: HeaderService) {
+    private serviceHeader: HeaderService,
+    private el: ElementRef) {
     // this.translate.addLangs(['en', 'es'])
     // this.translate.use(this.isLangEnglish)
   }
@@ -83,7 +89,11 @@ export class InfoPageComponent implements OnInit, OnDestroy {
     // Suscribe to setting in to DDBB scholarchip 
     const ObserverSettings$ = this.scholarchipService.becadosSettings$().subscribe(
       conf => {
-        this.settings = conf
+        this.settings = conf;
+        this.hideTransport = this.settings.medios_transporte;
+        this.hideExpenses = this.settings.gastos_mensuales;
+        this.hideFamily = this.settings.familia;
+        this.hideMaterialHouse = this.settings.material_casa;
       }
     )
 

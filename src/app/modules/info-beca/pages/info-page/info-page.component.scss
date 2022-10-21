@@ -69,3 +69,8 @@ hr {
   .mat-tab-group {
     margin-bottom: 48px;
   }
+  .invisible-tabs {
+    > .mat-tab-header {
+      display: none;
+    }
+  }
