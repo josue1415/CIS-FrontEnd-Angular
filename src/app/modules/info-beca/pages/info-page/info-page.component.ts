@@ -27,6 +27,7 @@ export class InfoPageComponent implements OnInit, OnDestroy {
   gastos: any;
   transporte: any;
   materiales: any;
+  preguntas: any;
   isLangEnglish: string = ""; // verifica el idioma clickeado en el header
   isWaiting: boolean = true;
   receivedId: string = "";
@@ -118,12 +119,18 @@ export class InfoPageComponent implements OnInit, OnDestroy {
     const ObserverTransport$ = this.scholarchipService.becadosTransporte$(this.receivedId).subscribe(
       transporte => {
         this.transporte = transporte
+      })
+
+    const ObserverQuestions$ = this.scholarchipService.becadosPreguntas$('RWxpd0NjWGR6ZWJXOXBnUmhnb1hiQT09').subscribe(
+      // const ObserverQuestions$ = this.scholarchipService.becadosPreguntas$(this.receivedId).subscribe(
+
+      pregunta => {
+        this.preguntas = pregunta
       }
     )
 
-
     this.listObservers$ = [ObserverLanguaje$, ObserverGetParameter$,
-      ObserverGetScholarchip$, ObserverSettings$, ObserveGetFamily$,
+      ObserverGetScholarchip$, ObserverSettings$, ObserveGetFamily$, ObserverQuestions$,
       ObserverGastos$, ObserverMateriales$, ObserverTransport$, ObserverTraductions$]
   }
 

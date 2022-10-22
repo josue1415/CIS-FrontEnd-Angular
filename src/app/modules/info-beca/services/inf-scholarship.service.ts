@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
 export class InfScholarshipService {
 
   private readonly URL = 'https://elsalvador-cis.com/api/public';
+  private readonly URL_local = 'http://127.0.0.1:8000/api/public';
 
   constructor(private http: HttpClient) { }
 
@@ -36,5 +37,9 @@ export class InfScholarshipService {
 
   becadosTransporte$(idBecado: any): Observable<any> {
     return this.http.get(`${this.URL}/getTransportBecadosById/${idBecado}`);
+  }
+
+  becadosPreguntas$(idBecado: any): Observable<any> {
+    return this.http.get(`${this.URL_local}/getPreguntasPorBecado/${idBecado}`);
   }
 }

@@ -52,7 +52,8 @@
                                 <div class="card" [routerLink]="['/', 'detail', item.encid]">
                                     <div class="center">
                                         <img class="img-thumbnail"
-                                            [src]="(item?.foto) == null ? '../../../../../assets/images/sin-foto.png' : item?.foto"
+                                            [src]="(item?.foto) == null ? '../../../../../assets/images/sin-foto.png' :
+                                             (item?.foto ? 'storage/' + item?.foto : '../../../../../assets/images/sin-foto.png')"
                                             alt="Imagen Becado">
                                     </div>
                                     <!-- <hr> -->

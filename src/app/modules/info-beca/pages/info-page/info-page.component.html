@@ -18,9 +18,9 @@
   <ng-template #elseTemplate>
     <div class="row lessTopMargin shadowInformationPersonal">
       <div class="col-lg-4">
-        <img class="sizePerfilImg" [src]="(settings?.foto) == true ?
+        <img class="sizePerfilImg" [src]="(settings?.foto) ?
                      ((becado?.foto) == null ? 
-                     '../../../../../assets/images/sin-foto.png' : becado?.foto) : 
+                     '../../../../../assets/images/sin-foto.png' : 'storage/' + becado?.foto) : 
                      '../../../../../assets/images/sin-foto.png'" alt="IMG-Becado">
       </div>
       <div class="col-lg-8">
@@ -102,19 +102,19 @@
           <b>{{ "Schedule"|translate }}:
             <br></b>
           <h5 class="inherit"
-            [innerHTML]="isLangEnglish == 'en' ? (scholarchip?.horario ? (scholarchip?.horario | striphtml) : '') : (becado?.horario | striphtml)">
+            [innerHTML]="isLangEnglish == 'en' ? (scholarchip?.horario ? (scholarchip?.horario | striphtml) : '') : (becado?.horario ? (becado?.horario | striphtml) : '')">
           </h5>
         </h5>
         <h5 [hidden]="settings?.horario_salida_casa ? '' : 'hidden'" class="lessLineHeight ">
           <b>{{ "TIME_LEAVE_HOME"|translate }}: <br></b>
           <h5 class="inherit"
-            [innerHTML]="isLangEnglish == 'en' ? (scholarchip?.horario_salida_casa ? (scholarchip?.horario_salida_casa | striphtml) : '') : (becado?.horario_salida_casa | striphtml)">
+            [innerHTML]="isLangEnglish == 'en' ? (scholarchip?.horario_salida_casa ? (scholarchip?.horario_salida_casa | striphtml) : '') : (becado?.horario_salida_casa ? (becado?.horario_salida_casa | striphtml) : '')">
           </h5>
         </h5>
         <h5 [hidden]="settings?.horario_regreso_casa ? '' : 'hidden'" class="lessLineHeight ">
           <b>{{ "TIME_GO_HOME"|translate }}: <br> </b>
           <h5 class="inherit"
-            [innerHTML]="isLangEnglish == 'en' ? (scholarchip?.horario_regreso_casa ? (scholarchip?.horario_regreso_casa | striphtml) : '') : (becado?.horario_regreso_casa | striphtml)">
+            [innerHTML]="isLangEnglish == 'en' ? (scholarchip?.horario_regreso_casa ? (scholarchip?.horario_regreso_casa | striphtml) : '') : (becado?.horario_salida_casa ? (becado?.horario_salida_casa | striphtml) : '')">
           </h5>
         </h5>
       </div>
@@ -130,8 +130,18 @@
         !settings?.propositos_finalizar ? 'hidden' : ''">
 
       <hr class="shadowHr">
+      <div *ngFor="let pregunta of preguntas">
+        <h5 [hidden]="settings?.impacto_vida ? '' : 'hidden'" class="justifyText lessLineHeight"><b>
+            ¿{{ "DESCRIPCION1"|translate }}?</b>
+          <br>
+          <h5 class="inherit"
+            [innerHTML]="isLangEnglish == 'en' ? (pregunta.traduccion ? (pregunta.traduccion | striphtml) : '') : (pregunta.pregunta | striphtml)">
+          </h5>
+        </h5>
+        <hr class="shadowHr">
+      </div>
 
-      <h5 [hidden]="settings?.impacto_vida ? '' : 'hidden'" class="justifyText lessLineHeight"><b>
+      <!-- <h5 [hidden]="settings?.impacto_vida ? '' : 'hidden'" class="justifyText lessLineHeight"><b>
           ¿{{ "DESCRIPCION1"|translate }}?</b>
         <br>
         <h5 class="inherit"
@@ -166,12 +176,12 @@
         <h5 class="inherit" [innerHTML]="isLangEnglish == 'en' ? (scholarchip?.propositos_finalizar ? (scholarchip?.propositos_finalizar | striphtml) : '') 
                      : (becado?.propositos_finalizar | striphtml)">
         </h5>
-      </h5>
+      </h5> -->
     </div>
     <hr class="shadowHr">
 
     <!-- Tablas -->
-    
+
     <div class="shadowInformationPersonal col-12" [hidden]="!settings?.medios_transporte && 
             !settings?.gastos_mensuales && 
             !settings?.material_casa && 
@@ -212,8 +222,7 @@
           </table>
         </mat-tab>
 
-        <mat-tab *ngIf="hideExpenses"
-          label='{{ "EXPENCES"|translate }}'>
+        <mat-tab *ngIf="hideExpenses" label='{{ "EXPENCES"|translate }}'>
           <!-- Tabla de gastos mensuales -->
           <h5 class="lessLineHeight"><b>{{ "EXPENCES"|translate }}:
             </b></h5>
@@ -240,8 +249,7 @@
           </table>
         </mat-tab>
 
-        <mat-tab *ngIf="hideMaterialHouse"
-          label='{{ "MATERIAL_HOUSE"|translate }}'>
+        <mat-tab *ngIf="hideMaterialHouse" label='{{ "MATERIAL_HOUSE"|translate }}'>
           <h5 class="lessLineHeight"><b>{{ "MATERIAL_HOUSE"|translate }}:
             </b> </h5>
           <table mat-table [dataSource]="materiales" class="mat-elevation-z8 col-12 ">
