@@ -1,7 +1,6 @@
 
 var cerrada = true;
   function mostrarMenuToMobile(){
-    console.log('cloic');
     if(cerrada){
       $('.menu-trigger').addClass('active');
       $("#navMobile").css("display", "block");
