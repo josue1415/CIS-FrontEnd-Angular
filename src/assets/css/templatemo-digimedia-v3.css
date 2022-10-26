@@ -403,7 +403,7 @@ header
   color: #fff !important;
 }
 
-.header-area .main-nav .nav li a {
+.header-area .main-nav .nav li a { /* Boton de idiomas*/
   display: block;
   font-weight: 500;
   font-size: 15px;
@@ -642,10 +642,6 @@ header
 }
 
 @media (max-width: 992px) {
-  .header-area .main-nav .nav li:last-child  ,
-  .background-header .main-nav .nav li:last-child {
-    display: none;
-  }
   .header-area .main-nav .nav li:nth-child(6),
   .background-header .main-nav .nav li:nth-child(6) {
     padding-right: 0px;
@@ -1687,7 +1683,7 @@ Blog
 
 .blog-post .down-content .border-first-button {
   display: inline-block;
-  float: right;
+  /* float: right; */
 }
 
 .blog-posts {
@@ -1705,7 +1701,7 @@ Blog
 
 .post-item .thumb {
   display: inline-block;
-  float: left;
+  /* float: left; */
   margin-right: 30px;
 }
 

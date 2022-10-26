@@ -6,6 +6,8 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { HttpClient } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { StriphtmlPipe } from './pipes/striphtml.pipe';
+import { MdbCollapseModule } from 'mdb-angular-ui-kit/collapse';
+
 
 // Export using to translate
 export function HttpLoaderFactory(http: HttpClient) {
@@ -20,6 +22,7 @@ export function HttpLoaderFactory(http: HttpClient) {
   ],
   imports: [
     CommonModule,
+    MdbCollapseModule,
     TranslateModule.forChild({
       loader: {
         provide: TranslateLoader,

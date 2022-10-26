@@ -1,3 +1,18 @@
+
+var cerrada = true;
+  function mostrarMenuToMobile(){
+    console.log('cloic');
+    if(cerrada){
+      $('.menu-trigger').addClass('active');
+      $("#navMobile").css("display", "block");
+      cerrada = false;
+    }else{ 
+      $('.menu-trigger').removeClass('active');
+      $("#navMobile").removeAttr("style");
+      cerrada = true;
+    }
+  }
+
 (function ($) {
 	
 	"use strict";
@@ -44,7 +59,6 @@
       $('.header-area .nav').slideToggle(200);
     });
   }
-
 
   // Menu elevator animation
   $('.scroll-to-section a[href*=\\#]:not([href=\\#])').on('click', function() {
@@ -127,11 +141,11 @@
 
 
 	// Page loading animation
-	 $(window).on('load', function() {
+	//  $(window).on('load', function() {
 
-        $('#js-preloader').addClass('loaded');
+  //       $('#js-preloader').addClass('loaded');
 
-    });
+  //   });
 
 	
 
