@@ -121,9 +121,8 @@ export class InfoPageComponent implements OnInit, OnDestroy {
         this.transporte = transporte
       })
 
-    const ObserverQuestions$ = this.scholarchipService.becadosPreguntas$('RWxpd0NjWGR6ZWJXOXBnUmhnb1hiQT09').subscribe(
-      // const ObserverQuestions$ = this.scholarchipService.becadosPreguntas$(this.receivedId).subscribe(
-
+    // const ObserverQuestions$ = this.scholarchipService.becadosPreguntas$('RWxpd0NjWGR6ZWJXOXBnUmhnb1hiQT09').subscribe(
+      const ObserverQuestions$ = this.scholarchipService.becadosPreguntas$(this.receivedId).subscribe(
       pregunta => {
         this.preguntas = pregunta
       }
