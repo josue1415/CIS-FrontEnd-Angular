@@ -10,6 +10,7 @@ import { Subscription } from 'rxjs';
 export class ProfilePageComponent implements OnInit, OnDestroy {
 
   becados: Array<any> = [];
+  testimonios: Array<any> = [1,2,3];
   isLoading: boolean = true;
   listObservers: Array<Subscription> = [];
   constructor(private profileService: ProfilesServicesService) { }
