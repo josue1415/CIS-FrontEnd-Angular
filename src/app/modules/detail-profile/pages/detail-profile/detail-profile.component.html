@@ -1,80 +1,80 @@
 <app-header-menu [isMain]="false"></app-header-menu>
 
 <div class="main-banner wow fadeIn" id="top" data-wow-duration="1s" data-wow-delay="0.5s">
-    <div class="">
-        <div class="col-lg-12">
-            <div class="row">
-                <div class="left-content show-up header-text wow fadeInLeft fadeRight">
-                    <h6 class="" style="font-size:2vw; margin-left: 26px; margin-top: -50px;">
-                        {{"TITLE_PROFILES"|translate}}
-                    </h6>
+  <div class="">
+    <div class="col-lg-12">
+      <div class="row">
+        <div class="left-content show-up header-text wow fadeInLeft fadeRight">
+          <h6 class="" style="font-size:2vw; margin-left: 26px; margin-top: -50px;">
+            {{ product === 'profiles' ? ("TITLE_PROFILES"|translate) : (product === 'projects' ? ("TITLE_PROJECTS"|translate) : ("TITLE_TESTIMONIES"|translate)) }}
+          </h6>
 
-                    <div class="col-12">
-                        <!-- Input to search by name -->
-                        <mat-form-field class="search col-lg-3 " appearance="fill">
-                            <mat-label>{{"Search"|translate}}</mat-label>
-                            <input matInput [placeholder]="'SEARCH_PLACEHOLDER'|translate"
-                                (ngModelChange)="callSearch($event)" [(ngModel)]="src">
-                        </mat-form-field>
+          <div class="col-12">
+            <!-- Input to search by name -->
+            <mat-form-field class="search col-lg-3 " appearance="fill">
+              <mat-label>{{ "Search"|translate }}</mat-label>
+              <input matInput [placeholder]="'SEARCH_PLACEHOLDER'|translate" (ngModelChange)="callSearch($event)"
+                [(ngModel)]="src">
+            </mat-form-field>
 
-                        <!-- filter by Communities -->
-                        <mat-form-field appearance="fill" class="selectComunity col-lg-5 ">
-                            <mat-label>{{"FILTER_BY_COMUNITY"|translate}}</mat-label>
-                            <mat-select [(ngModel)]="selectedComunity" (ngModelChange)="updateProfileByComunities()">
-                                <mat-option [value]="0">{{"All"|translate}}</mat-option>
-                                <mat-option *ngFor="let topping of toppingList" [value]="topping.nombre">
-                                    {{topping.nombre}}
-                                </mat-option>
-                            </mat-select>
-                        </mat-form-field>
-                    </div>
+            <!-- filter by Communities -->
+            <mat-form-field appearance="fill" class="selectComunity col-lg-5 ">
+              <mat-label>{{ "FILTER_BY_COMUNITY"|translate }}</mat-label>
+              <mat-select [(ngModel)]="selectedComunity" (ngModelChange)="updateProfileByComunities()">
+                <mat-option [value]="0">{{ "All"|translate }}</mat-option>
+                <mat-option *ngFor="let topping of toppingList" [value]="topping.nombre">
+                  {{ topping.nombre }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
 
-                    <!-- Card to show scholarship -->
-                    <ng-container *ngIf="isLoader; else cardTemplate">
-                        <div class="center">
-                            <div class="lds-roller">
-                                <div></div>
-                                <div></div>
-                                <div></div>
-                                <div></div>
-                                <div></div>
-                                <div></div>
-                                <div></div>
-                                <div></div>
-                            </div>
-                        </div>
-                    </ng-container>
-
-
-                    <ng-template #cardTemplate>
-                        <div class="grid">
-                            <div *ngFor="let item of pageSlice">
-                                <div class="card" [routerLink]="['/', 'detail', item.encid]">
-                                    <div class="center">
-                                        <img class="img-thumbnail"
-                                            [src]="(item?.foto) == null ? '../../../../../assets/images/sin-foto.png' :
-                                             (item?.foto ? 'https://elsalvador-cis.com/storage/' + item?.foto : '../../../../../assets/images/sin-foto.png')"
-                                            alt="Imagen Becado">
-                                    </div>
-                                    <!-- <hr> -->
-                                    <div class="card-body">
-                                        <h5>{{"FULL_NAME"|translate}}: <b> {{item.nombre_completo}} </b></h5>
-                                        <hr>
-                                        <h5>{{"COMMUNITY"|translate}}: <b>{{item.nombre}}</b></h5>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </ng-template>
-
-
-                    <!-- Pagination -->
-                    <mat-paginator [length]="this.becados.length" [pageSize]="10" [pageSizeOptions]="[10, 20, 100]"
-                        (page)="onPageChange($event)" aria-label="Select page">
-                    </mat-paginator>
-
-                </div>
+          <!-- Card to show scholarship -->
+          <ng-container *ngIf="isLoader; else cardTemplate">
+            <div class="center">
+              <div class="lds-roller">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+              </div>
             </div>
+          </ng-container>
+
+
+          <ng-template #cardTemplate>
+            <div class="grid">
+              <div *ngFor="let item of pageSlice">
+                <div class="card" [routerLink]="['/', 'detail', item.encid]">
+                  <div class="center">
+                    <img class="img-thumbnail"
+                      [src]="(item?.foto) == null ? '../../../../../assets/images/sin-foto.png' :
+                                             (item?.foto ? 'https://elsalvador-cis.com/storage/' + item?.foto : '../../../../../assets/images/sin-foto.png')"
+                      alt="Imagen Becado">
+                  </div>
+                  <!-- <hr> -->
+                  <div class="card-body">
+                    <h5>{{ "FULL_NAME"|translate }}: <b> {{ item.nombre_completo }} </b></h5>
+                    <hr>
+                    <h5>{{ "COMMUNITY"|translate }}: <b>{{ item.nombre }}</b></h5>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ng-template>
+
+
+          <!-- Pagination -->
+          <mat-paginator [length]="this.ListGlobal.length" [pageSize]="10" [pageSizeOptions]="[10, 20, 100]"
+            (page)="onPageChange($event)" aria-label="Select page">
+          </mat-paginator>
+
         </div>
+      </div>
     </div>
+  </div>
 </div>

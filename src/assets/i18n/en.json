@@ -20,11 +20,15 @@
     "VISIT_BLOG": "Visit our Blog",
     "US_ADDRESS": "US Address",
     "Copyright": "Centro de Intercambio y Solidaridad. All rights reserved",
+
     "TITLE_PROFILES": "List of all Profiles.",
+    "TITLE_PROJECTS": "List of all Projects.",
+    "TITLE_TESTIMONIES": "List of all Testimonies.",
     "Search": "Search",
     "SEARCH_PLACEHOLDER": "Filter by name of scholarship",
     "FILTER_BY_COMUNITY": "Filter by Communities",
     "All": "All",
+
     "FULL_NAME": "Full Name",
     "COMMUNITY": "Community",
     "Department": "Department",

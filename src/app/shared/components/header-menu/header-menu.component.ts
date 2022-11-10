@@ -37,7 +37,22 @@ export class HeaderMenuComponent implements OnInit {
 
   GoProfile() {
     this.router.navigate(['profiles']);
+  }
 
+  GoProjects() {
+    this.router.navigate(['projects']);
+  }
+
+  GoProjectsDetail() {
+    this.router.navigate(['projects']);
+  }
+
+  GoTestimonies() {
+    this.router.navigate(['testimonies']);
+  }
+
+  GoTestimoniesDetail() {
+    this.router.navigate(['profiles']);
   }
 
   changeLang() {

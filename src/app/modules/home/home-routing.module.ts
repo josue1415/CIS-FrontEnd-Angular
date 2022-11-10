@@ -8,7 +8,24 @@ const routes: Routes = [
   },
   {
     path: 'profiles',
-    loadChildren: () => import('@modules/detail-profile/detail-profile.module').then(m => m.DetailProfileModule)
+    loadChildren: () => import('@modules/detail-profile/detail-profile.module').then(m => m.DetailProfileModule),
+    data: {
+      tipo: 'profiles'
+    }
+  },
+  {
+    path: 'projects',
+    loadChildren: () => import('@modules/detail-profile/detail-profile.module').then(m => m.DetailProfileModule),
+    data: {
+      tipo: 'projects'
+    }
+  },
+  {
+    path: 'testimonies',
+    loadChildren: () => import('@modules/detail-profile/detail-profile.module').then(m => m.DetailProfileModule),
+    data: {
+      tipo: 'testimonies'
+    }
   },
   {
     path: 'detail/:id',
