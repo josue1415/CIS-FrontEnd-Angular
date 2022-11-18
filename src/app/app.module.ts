@@ -12,8 +12,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { ProjectsComponent } from './modules/projects/projects.component';
 import { TestimoniesComponent } from './modules/testimonies/pages/testimonies/testimonies.component';
+import { ProjectsComponent } from '@modules/projects/pages/projects/projects.component';
 
 // Export using to translate
 export function HttpLoaderFactory(http: HttpClient) {
