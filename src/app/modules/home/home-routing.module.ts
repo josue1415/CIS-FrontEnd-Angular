@@ -31,6 +31,16 @@ const routes: Routes = [
     path: 'detail/:id',
     loadChildren: () => import('@modules/info-beca/info-beca.module').then(m => m.InfoBecaModule)
   }
+  ,
+  {
+    path: 'detail-project/:id',
+    loadChildren: () => import('@modules/projects/projects.module').then(m => m.ProjectsModule)
+  }
+  ,
+  {
+    path: 'detail-testimonies/:id',
+    loadChildren: () => import('@modules/testimonies/testimonies.module').then(m => m.TestimoniesModule)
+  }
 ];
 
 @NgModule({
