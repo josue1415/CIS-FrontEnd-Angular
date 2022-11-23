@@ -23,8 +23,8 @@ export function HttpLoaderFactory(http: HttpClient) {
 @NgModule({
   declarations: [
     AppComponent,
-    ProjectsComponent,
-    TestimoniesComponent
+    // ProjectsComponent,
+    // TestimoniesComponent
   ],
   imports: [
     BrowserModule,
