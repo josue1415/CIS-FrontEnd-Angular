@@ -1,2 +1,45 @@
-<!-- <app-header-menu [isMain]="false" [isDetail]="true"></app-header-menu> -->
-<p>testimonies works!</p>
+<app-header-menu [isMain]="false" [isDetail]="true"></app-header-menu>
+
+<div class="main-banner" style="z-index: 1;">
+
+  <div class="social">
+    <a href="#"><img src="../../../../../assets/images/fb.png" alt="facebook"></a>
+    <a href="#"><img src="../../../../../assets/images/yt.png" alt="youtube"></a>
+  </div>
+
+  <div class="container card" style="position: relative; z-index: 2;">
+    <div class="row">
+      <div class="col-lg-4 col-sm-12 col-md-12">
+        <img class="img-fluid img-thumbnail" src="https://picsum.photos/id/1039/600/400.jpg" alt="">
+        <h4>Angela Maria aguilar</h4>
+        ••••
+        <ul>
+          <li *ngFor = "let person of stars; let i = index"> (1)
+            {{ i + 1 }} - {{ person.name }} (2)
+          </li>
+        </ul>
+      </div>
+      <div class="col-lg-8 col-sm-12 col-md-12">
+        <br>
+        <h5>Comunidad: Comunidad de ejemplo</h5>
+        <br>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nulla, accusamus sed veniam praesentium, mollitia
+          adipisci necessitatibus in perspiciatis nihil nam omnis hic, a unde ad. Ratione aspernatur ducimus vel natus.
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ratione corrupti nostrum ipsum, molestias
+          perspiciatis aperiam perferendis ut quibusdam labore, illum eligendi rerum aliquid, quaerat pariatur quam
+          mollitia deleniti saepe nesciunt.Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nulla, accusamus
+          sed veniam praesentium, mollitia
+          adipisci necessitatibus in perspiciatis nihil nam omnis hic, a unde ad. Ratione aspernatur ducimus vel natus.
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ratione corrupti nostrum ipsum, molestias
+          perspiciatis aperiam perferendis ut quibusdam labore, illum eligendi rerum aliquid, quaerat pariatur quam
+          mollitia deleniti saepe nesciunt.Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nulla, accusamus
+          sed veniam praesentium, mollitia
+          adipisci necessitatibus in perspiciatis nihil nam omnis hic, a unde ad. Ratione aspernatur ducimus vel natus.
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ratione corrupti nostrum ipsum, molestias
+          perspiciatis aperiam perferendis ut quibusdam labore, illum eligendi rerum aliquid, quaerat pariatur quam
+          mollitia deleniti saepe nesciunt.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
