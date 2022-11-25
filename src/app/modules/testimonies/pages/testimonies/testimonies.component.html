@@ -9,19 +9,22 @@
 
   <div class="container card" style="position: relative; z-index: 2;">
     <div class="row">
-      <div class="col-lg-4 col-sm-12 col-md-12">
+      <div class="col-lg-4 col-sm-12 col-md-12 fontEBGaramond">
         <img class="img-fluid img-thumbnail" src="https://picsum.photos/id/1039/600/400.jpg" alt="">
-        <h4>Angela Maria aguilar</h4>
-        ••••
-        <ul>
-          <li *ngFor = "let person of stars; let i = index"> (1)
-            {{ i + 1 }} - {{ person.name }} (2)
-          </li>
-        </ul>
+        <h4 >Angela Maria aguilar</h4>
+        <hr>
+        <i>Puntuación: </i>
+        <span class="hint-star star">
+          <i class="fa fa-star" aria-hidden="true"></i>
+          <i class="fa fa-star" aria-hidden="true"></i>
+          <i class="fa fa-star" aria-hidden="true"></i>
+          <i class="fa fa-star" aria-hidden="true"></i>
+          <i class="fa fa-star-o" aria-hidden="true"></i>
+        </span>
       </div>
       <div class="col-lg-8 col-sm-12 col-md-12">
         <br>
-        <h5>Comunidad: Comunidad de ejemplo</h5>
+        <h5 class="fontBreeSerif">Comunidad: Comunidad de ejemplo</h5>
         <br>
         <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nulla, accusamus sed veniam praesentium, mollitia
           adipisci necessitatibus in perspiciatis nihil nam omnis hic, a unde ad. Ratione aspernatur ducimus vel natus.

@@ -7,27 +7,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TestimoniesComponent implements OnInit {
 
-  stars: any[] = [
+  testimonio: any[] = [
     {
-      "name": "Douglas  Pace"
-    },
-    {
-      "name": "Mcleod  Mueller"
-    },
-    {
-      "name": "Day  Meyers"
-    },
-    {
-      "name": "Aguirre  Ellis"
-    },
-    {
-      "name": "Cook  Tyson"
+      "stars": 4,
+      "nombre": "Juan Perez"
     }
   ];
+
+  stars: number = 0;
 
   constructor() { }
 
   ngOnInit(): void {
+    this.stars = this.testimonio[0].stars;
   }
 
 }

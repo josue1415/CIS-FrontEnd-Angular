@@ -1,5 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Bree+Serif&family=EB+Garamond:ital,wght@0,500;1,800&display=swap');
+
 * {
   box-sizing: border-box;
+}
+
+.fontEBGaramond {
+  font-family: 'EB Garamond', serif;
+}
+
+.fontBreeSerif {
+  font-family: 'Bree Serif', serif;
+}
+
+p {
+  text-align: justify;
 }
 
 .container {
@@ -28,3 +42,9 @@
 }
 
 
+.hint-star {
+  display: inline-block;
+  margin-left: 0.5em;
+  color: gold;
+  width: 50%;
+}
