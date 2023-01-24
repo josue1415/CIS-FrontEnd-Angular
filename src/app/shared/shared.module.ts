@@ -7,6 +7,8 @@ import { HttpClient } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { StriphtmlPipe } from './pipes/striphtml.pipe';
 import { MdbCollapseModule } from 'mdb-angular-ui-kit/collapse';
+import { VerFotografiasComponent } from './components/modals/verFotografias/ver-fotografias/ver-fotografias.component';
+import { VerParticipantesComponent } from './components/modals/verParticipantes/ver-participantes/ver-participantes.component';
 
 
 // Export using to translate
@@ -18,7 +20,9 @@ export function HttpLoaderFactory(http: HttpClient) {
   declarations: [
     HeaderMenuComponent,
     FooterComponent,
-    StriphtmlPipe
+    StriphtmlPipe,
+    VerFotografiasComponent,
+    VerParticipantesComponent
   ],
   imports: [
     CommonModule,

@@ -10,37 +10,22 @@
   <div class="container card" style="position: relative; z-index: 2;">
     <div class="row">
       <div class="col-lg-4 col-sm-12 col-md-12 fontEBGaramond">
-        <img class="img-fluid img-thumbnail" src="https://picsum.photos/id/1039/600/400.jpg" alt="">
-        <h4 >Angela Maria aguilar</h4>
+        <img class="img-fluid img-thumbnail" src="https://dev.elsalvador-cis.com/storage/{{ testimonies?.imagen }}"
+          alt="imagen persona" style="max-width: 90%;">
+        <h4>{{ testimonies?.nombre | uppercase }}</h4>
         <hr>
-        <i>Puntuación: </i>
-        <span class="hint-star star">
-          <i class="fa fa-star" aria-hidden="true"></i>
-          <i class="fa fa-star" aria-hidden="true"></i>
-          <i class="fa fa-star" aria-hidden="true"></i>
-          <i class="fa fa-star" aria-hidden="true"></i>
-          <i class="fa fa-star-o" aria-hidden="true"></i>
-        </span>
+        <h5>
+          Becado: <i class="fa fa-{{testimonies?.becado === 1 ? 'check-circle' : 'times'}}"></i> &nbsp;
+          Colaborador: <i class="fa fa-{{testimonies?.colaborador === 1 ? 'check-circle' : 'times'}}"></i>
+        </h5>
       </div>
-      <div class="col-lg-8 col-sm-12 col-md-12">
+      <div class="col-lg-8 col-sm-12 col-md-12 fontBreeSerif">
         <br>
-        <h5 class="fontBreeSerif">Comunidad: Comunidad de ejemplo</h5>
+        <h5>COMUNIDAD: {{ testimonies?.nombre }}</h5>
         <br>
-        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nulla, accusamus sed veniam praesentium, mollitia
-          adipisci necessitatibus in perspiciatis nihil nam omnis hic, a unde ad. Ratione aspernatur ducimus vel natus.
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ratione corrupti nostrum ipsum, molestias
-          perspiciatis aperiam perferendis ut quibusdam labore, illum eligendi rerum aliquid, quaerat pariatur quam
-          mollitia deleniti saepe nesciunt.Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nulla, accusamus
-          sed veniam praesentium, mollitia
-          adipisci necessitatibus in perspiciatis nihil nam omnis hic, a unde ad. Ratione aspernatur ducimus vel natus.
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ratione corrupti nostrum ipsum, molestias
-          perspiciatis aperiam perferendis ut quibusdam labore, illum eligendi rerum aliquid, quaerat pariatur quam
-          mollitia deleniti saepe nesciunt.Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nulla, accusamus
-          sed veniam praesentium, mollitia
-          adipisci necessitatibus in perspiciatis nihil nam omnis hic, a unde ad. Ratione aspernatur ducimus vel natus.
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ratione corrupti nostrum ipsum, molestias
-          perspiciatis aperiam perferendis ut quibusdam labore, illum eligendi rerum aliquid, quaerat pariatur quam
-          mollitia deleniti saepe nesciunt.
+        <p>{{ testimonies?.descripcion | striphtml }}</p>
+        <p>
+          {{ testimonies?.observacion != null ? 'Observaciones: ' + testimonies?.observacion  : '' }}
         </p>
       </div>
     </div>

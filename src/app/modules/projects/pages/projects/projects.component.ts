@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { VerParticipantesComponent } from '@shared/components/modals/verParticipantes/ver-participantes/ver-participantes.component';
 import { MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
 
 @Component({
@@ -13,7 +14,7 @@ export class ProjectsComponent implements OnInit {
   constructor(private modalService: MdbModalService) {}
 
   openModal() {
-    this.modalRef = this.modalService.open(ProjectsComponent, {
+    this.modalRef = this.modalService.open(VerParticipantesComponent, {
       modalClass: 'modal-lg'
     })
   }
