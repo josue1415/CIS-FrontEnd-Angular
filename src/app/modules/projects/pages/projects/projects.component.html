@@ -8,39 +8,33 @@
   </div>
 
   <div class="is-loading container" style="position: relative; z-index: 2;">
-    <h2>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus et impedit aut, error delectus fugiat,
-      veniam soluta magnam.</h2> <br>
-    <img height="550px" class=""
-      src="https://images.unsplash.com/photo-1606830733744-0ad778449672?ixid=MXwxMjA3fDB8MHxzZWFyY2h8Mzl8fGNocmlzdG1hcyUyMHRyZWV8ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
-      alt="">
-    <span style="vertical-align:middle">Pequeña descripcion del contexto de la imagen | Foto cortesia de Josué
-      Cornejo.</span>
+    <h2>{{ project?.nombre }}</h2> <br>
+    <img height="550px" class="" src="{{ project?.actividades[0].fotografias[0].downloadUrl }}"
+      alt="{{ project?.actividades[0].caption }}">
+    <!-- "https://dev.elsalvador-cis.com/storage/{{ project?.fotografias. }} -->
+    <span style="vertical-align:middle">{{ project?.actividades[0].description }} | Foto cortesia CIS El Salvador.</span>
     <br><br><br>
-    <h4>20 Noviembre 2022 <div class="vr"></div> El Salvador, Comunidad de ejmplo</h4>
+    <h4>{{ project?.registro | date: 'longDate' }} <div class="vr"></div> El Salvador,
+      {{ project?.comunidad }}</h4>
     <br>
-    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sequi voluptatem vel, ullam hic dicta eum atque facilis
-      veniam cum porro. Temporibus sunt reprehenderit dolor voluptate laboriosam eius tempore recusandae voluptates.
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora perspiciatis adipisci ex illo, velit est earum
-      facere voluptas explicabo corporis nesciunt ducimus eius aperiam qui possimus quidem totam quia sint?
+    <div>
+      <br> JUSTIFICATION. <br>
+      <p [innerHTML]="project?.justificacion"></p>
       <br><br>
-      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sequi voluptatem vel, ullam hic dicta eum atque facilis
-      veniam cum porro. Temporibus sunt reprehenderit dolor voluptate laboriosam eius tempore recusandae voluptates.
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora perspiciatis adipisci ex illo, velit est earum
-      facere voluptas explicabo corporis nesciunt ducimus eius aperiam qui possimus quidem totam quia sint?
-      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sequi voluptatem vel, ullam hic dicta eum atque facilis
-      veniam cum porro. Temporibus sunt reprehenderit dolor voluptate laboriosam eius tempore recusandae voluptates.
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora perspiciatis adipisci ex illo, velit est earum
-      facere voluptas explicabo corporis nesciunt ducimus eius aperiam qui possimus quidem totam quia sint?
-      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sequi voluptatem vel, ullam hic dicta eum atque facilis
-      veniam cum porro. Temporibus sunt reprehenderit dolor voluptate laboriosam eius tempore recusandae voluptates.
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora perspiciatis adipisci ex illo, velit est earum
-      facere voluptas explicabo corporis nesciunt ducimus eius aperiam qui possimus quidem totam quia sint?
+      CONTEXTUALIZATION. <br>
+      <p [innerHTML]="project?.contextualizacion | striphtml"></p>
       <br><br>
-      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sequi voluptatem vel, ullam hic dicta eum atque facilis
-      veniam cum porro. Temporibus sunt reprehenderit dolor voluptate laboriosam eius tempore recusandae voluptates.
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora perspiciatis adipisci ex illo, velit est earum
-      facere voluptas explicabo corporis nesciunt ducimus eius aperiam qui possimus quidem totam quia sint?
-    </p>
+      PROYECTIONS. <br>
+      <p [innerHTML]="project?.proyecciones"></p>
+      <br><br>
+      DESAFIOS. <br>
+      <p [innerHTML]="project?.desafios"></p>
+      <br><br>
+      OBJETIVES. <br>
+      <div *ngFor="let objetivo of project?.objetivos ">
+        <p [innerHTML]="objetivo.objetivo"></p> <br>
+      </div>
+    </div>
   </div>
 
 
@@ -48,116 +42,32 @@
     <hr width="250px">
     Activities</h4>
 
-  <div class="courses-container container">
-    <div class="course">
-      <div class="course-preview">
-        <h6>Fecha</h6>
-        <h4>26/11/2022</h4>
-      </div>
-      <div class="course-info">
-        <div class="progress-container">
-          <div class="progress"></div>
+  <div *ngFor="let activity of project?.actividades; index as i">
+    <div class="container">
+      <div class="course">
+        <div class="course-preview">
+          <h6>Fecha</h6>
+          <h4>{{ activity?.fecha | date: 'shortDate' }}</h4>
+          <hr>
+          <h6>Participantes</h6>
+          <h4>{{ activity?.participantes }}</h4>
         </div>
-        <h6>Tema: </h6>
-        <h2>Tema de la actividad realizada</h2>
-        <br>
-        <h6>Descripción: </h6>
-        <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti, maxime at assumenda id accusantium
-          deserunt? Natus quasi modi officia quia consectetur aut nemo excepturi eius quos beatae, vitae nihil ullam.
-        </h5>
-        <hr>
-        <h6>Obstaculos: </h6>
-        <h5>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illo nam, dolore officiis labore alias, architecto
-          reprehenderit quibusdam, earum autem delectus ipsa itaque amet repudiandae sed quisquam. Incidunt aliquam a
-          labore.</h5>
+        <div class="course-info">
+          <div class="progress-container">
+            <div class="progress"></div>
+          </div>
+          <h6>Tema: </h6>
+          <h2>{{ activity?.tema | striphtml }}</h2>
           <br>
-        <!-- <h6>Participantes:</h6>
-                <h6>• Kenia Iveth Martínez Mendoza (Coordinador)</h6>
-                <h6>• Kenia Iveth Martínez Mendoza (Tesorera)</h6>
-                <h6>• Kenia Iveth Martínez Mendoza (Formación)</h6>
-                <h6>• Rocío Melany Torres Chávez (Formación)</h6>
-                <h6>• Kenia Iveth Martínez Mendoza (Formación)</h6>
-                <h6>• Javier Alejandro Cruz Deras (Formación)</h6>
-                <h6>• Kenia Iveth Martínez Mendoza (Formación)</h6>
-                <h6>• José Gustavo Sánchez Chávez (Formación)</h6> -->
-        <button class="btn" (click)="openModal()">Ver participantes</button>
-        <button class="btn" (click)="openModal()">Ver fotografías</button>
-      </div>
-    </div>
-  </div>
-
-  <div class="courses-container container">
-    <div class="course">
-      <div class="course-preview">
-        <h6>Fecha</h6>
-        <h4>26/11/2022</h4>
-      </div>
-      <div class="course-info">
-        <div class="progress-container">
-          <div class="progress"></div>
+          <h6>Descripción: </h6>
+          <h5>{{ activity?.descripcion | striphtml }}</h5>
+          <hr>
+          <h6>Obstaculos: </h6>
+          <h5>{{ activity?.obstaculos | striphtml }}</h5>
+          <br>
+          <button class="btn" (click)="openModal('partic', i)">Ver participantes</button>
+          <button class="btn" (click)="openModal('foto', i)">Ver fotografías</button>
         </div>
-        <h6>Tema: </h6>
-        <h2>Tema de la actividad realizada</h2>
-        <br>
-        <h6>Descripción: </h6>
-        <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti, maxime at assumenda id accusantium
-          deserunt? Natus quasi modi officia quia consectetur aut nemo excepturi eius quos beatae, vitae nihil ullam.
-        </h5>
-        <hr>
-        <h6>Obstaculos: </h6>
-        <h5>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illo nam, dolore officiis labore alias, architecto
-          reprehenderit quibusdam, earum autem delectus ipsa itaque amet repudiandae sed quisquam. Incidunt aliquam a
-          labore.</h5>
-          <br>
-        <!-- <h6>Participantes:</h6>
-                <h6>• Kenia Iveth Martínez Mendoza (Coordinador)</h6>
-                <h6>• Kenia Iveth Martínez Mendoza (Tesorera)</h6>
-                <h6>• Kenia Iveth Martínez Mendoza (Formación)</h6>
-                <h6>• Rocío Melany Torres Chávez (Formación)</h6>
-                <h6>• Kenia Iveth Martínez Mendoza (Formación)</h6>
-                <h6>• Javier Alejandro Cruz Deras (Formación)</h6>
-                <h6>• Kenia Iveth Martínez Mendoza (Formación)</h6>
-                <h6>• José Gustavo Sánchez Chávez (Formación)</h6> -->
-        <button class="btn" (click)="openModal()">Ver participantes</button>
-        <button class="btn" (click)="openModal()">Ver fotografías</button>
-      </div>
-    </div>
-  </div>
-
-  <div class="courses-container container">
-    <div class="course">
-      <div class="course-preview">
-        <h6>Fecha</h6>
-        <h4>26/11/2022</h4>
-      </div>
-      <div class="course-info">
-        <div class="progress-container">
-          <div class="progress"></div>
-        </div>
-        <h6>Tema: </h6>
-        <h2>Tema de la actividad realizada</h2>
-        <br>
-        <h6>Descripción: </h6>
-        <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti, maxime at assumenda id accusantium
-          deserunt? Natus quasi modi officia quia consectetur aut nemo excepturi eius quos beatae, vitae nihil ullam.
-        </h5>
-        <hr>
-        <h6>Obstaculos: </h6>
-        <h5>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illo nam, dolore officiis labore alias, architecto
-          reprehenderit quibusdam, earum autem delectus ipsa itaque amet repudiandae sed quisquam. Incidunt aliquam a
-          labore.</h5>
-          <br>
-        <!-- <h6>Participantes:</h6>
-                <h6>• Kenia Iveth Martínez Mendoza (Coordinador)</h6>
-                <h6>• Kenia Iveth Martínez Mendoza (Tesorera)</h6>
-                <h6>• Kenia Iveth Martínez Mendoza (Formación)</h6>
-                <h6>• Rocío Melany Torres Chávez (Formación)</h6>
-                <h6>• Kenia Iveth Martínez Mendoza (Formación)</h6>
-                <h6>• Javier Alejandro Cruz Deras (Formación)</h6>
-                <h6>• Kenia Iveth Martínez Mendoza (Formación)</h6>
-                <h6>• José Gustavo Sánchez Chávez (Formación)</h6> -->
-        <button class="btn" (click)="openModal()">Ver participantes</button>
-        <button class="btn" (click)="openModal()">Ver fotografías</button>
       </div>
     </div>
   </div>
