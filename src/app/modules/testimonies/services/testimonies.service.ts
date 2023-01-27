@@ -19,12 +19,12 @@ export class TestimoniesService {
     return this.http.get(`${this.URL}/testimonios?idioma=es`, options)
   }
 
-  getTestimoniesById(): Observable<any> {
+  getTestimoniesById(id: any): Observable<any> {
     let headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': 'Bearer 3|yQVzfdbTwVkfBqPbk12uZxK8fG8KT5ziotUTYmG1'
     });
     let options = { headers: headers };
-    return this.http.get(`${this.URL}/testimonios/1?idioma=es`, options)
+    return this.http.get(`${this.URL}/testimonios/${id}?idioma=es`, options)
   }
 }

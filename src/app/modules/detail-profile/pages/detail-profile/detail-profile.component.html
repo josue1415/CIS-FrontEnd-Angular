@@ -23,7 +23,7 @@
               <mat-select [(ngModel)]="selectedComunity" (ngModelChange)="updateProfileByComunities()">
                 <mat-option [value]="0">{{ "All"|translate }}</mat-option>
                 <mat-option *ngFor="let topping of toppingList" [value]="topping.nombre">
-                  {{ topping.nombre }}
+                  {{ topping?.nombre }}
                 </mat-option>
               </mat-select>
             </mat-form-field>
@@ -49,7 +49,7 @@
           <ng-template #cardTemplate>
             <div class="grid">
               <div *ngFor="let item of pageSlice">
-                <div class="card" [routerLink]="['/', 'detail', item.encid]">
+                  <div class="card" [routerLink]="['/', redirect, item.encid]">
                   <div class="center">
                     <img class="img-thumbnail"
                       [src]="(item?.foto) == null ? '../../../../../assets/images/sin-foto.png' :
@@ -58,9 +58,9 @@
                   </div>
                   <!-- <hr> -->
                   <div class="card-body">
-                    <h5>{{ "FULL_NAME"|translate }}: <b> {{ item.nombre_completo }} </b></h5>
+                    <h5>{{ "FULL_NAME"|translate }}: <b> {{ item?.nombre_completo }} </b></h5>
                     <hr>
-                    <h5>{{ "COMMUNITY"|translate }}: <b>{{ item.nombre }}</b></h5>
+                    <h5>{{ "COMMUNITY"|translate }}: <b>{{ item?.nombre }}</b></h5>
                   </div>
                 </div>
               </div>

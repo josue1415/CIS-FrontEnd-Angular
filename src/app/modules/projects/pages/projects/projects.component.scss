@@ -84,6 +84,16 @@ img {
 
 }
 
+.pointer:hover {
+  cursor: pointer;
+  background: rgba(223, 217, 217, 0.19);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(6.7px);
+  -webkit-backdrop-filter: blur(6.7px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
 // Apartado para actividades
 @import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
 
@@ -100,7 +110,7 @@ img {
   max-width: 100%;
   margin: 20px;
   overflow: hidden;
-//   width: 700px;
+  //   width: 700px;
 }
 
 .course h6 {
@@ -184,7 +194,7 @@ img {
   font-size: 16px;
   padding: 12px 25px;
   float: right;
-//   position: absolute;
+  //   position: absolute;
   bottom: 30px;
   right: 30px;
   letter-spacing: 1px;

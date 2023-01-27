@@ -21,6 +21,7 @@ export class DetailProfileComponent implements OnInit {
   pageSlice: Array<any> = [];
   ListGlobal: Array<any> = [];
   product: any;
+  redirect: string = "";
 
   constructor(private searchService: SearchService, private activatedroute: ActivatedRoute) {
     window.scroll({
@@ -33,15 +34,16 @@ export class DetailProfileComponent implements OnInit {
   ngOnInit(): void {
     // Obtiene el tipo de la data, dependiendo si es becado, proyectos sociales y testimonios.
     this.activatedroute.data.subscribe(data => {
-      this.product = data.tipo;      
+      this.product = data.tipo;
     })
 
     switch (this.product) {
       case 'projects':
-        // Obtiene todos los becados
-        this.searchService.searchData$().subscribe(
+        this.redirect = "detail-project";
+        // Obtiene todos los proyectos
+        this.searchService.searchDataProjects$().subscribe(
           res => {
-            this.ListGlobal = res;
+            this.ListGlobal = res.data;
             this.pageSlice = this.ListGlobal.slice(0, 10);
             this.isLoader = false;
           }
@@ -55,10 +57,12 @@ export class DetailProfileComponent implements OnInit {
         break;
 
       case 'testimonies':
-        // Obtiene todos los becados
-        this.searchService.searchData$().subscribe(
+        this.redirect = "detail-testimonies";
+        // Obtiene todos los testimonios
+        this.searchService.searchDataTestimonies$().subscribe(
           res => {
-            this.ListGlobal = res;
+            this.ListGlobal = res.data;
+            // this.pageSlice = this.ListGlobal;
             this.pageSlice = this.ListGlobal.slice(0, 10);
             this.isLoader = false;
           }
@@ -72,8 +76,9 @@ export class DetailProfileComponent implements OnInit {
         break;
 
       default:
+        this.redirect = "detail";
         // Obtiene todos los becados
-        this.searchService.searchData$().subscribe(
+        this.searchService.searchDataBecados$().subscribe(
           res => {
             this.ListGlobal = res;
             this.pageSlice = this.ListGlobal.slice(0, 10);

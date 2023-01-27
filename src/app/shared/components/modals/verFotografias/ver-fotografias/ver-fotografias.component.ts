@@ -7,7 +7,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VerFotografiasComponent implements OnInit {
 
-  indice: string | null = null;
   list: any | null = null;
 
   constructor() { }
