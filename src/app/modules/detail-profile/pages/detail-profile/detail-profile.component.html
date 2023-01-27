@@ -49,19 +49,55 @@
           <ng-template #cardTemplate>
             <div class="grid">
               <div *ngFor="let item of pageSlice">
-                  <div class="card" [routerLink]="['/', redirect, item.encid]">
-                  <div class="center">
-                    <img class="img-thumbnail"
-                      [src]="(item?.foto) == null ? '../../../../../assets/images/sin-foto.png' :
-                                             (item?.foto ? 'https://elsalvador-cis.com/storage/' + item?.foto : '../../../../../assets/images/sin-foto.png')"
-                      alt="Imagen Becado">
-                  </div>
-                  <!-- <hr> -->
-                  <div class="card-body">
-                    <h5>{{ "FULL_NAME"|translate }}: <b> {{ item?.nombre_completo }} </b></h5>
-                    <hr>
-                    <h5>{{ "COMMUNITY"|translate }}: <b>{{ item?.nombre }}</b></h5>
-                  </div>
+                <div class="card" [routerLink]="['/', redirect, item.encid]">
+                  <container-element [ngSwitch]="product">
+                    <!-- the same view can be shown in more than one case -->
+                    <div *ngSwitchCase="'projects'">
+                      <div class="row col-12">
+                        <img src="{{item?.actividades[0].fotografias[0].downloadUrl}}" alt=""
+                          width="20px">
+                        <div class="card-body ">
+                          <h5>{{ "FULL_NAME"|translate }}: <b> {{ item?.nombre }} </b></h5>
+                        </div>
+                        <hr>
+                        <p>
+                          {{item?.justificacion | striphtml | slice:0:120}}...
+                        </p>
+                      </div>
+                    </div>
+                    <div *ngSwitchCase="'testimonies'">
+                      <div class="center">
+                        <img class="img-thumbnail"
+                          [src]="(item?.foto) == null ? '../../../../../assets/images/sin-foto.png' :
+                               (item?.foto ? 'https://elsalvador-cis.com/storage/' + item?.foto : '../../../../../assets/images/sin-foto.png')"
+                          alt="Imagen Becado">
+                      </div>
+                      <div class="card-body">
+                        <h5>{{ "FULL_NAME"|translate }}: <b> {{ item?.nombre }} </b></h5>
+                        <hr>
+                        <h5> Becado: <i
+                            class="fa fa-{{ item?.becado === 1 ? 'check-circle' : 'times' }}"></i>
+                          &nbsp;
+                          Colaborador: <i
+                            class="fa fa-{{ item?.colaborador === 1 ? 'check-circle' : 'times' }}"></i>
+                        </h5>
+                      </div>
+                    </div>
+                    <!--default case when there are no matches -->
+                    <div *ngSwitchDefault>
+                      <div class="center">
+                        <img class="img-thumbnail"
+                          [src]="(item?.foto) == null ? '../../../../../assets/images/sin-foto.png' :
+                               (item?.foto ? 'https://elsalvador-cis.com/storage/' + item?.foto : '../../../../../assets/images/sin-foto.png')"
+                          alt="Imagen Becado">
+                      </div>
+                      <div class="card-body">
+                        <h5>{{ "FULL_NAME"|translate }}: <b> {{ item?.nombre_completo }} </b></h5>
+                        <hr>
+                        <h5>{{ "COMMUNITY"|translate }}: <b>{{ item?.nombre }}</b></h5>
+                      </div>
+                    </div>
+                  </container-element>
                 </div>
               </div>
             </div>
