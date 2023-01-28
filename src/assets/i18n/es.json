@@ -9,6 +9,7 @@
     "HOME_SUBTITLE": "ESTE NO ES UN PROGRAMA DE BECAS COMÚN.",
     "HOME_TITLE": "Becas para Jóvenes y Desarrollo de Liderazgos",
     "HOME_P": "Hace más que posibilitar que jóvenes en desventaja obtengan educación formal en los niveles de primaria, secundaria y universitaria. Nuestras becarias y becarios desarrollan habilidades de liderazgo y su conciencia social y “devuelven” a sus comunidades. Este crecimiento les capacita para contribuir a una transformación positiva en El Salvador.",
+    "HOME_PROYECT": "Los estudiantes retribuyen a su comunidad desarrollando un proyecto de servicio comunitario cada año.",
     "SEE_MORE": "Ver más",
     "OUR_PROFILES": "Nuestros Perfiles",
     "RECENT_PROFILES": "Vea nuestros más recientes",
@@ -62,5 +63,29 @@
     "FAMILY_NAME": "Nombre del familiar",
     "Relationship": "Relación",
     "EDUCATION": "Educación realizada",
-    "Occupation": "Ocupación"
+    "Occupation": "Ocupación",
+
+    "FOTO_CORTESIA": "PHOTO courtesy",
+    "JUSTIF":"JUSTIFICATION",
+    "CONTEXT":"CONTEXT",
+    "PROJECTIONS":"PROJECTIONS",
+    "CHALLENGES":"CHALLENGES",
+    "OBJECTIVES":"OBJECTIVES",
+    "ACTIVITIES":"ACTIVITIES",
+
+    "DATE":"DATE",
+    "PARTICIPANTS":"PARTICIPANTS",
+    "TOPIC":"TOPIC",
+    "DESCRIP_ACTIVITY":"DESCRIPTION",
+    "OBSTACLES":"OBSTACLES",
+    "SEE_FOTO":"VIEW PHOTOS",
+    "SEE_PARTIC":"SEE PARTICIPANTS",
+
+    "AUDIOVISUAL_GALLERY":"AUDIOVISUAL GALLERY",
+    "TE_INTERESE":"YOU MIGHT BE INTERESTED IN",
+
+
+    "COMUNITY":"COMUNITY",
+    "BECADO":"SCHOLARSHIP",
+    "COLABORADOR":"COLLABORATOR"
 }

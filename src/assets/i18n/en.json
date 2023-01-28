@@ -9,6 +9,7 @@
     "HOME_SUBTITLE": "THIS IS NOT YOUR AVERAGE SCHOLARSHIP PROGRAM.",
     "HOME_TITLE": "Youth Scholarships and Leadership Development",
     "HOME_P": "It does more than enable disadvantaged youth to gain a classroom education at the primary, secondary and university levels. Student scholars develop leadership skills and their social conscience, and “give back” to their communities. This growth prepares them to contribute to positive transformation in El Salvador.",
+    "HOME_PROYECT": "Students give back to their community by developing a community service project each year.",
     "SEE_MORE": "See more",
     "OUR_PROFILES": "Our Profiles",
     "RECENT_PROFILES": "See Our Recent ",
@@ -66,6 +67,29 @@
     "FAMILY_NAME":"Family name",
     "Relationship":"Relationship",
     "EDUCATION":"Completed education",
-    "Occupation" : "Occupation"
+    "Occupation" : "Occupation",
 
+    "FOTO_CORTESIA": "PHOTO courtesy",
+    "JUSTIF":"JUSTIFICATION",
+    "CONTEXT":"CONTEXT",
+    "PROJECTIONS":"PROJECTIONS",
+    "CHALLENGES":"CHALLENGES",
+    "OBJECTIVES":"OBJECTIVES",
+    "ACTIVITIES":"ACTIVITIES",
+
+    "DATE":"DATE",
+    "PARTICIPANTS":"PARTICIPANTS",
+    "TOPIC":"TOPIC",
+    "DESCRIP_ACTIVITY":"DESCRIPTION",
+    "OBSTACLES":"OBSTACLES",
+    "SEE_FOTO":"VIEW PHOTOS",
+    "SEE_PARTIC":"SEE PARTICIPANTS",
+
+    "AUDIOVISUAL_GALLERY":"AUDIOVISUAL GALLERY",
+    "TE_INTERESE":"YOU MIGHT BE INTERESTED IN",
+
+
+    "COMUNITY":"COMUNITY",
+    "BECADO":"SCHOLARSHIP",
+    "COLABORADOR":"COLLABORATOR"
 }

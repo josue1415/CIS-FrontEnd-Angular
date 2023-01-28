@@ -10,6 +10,9 @@ import { Subscription } from 'rxjs';
 export class ProfilePageComponent implements OnInit, OnDestroy {
 
   becados: Array<any> = [];
+  projects: Array<any> = [];
+  testimonies: Array<any> = [];
+
   testimonios: Array<any> = [1,2,3];
   isLoading: boolean = true;
   listObservers: Array<Subscription> = [];
@@ -23,7 +26,19 @@ export class ProfilePageComponent implements OnInit, OnDestroy {
       }
     )
 
-    this.listObservers = [observer];
+    const observerSocialProj = this.profileService.getSocialProjects().subscribe(
+      resp => {
+        this.projects = resp.data.slice(0,4);        
+      }
+    )
+
+    const observerTestimonies = this.profileService.getTestimonies().subscribe(
+      resp => {
+        this.testimonies = resp.data.slice(0,3), console.log(this.testimonies);
+      }
+    )
+
+    this.listObservers = [observer, observerSocialProj, observerTestimonies];
 
   }
   ngOnDestroy(): void {
