@@ -1,0 +1,54 @@
+<app-header-menu [isMain]="false" [isDetail]="true"></app-header-menu>
+
+<div class="main-banner" style="z-index: 1;">
+
+  <div class="social">
+    <a href="#"><img src="../../../../../assets/images/fb.png" alt="facebook"></a>
+    <a href="#"><img src="../../../../../assets/images/yt.png" alt="youtube"></a>
+  </div>
+
+  <ng-container *ngIf="isLoader; else cardTemplate">
+    <div class="center">
+      <div class="lds-roller">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+  </ng-container>
+
+  <ng-template #cardTemplate>
+    <div class="container card" style="position: relative; z-index: 2;">
+      <div class="row">
+        <div class="col-lg-4 col-sm-12 col-md-12 fontEBGaramond">
+          <img class="img-fluid img-thumbnail" src="https://dev.elsalvador-cis.com/storage/{{ testimonies?.imagen }}"
+            alt="imagen persona" style="max-width: 90%;">
+          <h4>{{ testimonies?.nombre | uppercase }}</h4>
+          <hr>
+          <h5>
+            Becado: <i
+              class="fa fa-{{ testimonies?.becado === 1 ? 'check-circle' : 'times' }}"></i>
+            &nbsp;
+            Colaborador: <i
+              class="fa fa-{{ testimonies?.colaborador === 1 ? 'check-circle' : 'times' }}"></i>
+          </h5>
+        </div>
+        <div class="col-lg-8 col-sm-12 col-md-12 fontBreeSerif">
+          <br>
+          <h5>COMUNIDAD: {{ testimonies?.nombre }}</h5>
+          <br>
+          <p>{{ testimonies?.descripcion | striphtml }}</p>
+          <p>
+            {{ testimonies?.observacion != null ? 'Observaciones: ' + testimonies?.observacion  : '' }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+
+</div>

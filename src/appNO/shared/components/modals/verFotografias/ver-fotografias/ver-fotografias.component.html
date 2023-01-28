@@ -1,0 +1,8 @@
+<div class="container" style="padding: 30px;">
+  <div *ngFor="let image of list">
+    <img class="img-fluid img-thumbnail" 
+        src="{{ image.downloadUrl }}" 
+        alt="{{ image.caption }}"
+        title="{{ image.description }}">
+  </div>
+</div>

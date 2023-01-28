@@ -7,86 +7,102 @@
     <a href="#"><img src="../../../../../assets/images/yt.png" alt="youtube"></a>
   </div>
 
-  <div class="is-loading container" style="position: relative; z-index: 2;">
-    <h2>{{ project?.nombre }}</h2> <br>
-    <img height="550px" class="" src="{{ project?.actividades[0].fotografias[0].downloadUrl }}"
-      alt="{{ project?.actividades[0].caption }}">
-    <span style="vertical-align:middle">{{ project?.actividades[0].tema }} | Foto cortesia CIS El
-      Salvador.</span>
-    <br><br><br>
-    <h4>{{ project?.registro | date: 'longDate' }} <div class="vr"></div> El Salvador,
-      {{ project?.comunidad }}</h4>
-    <br>
-    <div>
-      <br> JUSTIFICATION. <br>
-      <p [innerHTML]="project?.justificacion"></p>
-      <br><br>
-      CONTEXTUALIZATION. <br>
-      <p [innerHTML]="project?.contextualizacion | striphtml"></p>
-      <br><br>
-      PROYECTIONS. <br>
-      <p [innerHTML]="project?.proyecciones"></p>
-      <br><br>
-      DESAFIOS. <br>
-      <p [innerHTML]="project?.desafios"></p>
-      <br><br>
-      OBJETIVES. <br>
-      <div *ngFor="let objetivo of project?.objetivos ">
-        <p [innerHTML]="objetivo.objetivo"></p> <br>
+  <ng-container *ngIf="isLoader; else cardTemplate">
+    <div class="center">
+      <div class="lds-roller">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
       </div>
     </div>
-  </div>
+  </ng-container>
 
-  <h4 class="container">
-    <hr width="250px">
-    Activities</h4>
-
-  <div *ngFor="let activity of project?.actividades; index as i">
-    <div class="container">
-      <div class="course">
-        <div class="course-preview">
-          <h6>Fecha</h6>
-          <h4>{{ activity?.fecha | date: 'shortDate' }}</h4>
-          <hr>
-          <h6>Participantes</h6>
-          <h4>{{ activity?.participantes }}</h4>
+  <ng-template #cardTemplate>
+    <div class="is-loading container" style="position: relative; z-index: 2;">
+      <h2>{{ project?.nombre }}</h2> <br>
+      <img height="550px" class="" src="{{ project?.actividades[0].fotografias[0].downloadUrl }}"
+        alt="{{ project?.actividades[0].caption }}">
+      <span style="vertical-align:middle">{{ project?.actividades[0].tema }} | Foto cortesia CIS El
+        Salvador.</span>
+      <br><br><br>
+      <h4>{{ project?.registro | date: 'longDate' }} <div class="vr"></div> El Salvador,
+        {{ project?.comunidad }}</h4>
+      <br>
+      <div>
+        <br> JUSTIFICATION. <br>
+        <p [innerHTML]="project?.justificacion"></p>
+        <br><br>
+        CONTEXTUALIZATION. <br>
+        <p [innerHTML]="project?.contextualizacion | striphtml"></p>
+        <br><br>
+        PROYECTIONS. <br>
+        <p [innerHTML]="project?.proyecciones"></p>
+        <br><br>
+        DESAFIOS. <br>
+        <p [innerHTML]="project?.desafios"></p>
+        <br><br>
+        OBJETIVES. <br>
+        <div *ngFor="let objetivo of project?.objetivos ">
+          <p [innerHTML]="objetivo.objetivo"></p> <br>
         </div>
-        <div class="course-info">
-          <div class="progress-container">
-            <div class="progress"></div>
+      </div>
+    </div>
+
+    <h4 class="container">
+      <hr width="250px">
+      Activities</h4>
+
+    <div *ngFor="let activity of project?.actividades; index as i">
+      <div class="container">
+        <div class="course">
+          <div class="course-preview">
+            <h6>Fecha</h6>
+            <h4>{{ activity?.fecha | date: 'shortDate' }}</h4>
+            <hr>
+            <h6>Participantes</h6>
+            <h4>{{ activity?.participantes }}</h4>
           </div>
-          <h6>Tema: </h6>
-          <h2>{{ activity?.tema | striphtml }}</h2>
-          <br>
-          <h6>Descripción: </h6>
-          <h5>{{ activity?.descripcion | striphtml }}</h5>
-          <hr>
-          <h6>Obstaculos: </h6>
-          <h5>{{ activity?.obstaculos | striphtml }}</h5>
-          <br>
-          <button class="btn" (click)="openModal('partic', i)">Ver participantes</button>
-          <button class="btn" (click)="openModal('foto', i)">Ver fotografías</button>
+          <div class="course-info">
+            <div class="progress-container">
+              <div class="progress"></div>
+            </div>
+            <h6>Tema: </h6>
+            <h2>{{ activity?.tema | striphtml }}</h2>
+            <br>
+            <h6>Descripción: </h6>
+            <h5>{{ activity?.descripcion | striphtml }}</h5>
+            <hr>
+            <h6>Obstaculos: </h6>
+            <h5>{{ activity?.obstaculos | striphtml }}</h5>
+            <br>
+            <button class="btn" (click)="openModal('partic', i)">Ver participantes</button>
+            <button class="btn" (click)="openModal('foto', i)">Ver fotografías</button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <h4 class="container">
-    <hr width="250px">
-    Audiovisual gallery</h4>
-  <section class="gallery">
-    <div *ngFor="let imgGallery of images; let i = index">
-      <div class="gallery__item">
-        <input type="radio" id="img-{{ i }}" checked name="gallery" class="gallery__selector" />
-        <img class="gallery__img" src="{{ imgGallery.img }}" alt="{{ imgGallery.caption }}"
-          title="{{ imgGallery.descrip }}" />
-        <!-- <iframe class="gallery__img" width="420" height="315" src="https://www.youtube.com/embed/tgbNymZ7vqY"></iframe> -->
-        <label for="img-{{ i }}" class="gallery__thumb">
-          <img src="{{ imgGallery.img }}" alt="{{ imgGallery.caption }}" />
-        </label>
+    <h4 class="container">
+      <hr width="250px">
+      Audiovisual gallery</h4>
+    <section class="gallery">
+      <div *ngFor="let imgGallery of images; let i = index">
+        <div class="gallery__item">
+          <input type="radio" id="img-{{ i }}" checked name="gallery" class="gallery__selector" />
+          <img class="gallery__img" src="{{ imgGallery.img }}" alt="{{ imgGallery.caption }}"
+            title="{{ imgGallery.descrip }}" />
+          <!-- <iframe class="gallery__img" width="420" height="315" src="https://www.youtube.com/embed/tgbNymZ7vqY"></iframe> -->
+          <label for="img-{{ i }}" class="gallery__thumb">
+            <img src="{{ imgGallery.img }}" alt="{{ imgGallery.caption }}" />
+          </label>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
   <div class="blog">
     <div class="container" style="position: relative;">
@@ -94,14 +110,18 @@
       <h4>QUIZÁ TAMBIÉN TE INTERESE...</h4>
       <br><br>
       <div *ngFor="let otherProjects of threeProjects">
-        <div class="row pointer"  [routerLink]="['/', 'detail-project', otherProjects.id]">
+        <div class="row pointer" (click)="goTo(otherProjects.encid)">
           <div class="col-3">
-            <img class="img-fluid img-thumbnail" src="{{otherProjects.actividades[0].fotografias[0].downloadUrl}}" alt="">
+            <img class="img-fluid img-thumbnail"
+              src="{{ otherProjects.actividades[0].fotografias[0].downloadUrl }}" alt="">
           </div>
-          <div class="col-9">{{otherProjects.nombre}} - {{otherProjects.justificacion | striphtml | slice:0:120}}...</div>
+          <div class="col-9">{{ otherProjects.nombre }} -
+            {{ otherProjects.justificacion | striphtml | slice:0:120 }}...</div>
         </div>
         <br>
       </div>
     </div>
   </div>
+</ng-template>
+
 </div>

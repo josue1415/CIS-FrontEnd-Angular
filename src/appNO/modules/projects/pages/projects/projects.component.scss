@@ -1,0 +1,201 @@
+* {
+  box-sizing: border-box;
+}
+
+.container {
+  // width: 95%;
+  // max-width:900px;
+  padding: 25px 30px;
+  margin: auto;
+}
+
+.social {
+  /*las imágenes usadas tienen width de 48px*/
+  width: 48px;
+  position: fixed;
+  top: 50px;
+  right: 0;
+}
+
+/* Extra centrado vertical*/
+
+.social {
+  /*border:1px solid #000;*/
+  top: 50%;
+  height: 205px;
+  /*para poner height 192 deberíamos haber indicado en el reset de estilos font-size:0;*/
+  margin-top: -100px;
+}
+
+p {
+  text-align: justify;
+}
+
+$max-img-width: 600px;
+$max-img-height: 400px;
+
+img {
+  max-width: 100%;
+  vertical-align: top;
+}
+
+.gallery {
+  display: flex;
+  margin: 10px auto;
+  max-width: $max-img-width;
+  position: relative;
+  padding-top: $max-img-height/$max-img-width * 100%;
+
+  @media screen and (min-width: $max-img-width) {
+    padding-top: $max-img-height;
+  }
+
+  &__img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+  }
+
+  &__thumb {
+    padding-top: 6px;
+    margin: 6px;
+    display: block;
+  }
+
+  &__selector {
+    position: absolute;
+    opacity: 0;
+    visibility: hidden;
+
+    &:checked {
+      +.gallery__img {
+        opacity: 1;
+      }
+
+      ~.gallery__thumb>img {
+        box-shadow: 0 0 0 3px #0be2f6;
+        ;
+      }
+    }
+  }
+
+
+}
+
+.pointer:hover {
+  cursor: pointer;
+  background: rgba(223, 217, 217, 0.19);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(6.7px);
+  -webkit-backdrop-filter: blur(6.7px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+// Apartado para actividades
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+.course {
+  background-color: rgba(255, 255, 255, 0.644);
+  border-radius: 10px;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: row;
+  max-width: 100%;
+  margin: 20px;
+  overflow: hidden;
+  //   width: 700px;
+}
+
+.course h6 {
+  opacity: 0.6;
+  margin: 0;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.course h2 {
+  letter-spacing: 1px;
+  margin: 10px 0;
+}
+
+.course-preview {
+  background-color: #2b78af8f;
+  color: #fff;
+  padding: 30px;
+  // max-width: 550px;
+}
+
+@media screen and (max-width: 650px) {
+  .course {
+    flex-direction: column;
+  }
+}
+
+.course-preview a {
+  color: #fff;
+  display: inline-block;
+  font-size: 12px;
+  opacity: 0.6;
+  margin-top: 30px;
+  text-decoration: none;
+}
+
+.course-info {
+  padding: 30px;
+  // position: relative;
+  // width: 100%;
+}
+
+.progress-container {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  text-align: right;
+  width: 50%;
+}
+
+.progress {
+  background-color: #ddd;
+  border-radius: 3px;
+  height: 5px;
+  width: 100%;
+}
+
+.progress::after {
+  border-radius: 3px;
+  background-color: #2A265F;
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 5px;
+  width: 66%;
+}
+
+.progress-text {
+  font-size: 10px;
+  opacity: 0.6;
+  letter-spacing: 1px;
+}
+
+.btn {
+  background-color: #2A265F;
+  border: 0;
+  border-radius: 50px;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+  color: #fff;
+  font-size: 16px;
+  padding: 12px 25px;
+  float: right;
+  //   position: absolute;
+  bottom: 30px;
+  right: 30px;
+  letter-spacing: 1px;
+}

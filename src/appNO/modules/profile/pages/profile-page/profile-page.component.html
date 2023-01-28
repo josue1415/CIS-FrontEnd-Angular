@@ -1,0 +1,418 @@
+<!-- Menu header -->
+<app-header-menu [isMain]="true"></app-header-menu>
+
+<!-- Body page principal -->
+<div class="main-banner wow fadeIn" id="top" data-wow-duration="1s" data-wow-delay="0.5s" style="z-index: 2;">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="row">
+          <div class="col-lg-7 align-self-center">
+            <div class="left-content show-up header-text wow fadeInLeft fadeRight" style="z-index: 2;">
+              <div class="row">
+                <div class="col-lg-12">
+                  <h6>{{ "HOME_SUBTITLE" | translate }}</h6>
+                  <h2>{{ "HOME_TITLE" | translate }}</h2>
+                  <p>{{ "HOME_P" | translate }}</p>
+                </div>
+                <div class="col-lg-12">
+                  <div class="border-first-button scroll-to-section">
+                    <a target=”_blank” href="https://www.cis-elsalvador.org/youth-scholarships-and-development">
+                      {{ "SEE_MORE" | translate }}</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-5">
+            <div class="right-image wow fadeInRight fadeLeft">
+              <img src="assets/images/cis-logo.png" alt="Logo CIS - El Salvador">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ---------------Projects section ------------------ -->
+<div id="projects" class=" fadeLeft col-12">
+  <div class="container" style="z-index: 5;">
+    <div class="left-content show-up header-text wow fadeInLeft fadeRight" style="z-index: 2;">
+      <div class="col-lg-12 align-self-center" style="color: black;">
+        <div class="row col-12">
+          <div class="col-4">
+            <h2>{{ "socialProyects" | translate }}</h2>
+          </div>
+          <div class="border-first-button scroll-to-section col-4" style="margin-left: -50px;">
+            <a [routerLink]="['/projects']">{{ "SEE_ALL"|translate }}</a>
+          </div>
+        </div>
+        <p>{{ "HOME_P" | translate }}</p>
+      </div>
+    </div>
+    <br>
+    <div class="row col-sm-12">
+      <div class="col-lg-7 col-sm-12" style="z-index: 2;">
+        <div class="contenedorIMG">
+          <img src="https://random.imagecdn.app/500/150" height="350px">
+          <div class="centerTextInImg">It does more than enable disadvantaged youth to gain a classroom education at the primary, secondary and university levels...</div>
+        </div>
+      </div>
+      <div class="col-lg-5 col-sm-12" style="z-index: 2;">
+        <div class="row">
+          <div class="col-lg-6 col-sm-12">
+            <div class="contenedorIMG">
+              <img src="https://random.imagecdn.app/500/150" height="140px">
+              <div class="centerTextInImg small">It does more than enable disadvantaged youth to gain a classroom education at the primary...</div>
+            </div>
+          </div>
+          <div class="col-lg-6 col-sm-12">
+            <div class="contenedorIMG">
+              <img src="https://random.imagecdn.app/500/150" height="140px">
+              <div class="centerTextInImg small">It does more than enable disadvantaged youth to gain a classroom education at the primary...</div>
+            </div>
+          </div>
+        </div>
+        <br>
+        <div class="col-lg-12">
+          <div class="contenedorIMG">
+            <img src="https://random.imagecdn.app/500/150" height="185px">
+            <div class="centerTextInImg">It does more than enable disadvantaged youth to gain a classroom education at the primary, secondary and university levels...</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Testimonies -->
+<div class="blog" style="z-index: -1;" id="testimonies"></div>
+<h2 style="margin-left: 7vw;">Testimonies</h2>
+<div class="border-first-button scroll-to-section" style="margin-left: 7vw;">
+  <a [routerLink]="['/testimonies']">{{ "SEE_ALL"|translate }}</a>
+</div>
+
+<!-- <div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-12">
+      <ng-container *ngIf="isLoading; else elseTestimonies">
+        <div class="center">
+          <div class="lds-roller">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        </div>
+      </ng-container>
+
+      <ng-template #elseTestimonies>
+        <div class="slider">
+          <div class="slide-track">
+            <div class="div" *ngFor="let testimonio of testimonios">
+              <div class="slide">
+                <div class="">
+                  <div id="container">
+
+                    <div class="product-details">
+                  
+                      <h1>Juana del Carmen Salinas Merino</h1>
+                      <span class="hint-star star">
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                      </span>
+                  
+                      <p class="information">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi, optio ipsum voluptas ipsam officia consectetur
+                        repellat molestiae recusandae fugit enim voluptates dolore sequi illum debitis excepturi. Nemo cumque atque
+                        sapiente?
+                      </p>
+                    </div>
+                  
+                    <div class="product-image">
+                  
+                      <img
+                        src="https://images.unsplash.com/photo-1606830733744-0ad778449672?ixid=MXwxMjA3fDB8MHxzZWFyY2h8Mzl8fGNocmlzdG1hcyUyMHRyZWV8ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+                        alt="">
+                  
+                  
+                      <div class="info">
+                        <h2> Description</h2>
+                        <br>
+                        <ul>
+                          <li>• <strong>Comunity : </strong>San Rafael Cedros </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+
+    </div>
+  </div>
+</div> -->
+
+<div class="row">
+  <div id="container">
+
+    <div class="product-details">
+
+      <h1>Juana del Carmen Salinas Merino</h1>
+      <span class="hint-star star">
+        <i class="fa fa-star" aria-hidden="true"></i>
+        <i class="fa fa-star" aria-hidden="true"></i>
+        <i class="fa fa-star" aria-hidden="true"></i>
+        <i class="fa fa-star" aria-hidden="true"></i>
+        <i class="fa fa-star-o" aria-hidden="true"></i>
+      </span>
+
+      <p class="information">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi, optio ipsum voluptas ipsam officia consectetur
+        repellat molestiae recusandae fugit enim.
+    </div>
+
+    <div class="product-image">
+
+      <img
+        src="https://images.unsplash.com/photo-1606830733744-0ad778449672?ixid=MXwxMjA3fDB8MHxzZWFyY2h8Mzl8fGNocmlzdG1hcyUyMHRyZWV8ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+        alt="">
+
+
+      <div class="info">
+        <h2> Description</h2>
+        <br>
+        <ul>
+          <li>• <strong>Comunity : </strong>San Rafael Cedros </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div id="container">
+
+    <div class="product-details">
+
+      <h1>Juana del Carmen Salinas Merino</h1>
+      <span class="hint-star star">
+        <i class="fa fa-star" aria-hidden="true"></i>
+        <i class="fa fa-star" aria-hidden="true"></i>
+        <i class="fa fa-star" aria-hidden="true"></i>
+        <i class="fa fa-star" aria-hidden="true"></i>
+        <i class="fa fa-star-o" aria-hidden="true"></i>
+      </span>
+
+      <p class="information">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi, optio ipsum voluptas ipsam officia consectetur
+        repellat molestiae recusandae fugit enim.
+    </div>
+
+    <div class="product-image">
+
+      <img
+        src="https://images.unsplash.com/photo-1606830733744-0ad778449672?ixid=MXwxMjA3fDB8MHxzZWFyY2h8Mzl8fGNocmlzdG1hcyUyMHRyZWV8ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+        alt="">
+
+
+      <div class="info">
+        <h2> Description</h2>
+        <br>
+        <ul>
+          <li>• <strong>Comunity : </strong>San Rafael Cedros </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div id="container">
+
+    <div class="product-details">
+
+      <h1>Juana del Carmen Salinas Merino</h1>
+      <span class="hint-star star">
+        <i class="fa fa-star" aria-hidden="true"></i>
+        <i class="fa fa-star" aria-hidden="true"></i>
+        <i class="fa fa-star" aria-hidden="true"></i>
+        <i class="fa fa-star" aria-hidden="true"></i>
+        <i class="fa fa-star-o" aria-hidden="true"></i>
+      </span>
+
+      <p class="information">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi, optio ipsum voluptas ipsam officia consectetur
+        repellat molestiae recusandae fugit enim voluptates dolore sequi illum debitis excepturi. Nemo cumque atque
+        sapiente?
+      </p>
+    </div>
+
+    <div class="product-image">
+
+      <img
+        src="https://images.unsplash.com/photo-1606830733744-0ad778449672?ixid=MXwxMjA3fDB8MHxzZWFyY2h8Mzl8fGNocmlzdG1hcyUyMHRyZWV8ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+        alt="">
+
+
+      <div class="info">
+        <h2> Description</h2>
+        <br>
+        <ul>
+          <li>• <strong>Comunity : </strong>San Rafael Cedros </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+<!-- -------------------Profiles section ------------------------- -->
+<div class="blog" style="z-index: -1;"></div>
+<div id="profiles" class="blog fadeLeft">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-7">
+        <div class="section-heading flatMarginTop">
+          <h6>{{ "OUR_PROFILES"| translate }}</h6>
+          <h4>{{ "RECENT_PROFILES"| translate }}
+            <em>{{ "RECENT_PROFILES2"|translate }}</em>
+            <div class="border-first-button scroll-to-section">
+              <a [routerLink]="['/profiles']">{{ "SEE_ALL"|translate }}</a>
+            </div>
+          </h4>
+          <div class="line-dec"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-12">
+        <ng-container *ngIf="isLoading; else elseTemplate">
+          <div class="center">
+            <div class="lds-roller">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+          </div>
+        </ng-container>
+
+        <ng-template #elseTemplate>
+          <div class="slider">
+            <div class="slide-track">
+              <div class="div" *ngFor="let item of becados">
+                <div class="slide">
+                  <div class="">
+                    <h4>{{ item?.nombre_completo }}</h4>
+                    <img
+                      [src]="item?.foto == null ? '../../../../../assets/images/sin-foto.png' : 
+                    (item?.foto ? 'https://elsalvador-cis.com/storage/' + item?.foto : '../../../../../assets/images/sin-foto.png')"
+                      alt="">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ------------Contact container-------------- -->
+<div id="contact" class="contact-us section">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 offset-lg-3">
+        <div class="section-heading wow fadeIn">
+          <h6>{{ "CONTACT_US"|translate }}</h6>
+          <h4>{{ "TITLE_CONTACT"|translate }} <em>{{ "Now"|translate }}</em>
+          </h4>
+          <div class="line-dec"></div>
+        </div>
+      </div>
+      <div class="col-lg-12 wow fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.25s">
+        <form id="contact" action="" method="post">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="contact-dec">
+                <img src="assets/images/contact-dec-v3.png" alt="">
+              </div>
+            </div>
+            <div class="col-lg-5">
+              <div id="map">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d968.9816891708826!2d-89.21128437081843!3d13.72288409939789!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f63307e7b6d6f75%3A0xfc6d5185606560b6!2sAv.%20Bolivar%2C%20San%20Salvador!5e0!3m2!1ses!2ssv!4v1646437667164!5m2!1ses!2ssv"
+                  width="100%" height="636px" frameborder="0" style="border:0" allowfullscreen loading="lazy"></iframe>
+
+              </div>
+            </div>
+            <div class="col-lg-7">
+              <div class="fill-form">
+                <div class="row">
+                  <div class="col-lg-4">
+                    <div class="info-post">
+                      <div class="icon">
+                        <img src="assets/images/phone-icon.png" alt="">
+                        <a>(503) 2226-5362</a>
+                        <a>(503) 2235-1330</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-4">
+                    <div class="info-post">
+                      <div class="icon">
+                        <img src="assets/images/email-icon.png" alt="">
+                        <a>info@cis-elsalvador.org</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-4">
+                    <div class="info-post">
+                      <div class="icon">
+                        <img src="assets/images/location-icon.png" alt="">
+                        <a>Colonia Libertad Avenida Bolívar #103 San Salvador El Salvador</a>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-lg-12">
+                    <hr><br>
+                    <a target="_blank"
+                      href="http://ciselsal.blogspot.com">{{ "VISIT_BLOG"|translate }}:
+                      www.ciselsal.blogspot.com</a>
+                    <br><br>
+                    <hr>
+                    <p>
+                      {{ "US_ADDRESS"|translate }}:
+                      Los Olivos CIS
+                      PO Box 76
+                      Westmont, IL
+                      60559-0076
+                      USA
+                      Toll-Free in US:
+                      1-866-887-2665</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
