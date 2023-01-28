@@ -14,7 +14,7 @@ export class TestimoniesComponent implements OnInit {
   listObservers: Array<Subscription> = [];
   testimonies: any;
   receivedId: string = ""; //Get ID by parameters in header
-
+  isLoader = true;
 
   constructor(private testimoniesService: TestimoniesService, private activatedRoute: ActivatedRoute
   ) { }
@@ -26,9 +26,9 @@ export class TestimoniesComponent implements OnInit {
       this.receivedId = params['id'];
     });
 
-    const observer = this.testimoniesService.getTestimoniesById(1).subscribe( //receivedId
+    const observer = this.testimoniesService.getTestimoniesById(this.receivedId).subscribe(
       resp => {
-        this.testimonies = resp.data
+        this.testimonies = resp.data, this.isLoader = false
       }
     )
 

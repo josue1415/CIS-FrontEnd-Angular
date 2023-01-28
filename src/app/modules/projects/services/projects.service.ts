@@ -20,7 +20,7 @@ export class ProjectsService {
     return this.http.get(`${this.URL}/proyectos-sociales?idioma=es`, options)
   }
 
-  getProjectById(id: number): Observable<any> {
+  getProjectById(id: String): Observable<any> {
     let headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': 'Bearer 3|yQVzfdbTwVkfBqPbk12uZxK8fG8KT5ziotUTYmG1'
