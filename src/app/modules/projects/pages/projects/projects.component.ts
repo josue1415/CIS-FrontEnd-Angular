@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProjectsService } from '@modules/projects/services/projects.service';
+import { TranslateService } from '@ngx-translate/core';
 import { VerFotografiasComponent } from '@shared/components/modals/verFotografias/ver-fotografias/ver-fotografias.component';
 import { VerParticipantesComponent } from '@shared/components/modals/verParticipantes/ver-participantes/ver-participantes.component';
+import { HeaderService } from '@shared/services/header.service';
 import { MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
 import { Subscription } from 'rxjs';
 
@@ -22,11 +24,15 @@ export class ProjectsComponent implements OnInit {
   images: any[] = [];
   threeProjects: any[] = [];
 
+  isLangEnglish: string = ""; // verifica el idioma clickeado en el header
+
   receivedId: String = "";
 
   constructor(private modalService: MdbModalService,
     private projectsService: ProjectsService,
     private activatedRoute: ActivatedRoute,
+    private translate: TranslateService,
+    private serviceHeader: HeaderService,
     private router: Router) { }
 
   openModal(tipo: string, indice: number) {
@@ -45,11 +51,18 @@ export class ProjectsComponent implements OnInit {
       this.receivedId = params['id'];
     });
 
-    const observer = this.projectsService.getProjectById(this.receivedId).subscribe(
+    // Get Languaje clickeado en header
+    const ObserverLanguaje$ = this.serviceHeader.languaje.subscribe(
       resp => {
-        this.project = resp.data, this.getImages(), this.isLoader = false;
+        this.isLangEnglish = resp, console.log(this.isLangEnglish),
+          this.translate.use(this.translate.currentLang),
+          this.projectsService.getProjectById(this.receivedId, this.isLangEnglish).subscribe(
+            resp => {
+              this.project = resp.data, this.getImages(), this.isLoader = false;
+            }
+          )
       }
-    )
+    );
 
     const observerAll = this.projectsService.getProjects().subscribe(
       resp => {
@@ -57,7 +70,7 @@ export class ProjectsComponent implements OnInit {
       }
     )
 
-    this.listObservers = [observer, observerAll, ObserverGetParameter$];
+    this.listObservers = [observerAll, ObserverGetParameter$, ObserverLanguaje$];
   }
 
   getImages(): void {
@@ -75,7 +88,7 @@ export class ProjectsComponent implements OnInit {
   goTo(encid: String) { //Redirect to other projects
     this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
       this.router.navigate(['detail-project', encid]);
-  });
+    });
   }
 
 }

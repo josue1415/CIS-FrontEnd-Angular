@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { TestimoniesService } from '@modules/testimonies/services/testimonies.service';
+import { TranslateService } from '@ngx-translate/core';
+import { HeaderService } from '@shared/services/header.service';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -16,7 +18,12 @@ export class TestimoniesComponent implements OnInit {
   receivedId: string = ""; //Get ID by parameters in header
   isLoader = true;
 
-  constructor(private testimoniesService: TestimoniesService, private activatedRoute: ActivatedRoute
+  isLangEnglish: string = ""; // verifica el idioma clickeado en el header
+
+  constructor(private testimoniesService: TestimoniesService,
+    private activatedRoute: ActivatedRoute,
+    private serviceHeader: HeaderService,
+    private translate: TranslateService,
   ) { }
 
   ngOnInit(): void {
@@ -26,13 +33,20 @@ export class TestimoniesComponent implements OnInit {
       this.receivedId = params['id'];
     });
 
-    const observer = this.testimoniesService.getTestimoniesById(this.receivedId).subscribe(
+    // Get Languaje clickeado en header
+    const ObserverLanguaje$ = this.serviceHeader.languaje.subscribe(
       resp => {
-        this.testimonies = resp.data, this.isLoader = false
+        this.isLangEnglish = resp,
+          this.translate.use(this.translate.currentLang),
+          this.testimoniesService.getTestimoniesById(this.receivedId, this.isLangEnglish).subscribe(
+            resp => {
+              this.testimonies = resp.data, this.isLoader = false
+            }
+          )
       }
-    )
+    );
 
-    this.listObservers = [observer, ObserverGetParameter$];
+    this.listObservers = [ObserverGetParameter$, ObserverLanguaje$];
 
   }
   ngOnDestroy(): void {

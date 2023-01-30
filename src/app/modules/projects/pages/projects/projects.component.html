@@ -25,9 +25,9 @@
   <ng-template #cardTemplate>
     <div class="is-loading container" style="position: relative; z-index: 2;">
       <h2>{{ project?.nombre }}</h2> <br>
-      <img height="550px" class="" src="{{ project?.actividades[0].fotografias[0].downloadUrl }}"
-        alt="{{ project?.actividades[0].caption }}">
-      <span style="vertical-align:middle">{{ project?.actividades[0].tema }} | Foto cortesia CIS El
+      <img height="550px" class="" src="{{ project?.actividades[0]?.fotografias[0]?.downloadUrl }}"
+        alt="{{ project?.actividades[0]?.caption }}">
+      <span style="vertical-align:middle">{{ project?.actividades[0]?.tema }} | Foto cortesia CIS El
         Salvador.</span>
       <br><br><br>
       <h4>{{ project?.registro | date: 'longDate' }} <div class="vr"></div> El Salvador,
@@ -48,7 +48,7 @@
         <br><br>
         OBJETIVES. <br>
         <div *ngFor="let objetivo of project?.objetivos ">
-          <p [innerHTML]="objetivo.objetivo"></p> <br>
+          <p [innerHTML]="objetivo?.objetivo"></p> <br>
         </div>
       </div>
     </div>
