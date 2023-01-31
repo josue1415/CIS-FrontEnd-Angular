@@ -8,9 +8,12 @@ import { MdbModalRef } from 'mdb-angular-ui-kit/modal';
 })
 export class VerParticipantesComponent implements OnInit {
 
+  list: any | null = null; //Puede recibir imagenes o asistencias
+
   constructor() { }
 
   ngOnInit(): void {
+    
   }
 
 }

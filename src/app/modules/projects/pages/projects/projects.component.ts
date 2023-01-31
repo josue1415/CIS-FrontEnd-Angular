@@ -40,7 +40,7 @@ export class ProjectsComponent implements OnInit {
     this.modalRef = this.modalService.open(
       !this.isFoto ? VerParticipantesComponent : VerFotografiasComponent, {
       modalClass: 'modal-lg',
-      data: { list: this.isFoto ? this.project.actividades[indice].fotografias : null }
+      data: { list: this.isFoto ? this.project.actividades[indice].fotografias : this.project.actividades[indice].asistencia }
     })
   }
 

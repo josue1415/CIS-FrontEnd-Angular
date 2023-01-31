@@ -1,9 +1,10 @@
-<div class="container">
+<div class="container card">
     <br>
-    <h4>Listado de participantes</h4>
+    <h4>{{ "LIST_PARTICIPANTES" | translate}}</h4>
     <br>
-    <ul>
-        <li>• Josué Armando Cornejo Cubías</li>
+    <ul *ngFor="let asistencia of list">
+        <li>• {{asistencia}}</li>
         <!-- {{indice}} -->
     </ul>
+    <br>
 </div>
