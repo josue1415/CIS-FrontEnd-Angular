@@ -27,26 +27,27 @@
       <h2>{{ project?.nombre }}</h2> <br>
       <img height="550px" class="" src="{{ project?.actividades[0]?.fotografias[0]?.downloadUrl }}"
         alt="{{ project?.actividades[0]?.caption }}">
-      <span style="vertical-align:middle">{{ project?.actividades[0]?.tema }} | Foto cortesia CIS El
+      <span style="vertical-align:middle">{{ project?.actividades[0]?.tema }} |
+        {{ "FOTO_CORTESIA" | translate }} CIS El
         Salvador.</span>
       <br><br><br>
       <h4>{{ project?.registro | date: 'longDate' }} <div class="vr"></div> El Salvador,
         {{ project?.comunidad }}</h4>
       <br>
       <div>
-        <br> JUSTIFICATION. <br>
+        <br> {{ "JUSTIF" | translate }}. <br>
         <p [innerHTML]="project?.justificacion"></p>
         <br><br>
-        CONTEXTUALIZATION. <br>
+        {{ "CONTEXT" | translate }} <br>
         <p [innerHTML]="project?.contextualizacion | striphtml"></p>
         <br><br>
-        PROYECTIONS. <br>
+        {{ "PROJECTIONS" | translate }}. <br>
         <p [innerHTML]="project?.proyecciones"></p>
         <br><br>
-        DESAFIOS. <br>
+        {{ "CHALLENGES" | translate }}. <br>
         <p [innerHTML]="project?.desafios"></p>
         <br><br>
-        OBJETIVES. <br>
+        {{ "OBJECTIVES" | translate }}. <br>
         <div *ngFor="let objetivo of project?.objetivos ">
           <p [innerHTML]="objetivo?.objetivo"></p> <br>
         </div>
@@ -55,33 +56,35 @@
 
     <h4 class="container">
       <hr width="250px">
-      Activities</h4>
+      {{ "ACTIVITIES" | translate }} </h4>
 
     <div *ngFor="let activity of project?.actividades; index as i">
       <div class="container">
         <div class="course">
           <div class="course-preview">
-            <h6>Fecha</h6>
+            <h6> {{ "DATE" | translate }} </h6>
             <h4>{{ activity?.fecha | date: 'shortDate' }}</h4>
             <hr>
-            <h6>Participantes</h6>
+            <h6> {{ "PARTICIPANTS" | translate }} </h6>
             <h4>{{ activity?.participantes }}</h4>
           </div>
           <div class="course-info">
             <div class="progress-container">
               <div class="progress"></div>
             </div>
-            <h6>Tema: </h6>
+            <h6> {{ "TOPIC" | translate }} : </h6>
             <h2>{{ activity?.tema | striphtml }}</h2>
             <br>
-            <h6>Descripción: </h6>
+            <h6> {{ "DESCRIP_ACTIVITY" | translate }} : </h6>
             <h5>{{ activity?.descripcion | striphtml }}</h5>
             <hr>
-            <h6>Obstaculos: </h6>
+            <h6> {{ "OBSTACLES" | translate }} : </h6>
             <h5>{{ activity?.obstaculos | striphtml }}</h5>
             <br>
-            <button class="btn" (click)="openModal('partic', i)">Ver participantes</button>
-            <button class="btn" (click)="openModal('foto', i)">Ver fotografías</button>
+            <button class="btn" (click)="openModal('partic', i)"> {{ "SEE_FOTO" | translate }}
+            </button>
+            <button class="btn" (click)="openModal('foto', i)"> {{ "SEE_PARTIC" | translate }}
+            </button>
           </div>
         </div>
       </div>
@@ -89,7 +92,7 @@
 
     <h4 class="container">
       <hr width="250px">
-      Audiovisual gallery</h4>
+      {{ "AUDIOVISUAL_GALLERY" | translate }} </h4>
     <section class="gallery">
       <div *ngFor="let imgGallery of images; let i = index">
         <div class="gallery__item">
@@ -104,24 +107,24 @@
       </div>
     </section>
 
-  <div class="blog">
-    <div class="container" style="position: relative;">
-      <hr width="250px">
-      <h4>QUIZÁ TAMBIÉN TE INTERESE...</h4>
-      <br><br>
-      <div *ngFor="let otherProjects of threeProjects">
-        <div class="row pointer" (click)="goTo(otherProjects.encid)">
-          <div class="col-3">
-            <img class="img-fluid img-thumbnail"
-              src="{{ otherProjects.actividades[0].fotografias[0].downloadUrl }}" alt="">
+    <div class="blog">
+      <div class="container" style="position: relative;">
+        <hr width="250px">
+        <h4> {{ "TE_INTERESE" | translate }}</h4>
+        <br><br>
+        <div *ngFor="let otherProjects of threeProjects">
+          <div class="row pointer" (click)="goTo(otherProjects.encid)">
+            <div class="col-3">
+              <img class="img-fluid img-thumbnail"
+                src="{{ otherProjects.actividades[0].fotografias[0].downloadUrl }}" alt="">
+            </div>
+            <div class="col-9">{{ otherProjects.nombre }} -
+              {{ otherProjects.justificacion | striphtml | slice:0:120 }}...</div>
           </div>
-          <div class="col-9">{{ otherProjects.nombre }} -
-            {{ otherProjects.justificacion | striphtml | slice:0:120 }}...</div>
+          <br>
         </div>
-        <br>
       </div>
     </div>
-  </div>
-</ng-template>
+  </ng-template>
 
 </div>

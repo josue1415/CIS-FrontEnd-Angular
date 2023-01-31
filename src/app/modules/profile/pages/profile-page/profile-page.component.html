@@ -88,7 +88,7 @@
 
 <!-- Testimonies -->
 <div class="blog" style="z-index: -1;" id="testimonies"></div>
-<h2 style="margin-left: 7vw;">Testimonies</h2>
+<h2 style="margin-left: 7vw;">{{ "TESTIMONIES" | translate}}</h2>
 <div class="border-first-button scroll-to-section" style="margin-left: 7vw;">
   <a [routerLink]="['/testimonies']">{{ "SEE_ALL"|translate }}</a>
 </div>
@@ -105,13 +105,13 @@
           </ul>
           <br>
           <hr>
-          Becado: <i
+          {{ "BECADO" | translate }}: <i
             class="fa fa-{{ testim?.becado === 1 ? 'check-circle' : 'times' }}"></i>
           &nbsp;
-          Colaborador: <i
+          {{ "COLABORADOR" | translate }}: <i
             class="fa fa-{{ testim?.colaborador === 1 ? 'check-circle' : 'times' }}"></i>
           &nbsp;
-          Voluntario: <i
+          {{ "VOLUNTARIO" | translate }}: <i
             class="fa fa-{{ testim?.voluntario === 1 ? 'check-circle' : 'times' }}"></i>
       </div>
 
@@ -119,7 +119,7 @@
         <img [src]="testim?.imagen == null ? '../../../../../assets/images/sin-foto.png' : 
                     'https://dev.elsalvador-cis.com/storage/' + testim?.imagen" alt="">
         <div class="info">
-          <h2> Description</h2>
+          <h2> {{"DESCRIP_ACTIVITY" | translate }}</h2>
           <br>
           <ul class="container">
             <p [innerHTML]="testim?.descripcion | striphtml | slice:0:150">...</p>

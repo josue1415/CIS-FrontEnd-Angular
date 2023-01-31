@@ -54,14 +54,13 @@
                     <!-- the same view can be shown in more than one case -->
                     <div *ngSwitchCase="'projects'">
                       <div class="row col-12">
-                        <img src="{{item?.actividades[0].fotografias[0].downloadUrl}}" alt=""
-                          width="20px">
+                        <img src="{{ item?.actividades[0].fotografias[0].downloadUrl }}" alt="" width="20px">
                         <div class="card-body ">
                           <h5>{{ "FULL_NAME"|translate }}: <b> {{ item?.nombre }} </b></h5>
                         </div>
                         <hr>
                         <p>
-                          {{item?.justificacion | striphtml | slice:0:120}}...
+                          {{ item?.justificacion | striphtml | slice:0:120 }}...
                         </p>
                       </div>
                     </div>
@@ -75,11 +74,14 @@
                       <div class="card-body">
                         <h5>{{ "FULL_NAME"|translate }}: <b> {{ item?.nombre }} </b></h5>
                         <hr>
-                        <h5> Becado: <i
+                        <h5> {{ "BECADO" | translate }}: <i
                             class="fa fa-{{ item?.becado === 1 ? 'check-circle' : 'times' }}"></i>
                           &nbsp;
-                          Colaborador: <i
+                          {{ "COLABORADOR" | translate }}: <i
                             class="fa fa-{{ item?.colaborador === 1 ? 'check-circle' : 'times' }}"></i>
+                          &nbsp;
+                          {{ "VOLUNTARIO" | translate }}: <i
+                            class="fa fa-{{ item?.voluntario === 1 ? 'check-circle' : 'times' }}"></i>
                         </h5>
                       </div>
                     </div>

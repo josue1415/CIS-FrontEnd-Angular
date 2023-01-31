@@ -31,16 +31,19 @@
           <h4>{{ testimonies?.nombre | uppercase }}</h4>
           <hr>
           <h5>
-            Becado: <i
+            {{ "BECADO" | translate }}: <i
               class="fa fa-{{ testimonies?.becado === 1 ? 'check-circle' : 'times' }}"></i>
             &nbsp;
-            Colaborador: <i
+            {{ "COLABORADOR" | translate }}: <i
               class="fa fa-{{ testimonies?.colaborador === 1 ? 'check-circle' : 'times' }}"></i>
-          </h5>
+           
+              {{ "VOLUNTARIO" | translate }}: <i
+              class="fa fa-{{ testimonies?.voluntario === 1 ? 'check-circle' : 'times' }}"></i>
+            </h5>
         </div>
         <div class="col-lg-8 col-sm-12 col-md-12 fontBreeSerif">
           <br>
-          <h5>COMUNIDAD: {{ testimonies?.nombre }}</h5>
+          <h5>{{ "COMUNITY" | translate }}: {{ testimonies?.nombre }}</h5>
           <br>
           <p>{{ testimonies?.descripcion | striphtml }}</p>
           <p>
