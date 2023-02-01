@@ -40,11 +40,9 @@
   <div class="container" style="z-index: 5;">
     <div class="left-content show-up header-text wow fadeInLeft fadeRight" style="z-index: 2;">
       <div class="col-lg-12 align-self-center" style="color: black;">
-        <div class="row col-12">
-          <div class="col-4">
-            <h2>{{ "socialProyects" | translate }}</h2>
-          </div>
-          <div class="border-first-button scroll-to-section col-4" style="margin-left: -50px;">
+        <div class="row col-12 wrapper">
+          <h2 class="item1">{{ "socialProyects" | translate }}</h2>
+          <div class="border-first-button scroll-to-section item2">
             <a [routerLink]="['/projects']">{{ "SEE_ALL"|translate }}</a>
           </div>
         </div>
@@ -88,9 +86,11 @@
 
 <!-- Testimonies -->
 <div class="blog" style="z-index: -1;" id="testimonies"></div>
-<h2 style="margin-left: 7vw;">{{ "TESTIMONIES" | translate}}</h2>
-<div class="border-first-button scroll-to-section" style="margin-left: 7vw;">
-  <a [routerLink]="['/testimonies']">{{ "SEE_ALL"|translate }}</a>
+<div class="wrapper">
+  <h2 style="margin-left: 7vw;" class="item1">{{ "TESTIMONIES" | translate }}</h2>
+  <div class="border-first-button scroll-to-section item2" style="margin-left: 7vw;">
+    <a [routerLink]="['/testimonies']">{{ "SEE_ALL"|translate }}</a>
+  </div>
 </div>
 
 <div class="row">
@@ -101,7 +101,7 @@
         <p class="information">
           <hr>
           <ul>
-            <li>• <strong>Comunity : </strong>{{testim?.comunidad}} </li>
+            <li>• <strong>Comunity : </strong>{{ testim?.comunidad }} </li>
           </ul>
           <br>
           <hr>
@@ -119,7 +119,7 @@
         <img [src]="testim?.imagen == null ? '../../../../../assets/images/sin-foto.png' : 
                     'https://dev.elsalvador-cis.com/storage/' + testim?.imagen" alt="">
         <div class="info">
-          <h2> {{"DESCRIP_ACTIVITY" | translate }}</h2>
+          <h2> {{ "DESCRIP_ACTIVITY" | translate }}</h2>
           <br>
           <ul class="container">
             <p [innerHTML]="testim?.descripcion | striphtml | slice:0:150">...</p>

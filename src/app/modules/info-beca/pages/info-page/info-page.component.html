@@ -61,6 +61,8 @@
         </h5>
       </div>
     </div>
+
+
     <div class="shadowInformationPersonal row col-auto justify-content-center m-0">
       <div class="col-lg-5 container m-0 justify-content-center text-center">
         <h5 [hidden]="settings?.institucion ? '' : 'hidden'" class="lessLineHeight">
@@ -123,8 +125,9 @@
       </div>
     </div>
 
+    
     <!-- Preguntas -->
-    <div class="col-12 pdding1 container" [hidden]="!settings?.impacto_vida &&
+    <div class="col-12 pdding1 glass" [hidden]="!settings?.impacto_vida &&
         !settings?.impacto_comunidad &&
         !settings?.obstaculos_educacion &&
         !settings?.propositos_finalizar ? 'hidden' : ''">
@@ -178,7 +181,7 @@
         </h5>
       </h5> -->
     </div>
-    <hr class="shadowHr">
+    <!-- <hr class="shadowHr"> -->
 
     <!-- Tablas -->
 
