@@ -53,7 +53,7 @@
     <div class="row col-sm-12">
       <div class="col-lg-7 col-sm-12" style="z-index: 2;">
         <div class="contenedorIMG">
-          <img src="{{ projects[0]?.actividades[0].fotografias[0].downloadUrl }}" height="350px">
+          <img src="{{ projects[0]?.actividades[0]?.fotografias[0]?.downloadUrl }}" height="350px">
           <div class="centerTextInImg">{{ projects[0]?.nombre }}...</div>
         </div>
       </div>
@@ -93,17 +93,16 @@
   </div>
 </div>
 
-<div class="row">
+<div class="flex-container">
   <div *ngFor="let testim of testimonies">
     <div id="container">
       <div class="product-details">
-        <h1>{{ testim?.nombre }}</h1>
+        <h3>{{ testim?.nombre }}</h3>
         <p class="information">
           <hr>
           <ul>
             <li>• <strong>Comunity : </strong>{{ testim?.comunidad }} </li>
           </ul>
-          <br>
           <hr>
           {{ "BECADO" | translate }}: <i
             class="fa fa-{{ testim?.becado === 1 ? 'check-circle' : 'times' }}"></i>
@@ -119,10 +118,10 @@
         <img [src]="testim?.imagen == null ? '../../../../../assets/images/sin-foto.png' : 
                     'https://dev.elsalvador-cis.com/storage/' + testim?.imagen" alt="">
         <div class="info">
-          <h2> {{ "DESCRIP_ACTIVITY" | translate }}</h2>
+          <h3> {{ "DESCRIP_ACTIVITY" | translate }}</h3>
           <br>
           <ul class="container">
-            <p [innerHTML]="testim?.descripcion | striphtml | slice:0:150">...</p>
+            <p [innerHTML]="testim?.descripcion | striphtml | slice:0:100">...</p>
           </ul>
         </div>
       </div>
@@ -190,7 +189,7 @@
 </div>
 
 <!-- ------------Contact container-------------- -->
-<div id="contact" class="contact-us section">
+<!-- <div id="contact" class="contact-us section">
   <div class="container">
     <div class="row">
       <div class="col-lg-6 offset-lg-3">
@@ -271,4 +270,4 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->

@@ -159,10 +159,20 @@ h6{
 	border-radius: 5px;
 	overflow: hidden;
 	margin: 1vw auto;
-	height: 300px;
-	width: 600px;
-  
-	
+	height: 310px;
+	width: auto;
+  margin: 10px;
+}
+.flex-container {
+  display: flex;
+  justify-content: space-evenly;
+  align-content: space-around;
+  /* flex-wrap: wrap; */
+}
+@media (max-width: 800px) {
+  .flex-container {
+    flex-direction: column;
+  }
 }
 
 .product-details {

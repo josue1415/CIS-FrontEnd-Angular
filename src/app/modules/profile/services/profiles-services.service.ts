@@ -1,6 +1,7 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -12,25 +13,25 @@ export class ProfilesServicesService {
 
   constructor(private http: HttpClient) { }
 
+  headers = new HttpHeaders({
+    'Content-Type': 'application/json',
+    'Authorization': 'Bearer 3|XEZAW2sVZnGx7pNx7AusmPA4kyxEalpzyr2NaK5Y'
+  });
+  options = { headers: this.headers };
+
   getOnlytwentyBecados(): Observable<any> {
     return this.http.get(`${this.URL}/getOnlytwentyBecados`)
   }
 
   getSocialProjects(): Observable<any> {
-    let headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer 3|yQVzfdbTwVkfBqPbk12uZxK8fG8KT5ziotUTYmG1'
-    });
-    let options = { headers: headers };
-    return this.http.get(`${this.URLToken}/proyectos-sociales?idioma=es`, options)
+    return this.http.get(`${this.URLToken}/proyectos-sociales?idioma=es`, this.options)
+    .pipe(catchError((error: HttpErrorResponse) => throwError(error)));
   }
 
   getTestimonies(): Observable<any> {
-    let headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer 3|yQVzfdbTwVkfBqPbk12uZxK8fG8KT5ziotUTYmG1'
-    });
-    let options = { headers: headers };
-    return this.http.get(`${this.URLToken}/testimonios?idioma=es`, options)
+    return this.http.get(`${this.URLToken}/testimonios?idioma=es`, this.options)
+    .pipe(catchError((error: HttpErrorResponse) => throwError(error)));
   }
+
+
 }
