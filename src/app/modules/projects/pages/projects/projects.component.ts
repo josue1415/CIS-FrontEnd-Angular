@@ -24,7 +24,7 @@ export class ProjectsComponent implements OnInit {
   images: any[] = [];
   threeProjects: any[] = [];
 
-  error: any = "NO";
+  noError: any = true;
 
   isLangEnglish: string = ""; // verifica el idioma clickeado en el header
 
@@ -60,7 +60,7 @@ export class ProjectsComponent implements OnInit {
           this.translate.use(this.translate.currentLang),
           this.projectsService.getProjectById(this.receivedId, this.isLangEnglish).subscribe(
             resp => {
-              this.project = resp.data, this.getImages(), this.isLoader = false;
+              this.project = resp.data, this.getImages(), this.isLoader = false, this.noError = true;
             },
             error => {
               this.errorLog(error, "No existe traducción")
@@ -103,7 +103,7 @@ export class ProjectsComponent implements OnInit {
   }
 
   errorLog(errorParam: any, program: string): void {
-    console.log(program, errorParam.error, errorParam.status), this.error = errorParam.ok;
+    console.log(program, errorParam.error, errorParam.status), this.noError = errorParam.ok;
   }
 
 }
