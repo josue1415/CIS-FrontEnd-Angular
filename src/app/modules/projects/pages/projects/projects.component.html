@@ -22,7 +22,7 @@
         </div>
       </div>
     </ng-container>
-  
+
     <ng-template #cardTemplate>
       <div class="is-loading container" style="position: relative; z-index: 2;">
         <h2>{{ project?.nombre }}</h2> <br>
@@ -54,11 +54,11 @@
           </div>
         </div>
       </div>
-  
+
       <h4 class="container">
         <hr width="250px">
         {{ "ACTIVITIES" | translate }} </h4>
-  
+
       <div *ngFor="let activity of project?.actividades; index as i">
         <div class="container">
           <div class="course">
@@ -82,7 +82,8 @@
               <h6> {{ "OBSTACLES" | translate }} : </h6>
               <h5>{{ activity?.obstaculos | striphtml }}</h5>
               <br>
-              <button class="btn" (click)="openModal('partic', i)"> {{ "SEE_PARTIC" | translate }}
+              <button class="btn" (click)="openModal('partic', i)">
+                {{ "SEE_PARTIC" | translate }}
               </button>
               <button class="btn" (click)="openModal('foto', i)"> {{ "SEE_FOTO" | translate }}
               </button>
@@ -90,7 +91,7 @@
           </div>
         </div>
       </div>
-  
+
       <h4 class="container">
         <hr width="250px">
         {{ "AUDIOVISUAL_GALLERY" | translate }} </h4>
@@ -107,7 +108,7 @@
           </div>
         </div>
       </section>
-  
+
       <div class="blog">
         <div class="container" style="position: relative;">
           <hr width="250px">
@@ -130,9 +131,11 @@
   </ng-container>
 
   <ng-template #showError>
-no
+    <div class="container card"  style="position: relative; z-index: 999; text-align: center;">
+      <h3>PROJECTO NO CUENTA CON TRADUCCIÓN, POR FAVOR, CAMBIE IDIOMA</h3>
+    </div>
   </ng-template>
 
-  
+
 
 </div>
