@@ -18,7 +18,7 @@ export class ProjectsService {
     });
     let options = { headers: headers };
     return this.http.get(`${this.URL}/proyectos-sociales?idioma=es`, options)
-    .pipe(catchError((error: HttpErrorResponse) => throwError(error)));
+      .pipe(catchError((error: HttpErrorResponse) => throwError(error)));
   }
 
   getProjectById(id: String, lang: String): Observable<any> {
@@ -28,6 +28,6 @@ export class ProjectsService {
     });
     let options = { headers: headers };
     return this.http.get(`${this.URL}/proyectos-sociales/${id}?idioma=${lang}`, options)
-    .pipe(catchError((error: HttpErrorResponse) => throwError(error)));
+      .pipe(catchError((error: HttpErrorResponse) => throwError(error)));
   }
 }

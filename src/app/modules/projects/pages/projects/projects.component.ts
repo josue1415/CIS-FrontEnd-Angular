@@ -19,7 +19,7 @@ export class ProjectsComponent implements OnInit {
   isLoader: Boolean = true;
 
   listObservers: Array<Subscription> = [];
-  project: any;
+  project: any = [];
   isFoto: Boolean = false;
   images: any[] = [];
   threeProjects: any[] = [];
@@ -42,7 +42,7 @@ export class ProjectsComponent implements OnInit {
     this.modalRef = this.modalService.open(
       !this.isFoto ? VerParticipantesComponent : VerFotografiasComponent, {
       modalClass: 'modal-lg',
-      data: { list: this.isFoto ? this.project.actividades[indice].fotografias : this.project.actividades[indice].asistencia }
+      data: { list: this.isFoto ? this.project?.actividades[indice]?.fotografias : this.project?.actividades[indice]?.asistencia }
     })
   }
 
@@ -59,8 +59,10 @@ export class ProjectsComponent implements OnInit {
         this.isLangEnglish = resp,
           this.translate.use(this.translate.currentLang),
           this.projectsService.getProjectById(this.receivedId, this.isLangEnglish).subscribe(
-            resp => {
-              this.project = resp.data, this.getImages(), this.isLoader = false, this.noError = true;
+            resp2 => {
+              this.project = resp2?.data, this.getImages(),
+                this.isLoader = false, this.noError = true,
+                this.knowIsEmpty(this.project)
             },
             error => {
               this.errorLog(error, "No existe traducción")
@@ -85,9 +87,11 @@ export class ProjectsComponent implements OnInit {
   }
 
   getImages(): void {
-    for (const activ of this.project.actividades) {
-      for (const imag of activ.fotografias) {
-        this.images.push({ img: imag.downloadUrl, caption: imag.caption, descrip: imag.description });
+    if (this.project?.actividades) {
+      for (const activ of this.project?.actividades) {
+        for (const imag of activ.fotografias) {
+          this.images.push({ img: imag.downloadUrl, caption: imag.caption, descrip: imag.description });
+        }
       }
     }
   }
@@ -104,6 +108,11 @@ export class ProjectsComponent implements OnInit {
 
   errorLog(errorParam: any, program: string): void {
     console.log(program, errorParam.error, errorParam.status), this.noError = errorParam.ok;
+  }
+
+  knowIsEmpty(object: any) {
+    if (typeof object !== "undefined" && object.length == 0)
+      this.noError = false;
   }
 
 }
