@@ -35,7 +35,7 @@
   </div>
 </div>
 
-<!-- ---------------Projects section ------------------ -->
+<!-- ---------------Social Projects section ------------------ -->
 <div id="projects" class=" fadeLeft col-12">
   <div class="container" style="z-index: 5;">
     <div class="left-content show-up header-text wow fadeInLeft fadeRight" style="z-index: 2;">
@@ -51,42 +51,88 @@
     </div>
     <br>
     <div class="row col-sm-12">
-      <div class="col-lg-7 col-sm-12" style="z-index: 2;">
-        <div class="contenedorIMG">
-          <img src="{{ projects[0]?.actividades[0]?.fotografias[0]?.downloadUrl }}" height="350px">
-          <div class="centerTextInImg">{{ projects[0]?.nombre }}...</div>
-        </div>
-      </div>
-      <div class="col-lg-5 col-sm-12" style="z-index: 2;">
-        <div class="row">
-          <div class="col-lg-6 col-sm-12">
-            <div class="contenedorIMG">
-              <img src="{{ projects[1]?.actividades[0]?.fotografias[0]?.downloadUrl }}" height="140px">
-              <div class="centerTextInImg small">{{ projects[1]?.nombre }}...</div>
-            </div>
-          </div>
-          <div class="col-lg-6 col-sm-12">
-            <div class="contenedorIMG">
-              <img src="{{ projects[2]?.actividades[0]?.fotografias[0]?.downloadUrl }}" height="140px">
-              <div class="centerTextInImg small">{{ projects[2]?.nombre }}...</div>
-            </div>
+
+      <ng-container *ngIf="isLoadingProjects; else elseProject">
+        <div class="center">
+          <div class="lds-roller">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
           </div>
         </div>
-        <br>
-        <div class="col-lg-12">
+      </ng-container>
+
+      <ng-template #elseProject>
+        <div class="col-lg-7 col-sm-12" style="z-index: 2;">
           <div class="contenedorIMG">
-            <img src="{{ projects[3]?.actividades[0]?.fotografias[0]?.downloadUrl }}" height="185px">
-            <div class="centerTextInImg">{{ projects[3]?.nombre }}...</div>
+            <ng-container *ngIf="projects[0]; else elseNoData">
+              <img src="{{ projects[0]?.actividades[0]?.fotografias[0]?.downloadUrl }}" height="350px">
+              <div class="centerTextInImg">{{ projects[0]?.nombre }}...</div>
+            </ng-container>
           </div>
         </div>
-      </div>
+        <div class="col-lg-5 col-sm-12" style="z-index: 2;">
+          <div class="row">
+            <div class="col-lg-6 col-sm-12">
+              <div class="contenedorIMG">
+                <ng-container *ngIf="projects[1]; else elseNoData">
+                  <img src="{{ projects[1]?.actividades[0]?.fotografias[0]?.downloadUrl }}"
+                    height="140px">
+                  <div class="centerTextInImg small">{{ projects[1]?.nombre }}...</div>
+                </ng-container>
+              </div>
+            </div>
+            <div class="col-lg-6 col-sm-12">
+              <div class="contenedorIMG">
+                <ng-container *ngIf="projects[2]; else elseNoData">
+                  <img src="{{ projects[2]?.actividades[0]?.fotografias[0]?.downloadUrl }}"
+                    height="140px">
+                  <div class="centerTextInImg small">{{ projects[2]?.nombre }}...</div>
+                </ng-container>
+              </div>
+            </div>
+          </div>
+          <br>
+          <div class="col-lg-12">
+            <div class="contenedorIMG">
+              <ng-container *ngIf="projects[3]; else elseNoData">
+                <img src="{{ projects[3]?.actividades[0]?.fotografias[0]?.downloadUrl }}"
+                  height="185px">
+                <div class="centerTextInImg">{{ projects[3]?.nombre }}...</div>
+              </ng-container>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+
     </div>
   </div>
 </div>
 
+<ng-template #elseNoData>
+  <div class="center">
+    <!-- <h4 style="color: black;">No data</h4> -->
+    <div class="lds-roller">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+</ng-template>
+
 <!-- Testimonies -->
-<div class="blog" style="z-index: -1;" id="testimonies"></div>
-<div class="wrapper">
+<div class="blog" style="z-index: -1;"></div>
+<div class="wrapper" id="testimonies">
   <h2 style="margin-left: 7vw;" class="item1">{{ "TESTIMONIES" | translate }}</h2>
   <div class="border-first-button scroll-to-section item2" style="margin-left: 7vw;">
     <a [routerLink]="['/testimonies']">{{ "SEE_ALL"|translate }}</a>
@@ -129,7 +175,7 @@
   </div>
 </div>
 <!-- -------------------Profiles section ------------------------- -->
-<div class="blog" style="z-index: -1;"></div>
+<!-- <div class="blog" style="z-index: -1;"></div> -->
 <div id="profiles" class="blog fadeLeft">
   <div class="container">
     <div class="row">
@@ -150,7 +196,7 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-lg-12">
-        <ng-container *ngIf="isLoading; else elseTemplate">
+        <ng-container *ngIf="isLoadingBecados; else elseTemplate">
           <div class="center">
             <div class="lds-roller">
               <div></div>
@@ -189,18 +235,18 @@
 </div>
 
 <!-- ------------Contact container-------------- -->
-<!-- <div id="contact" class="contact-us section">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-6 offset-lg-3">
-        <div class="section-heading wow fadeIn">
-          <h6>{{ "CONTACT_US"|translate }}</h6>
+<div id="contact" class="contact-us section">
+  <!-- <div class="container"> -->
+  <div class="row">
+    <div class="col-lg-6 offset-lg-3">
+      <div class="section-heading wow fadeIn">
+        <!-- <h6>{{ "CONTACT_US"|translate }}</h6>
           <h4>{{ "TITLE_CONTACT"|translate }} <em>{{ "Now"|translate }}</em>
           </h4>
-          <div class="line-dec"></div>
-        </div>
+          <div class="line-dec"></div> -->
       </div>
-      <div class="col-lg-12 wow fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.25s">
+    </div>
+    <!-- <div class="col-lg-12 wow fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.25s">
         <form id="contact" action="" method="post">
           <div class="row">
             <div class="col-lg-12">
@@ -267,7 +313,7 @@
             </div>
           </div>
         </form>
-      </div>
-    </div>
+      </div> -->
   </div>
-</div> -->
+  <!-- </div> -->
+</div>

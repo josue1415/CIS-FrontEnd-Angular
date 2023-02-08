@@ -15,6 +15,10 @@ export class ProfilePageComponent implements OnInit, OnDestroy {
 
   testimonios: Array<any> = [1, 2, 3];
   isLoading: boolean = true;
+  isLoadingBecados: boolean = true;
+  isLoadingProjects: boolean = true;
+  isLoadingTestimonies: boolean = true;
+  
   listObservers: Array<Subscription> = [];
 
   constructor(private profileService: ProfilesServicesService) { }
@@ -23,7 +27,7 @@ export class ProfilePageComponent implements OnInit, OnDestroy {
     const observer = this.profileService.getOnlytwentyBecados().subscribe(
       resp => {
         this.becados = resp,
-          this.isLoading = false
+          this.isLoadingBecados = false
       },
       error => {
         this.errorLog(error, "twentyBecados")
@@ -32,7 +36,7 @@ export class ProfilePageComponent implements OnInit, OnDestroy {
 
     const observerSocialProj = this.profileService.getSocialProjects().subscribe(
       resp => {
-        this.projects = resp.data.slice(0, 4)
+        this.projects = resp.data.slice(0, 4), this.isLoadingProjects = false
       },
       error => {
         this.errorLog(error, "SocialProject")
@@ -42,7 +46,7 @@ export class ProfilePageComponent implements OnInit, OnDestroy {
 
     const observerTestimonies = this.profileService.getTestimonies().subscribe(
       resp => {
-        this.testimonies = resp.data.slice(0, 3)
+        this.testimonies = resp.data.slice(0, 3), this.isLoadingTestimonies = false
       },
       error => {
         this.errorLog(error, "Testimonies")

@@ -61,12 +61,18 @@ export class ProjectsComponent implements OnInit {
               this.project = resp.data, this.getImages(), this.isLoader = false;
             }
           )
+      },
+      error => {
+        this.errorLog(error, "twentyBecados")
       }
     );
 
     const observerAll = this.projectsService.getProjects().subscribe(
       resp => {
         this.threeProjects = resp.data.slice(0, 3);
+      },
+      error => {
+        this.errorLog(error, "twentyBecados")
       }
     )
 
@@ -89,6 +95,10 @@ export class ProjectsComponent implements OnInit {
     this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
       this.router.navigate(['detail-project', encid]);
     });
+  }
+
+  errorLog(errorParam: any, program: string): void {
+    console.log(program, errorParam.error, errorParam.status), this.project = errorParam.ok;
   }
 
 }

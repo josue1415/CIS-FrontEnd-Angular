@@ -22,6 +22,7 @@ export class DetailProfileComponent implements OnInit {
   ListGlobal: Array<any> = [];
   product: any;
   redirect: string = "";
+  error: any = "NO";
 
   constructor(private searchService: SearchService, private activatedroute: ActivatedRoute) {
     window.scroll({
@@ -46,12 +47,18 @@ export class DetailProfileComponent implements OnInit {
             this.ListGlobal = res.data;
             this.pageSlice = this.ListGlobal.slice(0, 10);
             this.isLoader = false;
+          },
+          error => {
+            this.errorLog(error, "projects")
           }
         )
         // Filtrado para Becados, obtiene las comunidades
         this.searchService.getCommunities$().subscribe(
           resp => {
             this.toppingList = resp;
+          },
+          error => {
+            this.errorLog(error, "Communities")
           }
         )
         break;
@@ -65,12 +72,18 @@ export class DetailProfileComponent implements OnInit {
             // this.pageSlice = this.ListGlobal;
             this.pageSlice = this.ListGlobal.slice(0, 10);
             this.isLoader = false;
+          },
+          error => {
+            this.errorLog(error, "testimonies")
           }
         )
         // Filtrado para Becados, obtiene las comunidades
         this.searchService.getCommunities$().subscribe(
           resp => {
             this.toppingList = resp;
+          },
+          error => {
+            this.errorLog(error, "comunities")
           }
         )
         break;
@@ -83,16 +96,26 @@ export class DetailProfileComponent implements OnInit {
             this.ListGlobal = res;
             this.pageSlice = this.ListGlobal.slice(0, 10);
             this.isLoader = false;
+          },
+          error => {
+            this.errorLog(error, "becados")
           }
         )
         // Filtrado para Becados, obtiene las comunidades
         this.searchService.getCommunities$().subscribe(
           resp => {
             this.toppingList = resp;
+          },
+          error => {
+            this.errorLog(error, "comunities")
           }
         )
         break;
     }
+  }
+
+  errorLog(errorParam: any, program: string): void {
+    console.log(program, errorParam.error, errorParam.status), this.error = errorParam.ok;
   }
 
   onPageChange(event: PageEvent) {

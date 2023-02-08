@@ -1,7 +1,7 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-
+import { Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
@@ -14,25 +14,32 @@ export class SearchService {
 
   private headers = new HttpHeaders({
     'Content-Type': 'application/json',
-    'Authorization': 'Bearer 3|yQVzfdbTwVkfBqPbk12uZxK8fG8KT5ziotUTYmG1'
+    'Authorization': 'Bearer 4|ktXNPCwAbTbLXeaqF7tQKdBAJ46EomY0NehcDQwN'
   });
   private options = { headers: this.headers };
 
   searchDataBecados$(): Observable<any> {
-    return this.http.get(`${this.URL}/getBecados`);
+    return this.http.get(`${this.URL}/getBecados`)
+      .pipe(catchError((error: HttpErrorResponse) => throwError(error)));
   }
 
   searchDataTestimonies$(): Observable<any> {
-    return this.http.get(`${this.URL2}/testimonios?idioma=es`, this.options);
+    return this.http.get(`${this.URL2}/testimonios?idioma=es`, this.options)
+      .pipe(catchError((error: HttpErrorResponse) => throwError(error)));
+    ;
   }
 
   searchDataProjects$(): Observable<any> {
 
-    return this.http.get(`${this.URL2}/proyectos-sociales?idioma=es`, this.options);
+    return this.http.get(`${this.URL2}/proyectos-sociales?idioma=es`, this.options)
+      .pipe(catchError((error: HttpErrorResponse) => throwError(error)));
+    ;
   }
   // Get Name of all communities
   getCommunities$(): Observable<any> {
-    return this.http.get(`${this.URL}/getCommunities`);
+    return this.http.get(`${this.URL}/getCommunities`)
+      .pipe(catchError((error: HttpErrorResponse) => throwError(error)));
+    ;
   }
 
 
