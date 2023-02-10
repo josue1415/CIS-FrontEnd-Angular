@@ -2,11 +2,6 @@
 
 <div class="main-banner" style="z-index: 1;">
 
-  <div class="social">
-    <a href="#"><img src="../../../../../assets/images/fb.png" alt="facebook"></a>
-    <a href="#"><img src="../../../../../assets/images/yt.png" alt="youtube"></a>
-  </div>
-
   <ng-container *ngIf="isLoader; else cardTemplate">
     <div class="center">
       <div class="lds-roller">
@@ -23,35 +18,50 @@
   </ng-container>
 
   <ng-template #cardTemplate>
-    <div class="container card" style="position: relative; z-index: 2;">
-      <div class="row">
-        <div class="col-lg-4 col-sm-12 col-md-12 fontEBGaramond">
-          <img class="img-fluid img-thumbnail" src="https://dev.elsalvador-cis.com/storage/{{ testimonies?.imagen }}"
-            alt="imagen persona" style="max-width: 90%;">
-          <h4>{{ testimonies?.nombre | uppercase }}</h4>
-          <hr>
-          <h5>
-            {{ "BECADO" | translate }}: <i
-              class="fa fa-{{ testimonies?.becado === 1 ? 'check-circle' : 'times' }}"></i>
-            &nbsp;
-            {{ "COLABORADOR" | translate }}: <i
-              class="fa fa-{{ testimonies?.colaborador === 1 ? 'check-circle' : 'times' }}"></i>
-           
+    <div *ngIf="testimonies?.encid; else showAlert">
+      <div class="container card" style="position: relative; z-index: 2;">
+        <div class="row">
+          <div class="col-lg-4 col-sm-12 col-md-12 fontEBGaramond">
+            <img class="img-fluid img-thumbnail" [src]="(testimonies?.imagen) == null ? '../../../../../assets/images/sin-foto.png' :
+                 (testimonies?.imagen ? 'https://elsalvador-cis.com/storage/' + 
+                 testimonies?.imagen : '../../../../../assets/images/sin-foto.png')" alt="imagen persona"
+              style="max-width: 90%;">
+            <h4>{{ testimonies?.nombre | uppercase }}</h4>
+            <hr>
+            <h5>
+              {{ "BECADO" | translate }}: <i
+                class="fa fa-{{ testimonies?.becado === 1 ? 'check-circle' : 'times' }}"></i>
+              &nbsp;
+              {{ "COLABORADOR" | translate }}: <i
+                class="fa fa-{{ testimonies?.colaborador === 1 ? 'check-circle' : 'times' }}"></i>
+
               {{ "VOLUNTARIO" | translate }}: <i
-              class="fa fa-{{ testimonies?.voluntario === 1 ? 'check-circle' : 'times' }}"></i>
+                class="fa fa-{{ testimonies?.voluntario === 1 ? 'check-circle' : 'times' }}"></i>
             </h5>
-        </div>
-        <div class="col-lg-8 col-sm-12 col-md-12 fontBreeSerif">
-          <br>
-          <h5>{{ "COMUNITY" | translate }}: {{ testimonies?.nombre }}</h5>
-          <br>
-          <p>{{ testimonies?.descripcion | striphtml }}</p>
-          <p>
-            {{ testimonies?.observacion != null ? 'Observaciones: ' + testimonies?.observacion  : '' }}
-          </p>
+          </div>
+          <div class="col-lg-8 col-sm-12 col-md-12 fontBreeSerif">
+            <br>
+            <h5>{{ "COMUNITY" | translate }}: {{ testimonies?.nombre }}</h5>
+            <br>
+            <p>{{ testimonies?.descripcion | striphtml }}</p>
+            <p>
+              {{ testimonies?.observacion != null ? 'Observaciones: ' + testimonies?.observacion  : '' }}
+            </p>
+          </div>
         </div>
       </div>
     </div>
+  </ng-template>
+
+  <ng-template #showAlert>
+    <main>
+      <section>
+        <div class="alert alert-2-secondary">
+          <h3 class="alert-title">TESTIMONIO NO CUENTA CON TRADUCCIÓN</h3>
+          <p class="alert-content">FAVOR CAMBIAR IDIOMA</p>
+        </div>
+      </section>
+    </main>
   </ng-template>
 
 </div>

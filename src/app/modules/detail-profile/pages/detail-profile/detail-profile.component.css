@@ -1,8 +1,16 @@
-*{
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+/* *{
   z-index: 2;
+  box-sizing: border-box;
 }
+
 body {
   font-family: 'Times New Roman', Times, serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
 }
 
 .card {
@@ -20,7 +28,7 @@ body {
   -webkit-box-shadow: -3px 6px 74px -6px rgba(90, 128, 163, 1);
   -moz-box-shadow: -3px 6px 74px -6px rgba(90, 128, 163, 1);
   cursor: pointer;
-}
+} */
 
 .grid {
   display: grid;
@@ -34,11 +42,83 @@ body {
 
 }
 
-/* items */
-
-.grid div {
-  padding: 15px;
+* {
+  /* box-sizing: border-box; */
+  z-index: 2;
 }
+
+body {
+  /* display: flex; */
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  background-color: #f7f8fc;
+  font-family: "Roboto", sans-serif;
+  color: #10182f;
+}
+
+.containerCard {
+  /* display: flex; */
+  /* width: 1040px; */
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.card2 {
+  cursor: pointer;
+  margin: 10px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  /* width: 300px; */
+}
+
+.card-header2 img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.card-body2 {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: flex-start;
+  padding: 20px;
+  min-height: 200px;
+}
+
+.tag {
+  background: #cccccc;
+  border-radius: 50px;
+  font-size: 12px;
+  margin: 0;
+  color: #fff;
+  padding: 2px 10px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.tag-teal {
+  background-color: #47bcd4;
+}
+
+.tag-purple {
+  background-color: #5e76bf;
+}
+
+.tag-pink {
+  background-color: #cd5b9f;
+}
+
+.card-body2 p {
+  font-size: 13px;
+  margin: 0 0 40px;
+}
+
+
+/* items */
 
 .search {
   /* font-size: 2vw; */
@@ -76,4 +156,3 @@ body {
 .active-filter-width {
   width: 20vw;
 }
-

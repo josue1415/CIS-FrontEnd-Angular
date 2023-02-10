@@ -41,6 +41,9 @@ export class TestimoniesComponent implements OnInit {
           this.testimoniesService.getTestimoniesById(this.receivedId, this.isLangEnglish).subscribe(
             resp => {
               this.testimonies = resp.data, this.isLoader = false
+            },
+            error => {
+              this.errorLog(error, "No existe testimonio")
             }
           )
       }
@@ -51,6 +54,10 @@ export class TestimoniesComponent implements OnInit {
   }
   ngOnDestroy(): void {
     this.listObservers.forEach(u => u.unsubscribe);
+  }
+
+  errorLog(errorParam: any, program: string): void {
+    console.log(program, errorParam.error, errorParam.status)
   }
 
 }

@@ -49,7 +49,7 @@
           <ng-template #cardTemplate>
             <div class="grid">
               <div *ngFor="let item of pageSlice">
-                <div class="card" [routerLink]="['/', redirect, item.encid]">
+                <div class="" [routerLink]="['/', redirect, item.encid]">
                   <container-element [ngSwitch]="product">
                     <!-- the same view can be shown in more than one case -->
                     <div *ngSwitchCase="'projects'">
@@ -64,11 +64,12 @@
                         </p>
                       </div>
                     </div>
+
                     <div *ngSwitchCase="'testimonies'">
                       <div class="center">
                         <img class="img-thumbnail"
-                          [src]="(item?.foto) == null ? '../../../../../assets/images/sin-foto.png' :
-                               (item?.foto ? 'https://elsalvador-cis.com/storage/' + item?.foto : '../../../../../assets/images/sin-foto.png')"
+                          [src]="(item?.imagen) == null ? '../../../../../assets/images/sin-foto.png' :
+                               (item?.imagen ? 'https://dev.elsalvador-cis.com/storage/' + item?.imagen : '../../../../../assets/images/sin-foto.png')"
                           alt="Imagen Becado">
                       </div>
                       <div class="card-body">
@@ -85,19 +86,39 @@
                         </h5>
                       </div>
                     </div>
+
                     <!--default case when there are no matches -->
                     <div *ngSwitchDefault>
-                      <div class="center">
+
+                      <div class="containerCard">
+                        <div class="card2">
+                          <div class="card-header2">
+                            <img
+                              [src]="(item?.foto) == null ? '../../../../../assets/images/sin-foto.png' :
+                            (item?.foto ? 'https://elsalvador-cis.com/storage/' + item?.foto : '../../../../../assets/images/sin-foto.png')"
+                              alt="Imagen Becado" />
+                          </div>
+                          <div class="card-body2">
+                            <span class="tag tag-teal">{{ item?.nombre }}</span>
+                            <br>
+                            <h4>
+                              {{ "FULL_NAME"|translate }}: {{ item?.nombre_completo }}
+                            </h4>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- <div class="center">
                         <img class="img-thumbnail"
                           [src]="(item?.foto) == null ? '../../../../../assets/images/sin-foto.png' :
                                (item?.foto ? 'https://elsalvador-cis.com/storage/' + item?.foto : '../../../../../assets/images/sin-foto.png')"
                           alt="Imagen Becado">
-                      </div>
-                      <div class="card-body">
+                      </div> -->
+                      <!-- <div class="card-body">
                         <h5>{{ "FULL_NAME"|translate }}: <b> {{ item?.nombre_completo }} </b></h5>
                         <hr>
                         <h5>{{ "COMMUNITY"|translate }}: <b>{{ item?.nombre }}</b></h5>
-                      </div>
+                      </div> -->
                     </div>
                   </container-element>
                 </div>

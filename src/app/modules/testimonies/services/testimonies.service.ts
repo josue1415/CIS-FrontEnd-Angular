@@ -13,7 +13,7 @@ export class TestimoniesService {
   getTestimonies(): Observable<any> {
     let headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization': 'Bearer 3|yQVzfdbTwVkfBqPbk12uZxK8fG8KT5ziotUTYmG1'
+      'Authorization': 'Bearer 4|ktXNPCwAbTbLXeaqF7tQKdBAJ46EomY0NehcDQwN'
     });
     let options = { headers: headers };
     return this.http.get(`${this.URL}/testimonios?idioma=es`, options)
@@ -22,7 +22,7 @@ export class TestimoniesService {
   getTestimoniesById(id: any, lang: String): Observable<any> {
     let headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization': 'Bearer 3|yQVzfdbTwVkfBqPbk12uZxK8fG8KT5ziotUTYmG1'
+      'Authorization': 'Bearer 4|ktXNPCwAbTbLXeaqF7tQKdBAJ46EomY0NehcDQwN'
     });
     let options = { headers: headers };
     return this.http.get(`${this.URL}/testimonios/${id}?idioma=${lang}`, options)

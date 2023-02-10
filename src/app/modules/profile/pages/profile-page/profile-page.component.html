@@ -138,37 +138,38 @@
     <a [routerLink]="['/testimonies']">{{ "SEE_ALL"|translate }}</a>
   </div>
 </div>
+<div *ngIf="!isLoadingTestimonies; else elseNoData">
+  <div class="flex-container">
+    <div *ngFor="let testim of testimonies">
+      <div id="container">
+        <div class="product-details">
+          <h3>{{ testim?.nombre }}</h3>
+          <p class="information">
+            <hr>
+            <ul>
+              <li>• <strong>Comunity : </strong>{{ testim?.comunidad }} </li>
+            </ul>
+            <hr>
+            {{ "BECADO" | translate }}: <i
+              class="fa fa-{{ testim?.becado === 1 ? 'check-circle' : 'times' }}"></i>
+            &nbsp;
+            {{ "COLABORADOR" | translate }}: <i
+              class="fa fa-{{ testim?.colaborador === 1 ? 'check-circle' : 'times' }}"></i>
+            &nbsp;
+            {{ "VOLUNTARIO" | translate }}: <i
+              class="fa fa-{{ testim?.voluntario === 1 ? 'check-circle' : 'times' }}"></i>
+        </div>
 
-<div class="flex-container">
-  <div *ngFor="let testim of testimonies">
-    <div id="container">
-      <div class="product-details">
-        <h3>{{ testim?.nombre }}</h3>
-        <p class="information">
-          <hr>
-          <ul>
-            <li>• <strong>Comunity : </strong>{{ testim?.comunidad }} </li>
-          </ul>
-          <hr>
-          {{ "BECADO" | translate }}: <i
-            class="fa fa-{{ testim?.becado === 1 ? 'check-circle' : 'times' }}"></i>
-          &nbsp;
-          {{ "COLABORADOR" | translate }}: <i
-            class="fa fa-{{ testim?.colaborador === 1 ? 'check-circle' : 'times' }}"></i>
-          &nbsp;
-          {{ "VOLUNTARIO" | translate }}: <i
-            class="fa fa-{{ testim?.voluntario === 1 ? 'check-circle' : 'times' }}"></i>
-      </div>
-
-      <div class="product-image">
-        <img [src]="testim?.imagen == null ? '../../../../../assets/images/sin-foto.png' : 
+        <div class="product-image">
+          <img [src]="testim?.imagen == null ? '../../../../../assets/images/sin-foto.png' : 
                     'https://dev.elsalvador-cis.com/storage/' + testim?.imagen" alt="">
-        <div class="info">
-          <h3> {{ "DESCRIP_ACTIVITY" | translate }}</h3>
-          <br>
-          <ul class="container">
-            <p [innerHTML]="testim?.descripcion | striphtml | slice:0:100">...</p>
-          </ul>
+          <div class="info">
+            <h3> {{ "DESCRIP_ACTIVITY" | translate }}</h3>
+            <br>
+            <ul class="container">
+              <p [innerHTML]="testim?.descripcion | striphtml | slice:0:100">...</p>
+            </ul>
+          </div>
         </div>
       </div>
     </div>

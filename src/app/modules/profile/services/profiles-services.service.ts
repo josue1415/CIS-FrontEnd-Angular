@@ -15,7 +15,7 @@ export class ProfilesServicesService {
 
   headers = new HttpHeaders({
     'Content-Type': 'application/json',
-    'Authorization': 'Bearer 3|XEZAW2sVZnGx7pNx7AusmPA4kyxEalpzyr2NaK5Y'
+    'Authorization': 'Bearer 4|ktXNPCwAbTbLXeaqF7tQKdBAJ46EomY0NehcDQwN'
   });
   options = { headers: this.headers };
 

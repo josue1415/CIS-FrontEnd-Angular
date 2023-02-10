@@ -23,24 +23,6 @@ p {
   margin: auto;
 }
 
-.social {
-  /*las imágenes usadas tienen width de 48px*/
-  width: 48px;
-  position: fixed;
-  top: 50px;
-  right: 0;
-}
-
-/* Extra centrado vertical*/
-
-.social {
-  /*border:1px solid #000;*/
-  top: 50%;
-  height: 205px;
-  /*para poner height 192 deberíamos haber indicado en el reset de estilos font-size:0;*/
-  margin-top: -100px;
-}
-
 
 .hint-star {
   display: inline-block;
@@ -55,4 +37,70 @@ border-radius: 16px;
 box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 backdrop-filter: blur(4.5px);
 -webkit-backdrop-filter: blur(4.5px);
+}
+
+// Para alert
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap');
+
+$secondary-color: #0d6efd;
+$danger-color: #ff3838;
+
+main {
+  padding: 40px;
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.alert {
+  width: 512px;
+  padding: 16px;
+  margin: 8px;
+  max-width: 90%;
+}
+
+@mixin alert-2($color) {
+  border-left: 4px solid $color;
+  background-color: rgba($color, 0.05);
+  
+  .alert-title {
+    color: $color;
+  }
+}
+
+@mixin alert-3($color) {
+  border: 1px solid lighten($color, 25%);
+  border-radius: 8px;
+  background-color: rgba($color, 0.05);
+  
+  .alert-title {
+    color: $color;
+  }
+}
+
+.alert-2-secondary {
+  @include alert-2($secondary-color);
+}
+
+.alert-3-danger {
+  @include alert-3($danger-color);
+}
+
+.alert-title {
+  margin-top: 0;
+  margin-bottom: 8px;
+  font-size: 18px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.alert-content {
+  margin: 0;
+  font-size: 14px;
+  font-family: 'Open Sans', sans-serif;
+  color: #555555;
 }
