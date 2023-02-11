@@ -43,6 +43,7 @@
     "Institution": "Institution",
     "Career": "Career",
     "STUDYING": "Actually studying",
+    "LEVEL" : "Level",
     "GRADUATION": "Graduation date",
     "CALIFICATION": "Califications average",
     "TOILET": "Type of toilet",

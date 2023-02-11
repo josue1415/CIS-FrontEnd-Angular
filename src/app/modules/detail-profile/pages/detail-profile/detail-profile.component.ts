@@ -95,8 +95,8 @@ export class DetailProfileComponent implements OnInit {
           res => {
             this.ListGlobal = res;
             this.pageSlice = this.ListGlobal.slice(0, 10);
-            this.isLoader = false; console.log(res);
-            
+            this.isLoader = false;
+
           },
           error => {
             this.errorLog(error, "becados")

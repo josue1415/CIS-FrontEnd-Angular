@@ -141,7 +141,35 @@
 <div *ngIf="!isLoadingTestimonies; else elseNoData">
   <div class="flex-container">
     <div *ngFor="let testim of testimonies">
-      <div id="container">
+      <div class="containerCard">
+        <div class="card2">
+          <div class="card-header2">
+            <img
+              [src]="(testim?.imagen) == null ? '../../../../../assets/images/sin-foto.png' :
+            (testim?.imagen ? 'https://dev.elsalvador-cis.com/storage/' + testim?.imagen : '../../../../../assets/images/sin-foto.png')"
+              alt="Imagen Becado" />
+          </div>
+          <div class="card-body2">
+            <span class="tag tag-teal">{{ testim?.comunidad }}</span>
+            <br><br>
+            <h4>
+              {{ testim?.nombre }}
+            </h4>
+            <br>
+            <div *ngIf="testim?.becado === 1">
+              <span class="tag tag-purple">{{ "BECADO" | translate }}</span>
+            </div>
+            <div *ngIf="testim?.colaborador === 1">
+              <span class="tag tag-purple">{{ "COLABORADOR" | translate }}</span>
+            </div>
+            <div *ngIf="testim?.voluntario === 1">
+              <span class="tag tag-purple">{{ "VOLUNTARIO" | translate }}</span>
+            </div>
+            <br>
+          </div>
+        </div>
+      </div>
+      <!-- <div id="container">
         <div class="product-details">
           <h3>{{ testim?.nombre }}</h3>
           <p class="information">
@@ -171,7 +199,7 @@
             </ul>
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
 </div>
