@@ -160,21 +160,22 @@
               {{ testim?.nombre }}
             </h4>
             <br>
+            <p>{{testim?.descripcion | striphtml | slice:0:120}}...</p>
             <div *ngIf="testim?.becado === 1">
               <span class="tag tag-purple">{{ "BECADO" | translate }}</span>
-            </div>
-            <div *ngIf="testim?.colaborador === 1">
-              <span class="tag tag-purple">{{ "COLABORADOR" | translate }}</span>
-            </div>
-            <div *ngIf="testim?.voluntario === 1">
-              <span class="tag tag-purple">{{ "VOLUNTARIO" | translate }}</span>
-            </div>
-            <br>
           </div>
+          <div *ngIf="testim?.colaborador === 1">
+            <span class="tag tag-purple">{{ "COLABORADOR" | translate }}</span>
+          </div>
+          <div *ngIf="testim?.voluntario === 1">
+            <span class="tag tag-purple">{{ "VOLUNTARIO" | translate }}</span>
+          </div>
+          <br>
         </div>
       </div>
     </div>
   </div>
+</div>
 </div>
 <!-- -------------------Profiles section ------------------------- -->
 <!-- <div class="blog" style="z-index: -1;"></div> -->
