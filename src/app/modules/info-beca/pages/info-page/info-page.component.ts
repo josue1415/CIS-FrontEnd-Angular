@@ -62,8 +62,7 @@ export class InfoPageComponent implements OnInit, OnDestroy {
     // Get Languaje clickeado en header
     const ObserverLanguaje$ = this.serviceHeader.languaje.subscribe(
       resp => {
-        this.isLangEnglish = resp, console.log(resp);
-        
+        this.isLangEnglish = resp,
           this.translate.use(this.translate.currentLang)
       }
     );

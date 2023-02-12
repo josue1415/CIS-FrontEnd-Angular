@@ -24,8 +24,7 @@ export class ProjectsComponent implements OnInit {
   images: any[] = [];
   threeProjects: any[] = [];
 
-  isLangEnglish: string = ""; // verifica el idioma clickeado en el header
-  mierda: string = "";
+  Lang: string = ""; // verifica el idioma clickeado en el header
   receivedId: String = "";
 
   constructor(private modalService: MdbModalService,
@@ -53,10 +52,10 @@ export class ProjectsComponent implements OnInit {
 
     const subscription = this.serviceHeader.navItem$
       .subscribe(item => {
-        this.mierda = item, this.projectsService.getProjectById(this.receivedId, this.mierda).subscribe(
+        this.Lang = item, this.projectsService.getProjectById(this.receivedId, this.Lang).subscribe(
           resp2 => {
             this.project = resp2?.data, this.getImages(),
-              this.isLoader = false, this.translate.use(this.mierda)
+              this.isLoader = false, this.translate.use(this.Lang)
           },
           error => {
             this.errorLog(error, "No existe traducción")

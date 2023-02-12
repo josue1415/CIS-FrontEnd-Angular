@@ -18,7 +18,7 @@ export class TestimoniesComponent implements OnInit {
   receivedId: string = ""; //Get ID by parameters in header
   isLoader = true;
 
-  isLangEnglish: string = ""; // verifica el idioma clickeado en el header
+  Lang: string = ""; // verifica el idioma clickeado en el header
 
   constructor(private testimoniesService: TestimoniesService,
     private activatedRoute: ActivatedRoute,
@@ -34,20 +34,17 @@ export class TestimoniesComponent implements OnInit {
     });
 
     // Get Languaje clickeado en header
-    const ObserverLanguaje$ = this.serviceHeader.languaje.subscribe(
-      resp => {
-        this.isLangEnglish = resp,
-          this.translate.use(this.translate.currentLang),
-          this.testimoniesService.getTestimoniesById(this.receivedId, this.isLangEnglish).subscribe(
-            resp => {
-              this.testimonies = resp.data, this.isLoader = false
-            },
-            error => {
-              this.errorLog(error, "No existe testimonio")
-            }
-          )
-      }
-    );
+    const ObserverLanguaje$ = this.serviceHeader.navItem$
+      .subscribe(item => {
+        this.Lang = item,  this.testimoniesService.getTestimoniesById(this.receivedId, this.Lang).subscribe(
+          resp => {
+            this.testimonies = resp.data, this.isLoader = false
+          },
+          error => {
+            this.errorLog(error, "No existe testimonio")
+          }
+        )
+      });
 
     this.listObservers = [ObserverGetParameter$, ObserverLanguaje$];
 
