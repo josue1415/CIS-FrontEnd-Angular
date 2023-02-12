@@ -2,129 +2,134 @@
 
 <div class="main-banner" style="z-index: 1;">
 
-    <ng-container *ngIf="isLoader; else cardTemplate">
-      <div class="center">
-        <div class="lds-roller">
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
+  <ng-container *ngIf="isLoader; else cardTemplate">
+    <div class="center">
+      <div class="lds-roller">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+  </ng-container>
+
+  <ng-template #cardTemplate>
+    <div *ngIf="project?.encid; else showError">
+      <div class="is-loading container" style="position: relative; z-index: 2;">
+        <h2>{{ project?.nombre }}</h2> <br>
+        <img height="550px" class="" src="{{ project?.actividades[0] ? (project?.actividades[0]?.fotografias[0]?.downloadUrl) : ('../../../../../../../assets/images/noDataFound.jpeg') }}"
+          alt="{{ project?.actividades[0]?.caption }}">
+        <span style="vertical-align:middle">{{ project?.actividades[0]?.tema }} |
+          {{ "FOTO_CORTESIA" | translate }} CIS El
+          Salvador.</span>
+        <br><br><br>
+        <h4>{{ project?.registro | date: 'longDate' }} <div class="vr"></div> El
+          Salvador,
+          {{ project?.comunidad }}</h4>
+        <br>
+        <div>
+          <br> {{ "JUSTIF" | translate }}. <br>
+          <p [innerHTML]="project?.justificacion"></p>
+          <br><br>
+          {{ "CONTEXT" | translate }} <br>
+          <p [innerHTML]="project?.contextualizacion | striphtml"></p>
+          <br><br>
+          {{ "PROJECTIONS" | translate }}. <br>
+          <p [innerHTML]="project?.proyecciones"></p>
+          <br><br>
+          {{ "CHALLENGES" | translate }}. <br>
+          <p [innerHTML]="project?.desafios"></p>
+          <br><br>
+          {{ "OBJECTIVES" | translate }}. <br>
+          <div *ngFor="let objetivo of project?.objetivos ">
+            <p [innerHTML]="objetivo?.objetivo"></p> <br>
+          </div>
         </div>
       </div>
-    </ng-container>
 
-    <ng-template #cardTemplate>
-      <div *ngIf="project?.encid; else showError">
-        <div class="is-loading container" style="position: relative; z-index: 2;">
-          <h2>{{ project?.nombre }}</h2> <br>
-          <img height="550px" class="" src="{{ project?.actividades[0]?.fotografias[0]?.downloadUrl }}"
-            alt="{{ project?.actividades[0]?.caption }}">
-          <span style="vertical-align:middle">{{ project?.actividades[0]?.tema }} |
-            {{ "FOTO_CORTESIA" | translate }} CIS El
-            Salvador.</span>
-          <br><br><br>
-          <h4>{{ project?.registro | date: 'longDate' }} <div class="vr"></div> El
-            Salvador,
-            {{ project?.comunidad }}</h4>
-          <br>
-          <div>
-            <br> {{ "JUSTIF" | translate }}. <br>
-            <p [innerHTML]="project?.justificacion"></p>
-            <br><br>
-            {{ "CONTEXT" | translate }} <br>
-            <p [innerHTML]="project?.contextualizacion | striphtml"></p>
-            <br><br>
-            {{ "PROJECTIONS" | translate }}. <br>
-            <p [innerHTML]="project?.proyecciones"></p>
-            <br><br>
-            {{ "CHALLENGES" | translate }}. <br>
-            <p [innerHTML]="project?.desafios"></p>
-            <br><br>
-            {{ "OBJECTIVES" | translate }}. <br>
-            <div *ngFor="let objetivo of project?.objetivos ">
-              <p [innerHTML]="objetivo?.objetivo"></p> <br>
+      <h4 class="container">
+        <hr width="250px">
+        {{ "ACTIVITIES" | translate }} </h4>
+      <div *ngIf="project?.actividades.length == 0">
+        <h3>No posee actividades.</h3>
+      </div>
+      <div *ngFor="let activity of project?.actividades; index as i">
+        <div class="container">
+          <div class="course">
+            <div class="course-preview">
+              <h6> {{ "DATE" | translate }} </h6>
+              <h4>{{ activity?.fecha | date: 'shortDate' }}</h4>
+              <hr>
+              <h6> {{ "PARTICIPANTS" | translate }} </h6>
+              <h4>{{ activity?.participantes }}</h4>
             </div>
-          </div>
-        </div>
-
-        <h4 class="container">
-          <hr width="250px">
-          {{ "ACTIVITIES" | translate }} </h4>
-
-        <div *ngFor="let activity of project?.actividades; index as i">
-          <div class="container">
-            <div class="course">
-              <div class="course-preview">
-                <h6> {{ "DATE" | translate }} </h6>
-                <h4>{{ activity?.fecha | date: 'shortDate' }}</h4>
-                <hr>
-                <h6> {{ "PARTICIPANTS" | translate }} </h6>
-                <h4>{{ activity?.participantes }}</h4>
+            <div class="course-info">
+              <div class="progress-container">
+                <div class="progress"></div>
               </div>
-              <div class="course-info">
-                <div class="progress-container">
-                  <div class="progress"></div>
-                </div>
-                <h6> {{ "TOPIC" | translate }} : </h6>
-                <h2>{{ activity?.tema | striphtml }}</h2>
-                <br>
-                <h6> {{ "DESCRIP_ACTIVITY" | translate }} : </h6>
-                <h5>{{ activity?.descripcion | striphtml }}</h5>
-                <hr>
-                <h6> {{ "OBSTACLES" | translate }} : </h6>
-                <h5>{{ activity?.obstaculos | striphtml }}</h5>
-                <br>
-                <button class="btn" (click)="openModal('partic', i)">
-                  {{ "SEE_PARTIC" | translate }}
-                </button>
-                <button class="btn" (click)="openModal('foto', i)"> {{ "SEE_FOTO" | translate }}
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <h4 class="container">
-          <hr width="250px">
-          {{ "AUDIOVISUAL_GALLERY" | translate }} </h4>
-        <section class="gallery">
-          <div *ngFor="let imgGallery of images; let i = index">
-            <div class="gallery__item">
-              <input type="radio" id="img-{{ i }}" checked name="gallery" class="gallery__selector" />
-              <img class="gallery__img" src="{{ imgGallery.img }}" alt="{{ imgGallery.caption }}"
-                title="{{ imgGallery.descrip }}" />
-              <!-- <iframe class="gallery__img" width="420" height="315" src="https://www.youtube.com/embed/tgbNymZ7vqY"></iframe> -->
-              <label for="img-{{ i }}" class="gallery__thumb">
-                <img src="{{ imgGallery.img }}" alt="{{ imgGallery.caption }}" />
-              </label>
-            </div>
-          </div>
-        </section>
-
-        <div class="blog">
-          <div class="container" style="position: relative;">
-            <hr width="250px">
-            <h4> {{ "TE_INTERESE" | translate }}</h4>
-            <br><br>
-            <div *ngFor="let otherProjects of threeProjects">
-              <div class="row pointer" (click)="goTo(otherProjects.encid)">
-                <div class="col-3">
-                  <img class="img-fluid img-thumbnail"
-                    src="{{ otherProjects?.actividades[0]?.fotografias[0]?.downloadUrl }}" alt="">
-                </div>
-                <div class="col-9">{{ otherProjects.nombre }} -
-                  {{ otherProjects.justificacion | striphtml | slice:0:120 }}...</div>
-              </div>
+              <h6> {{ "TOPIC" | translate }} : </h6>
+              <h2>{{ activity?.tema | striphtml }}</h2>
               <br>
+              <h6> {{ "DESCRIP_ACTIVITY" | translate }} : </h6>
+              <h5>{{ activity?.descripcion | striphtml }}</h5>
+              <hr>
+              <h6> {{ "OBSTACLES" | translate }} : </h6>
+              <h5>{{ activity?.obstaculos | striphtml }}</h5>
+              <br>
+              <button class="btn" (click)="openModal('partic', i)">
+                {{ "SEE_PARTIC" | translate }}
+              </button>
+              <button class="btn" (click)="openModal('foto', i)"> {{ "SEE_FOTO" | translate }}
+              </button>
             </div>
           </div>
         </div>
       </div>
-    </ng-template>
+
+      <h4 class="container">
+        <hr width="250px">
+        {{ "AUDIOVISUAL_GALLERY" | translate }} </h4>
+        <div *ngIf="images?.length == 0">
+          <h3>No se encontraron imagenes ni videos.</h3>
+        </div>
+      <section class="gallery">
+        <div *ngFor="let imgGallery of images; let i = index">
+          <div class="gallery__item">
+            <input type="radio" id="img-{{ i }}" checked name="gallery" class="gallery__selector" />
+            <img class="gallery__img" src="{{ imgGallery.img }}" alt="{{ imgGallery.caption }}"
+              title="{{ imgGallery.descrip }}" />
+            <!-- <iframe class="gallery__img" width="420" height="315" src="https://www.youtube.com/embed/tgbNymZ7vqY"></iframe> -->
+            <label for="img-{{ i }}" class="gallery__thumb">
+              <img src="{{ imgGallery.img }}" alt="{{ imgGallery.caption }}" />
+            </label>
+          </div>
+        </div>
+      </section>
+
+      <div class="blog">
+        <div class="container" style="position: relative;">
+          <hr width="250px">
+          <h4> {{ "TE_INTERESE" | translate }}</h4>
+          <br><br>
+          <div *ngFor="let otherProjects of threeProjects">
+            <div class="row pointer" (click)="goTo(otherProjects.encid)">
+              <div class="col-3">
+                <img class="img-fluid img-thumbnail"
+                  src="{{ otherProjects?.actividades[0]?.fotografias[0]?.downloadUrl }}" alt="">
+              </div>
+              <div class="col-9">{{ otherProjects.nombre }} -
+                {{ otherProjects.justificacion | striphtml | slice:0:120 }}...</div>
+            </div>
+            <br>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
 
   <ng-template #showError>
     <main>
@@ -135,7 +140,7 @@
         </div>
       </div>
     </main>
-    
+
   </ng-template>
 
 

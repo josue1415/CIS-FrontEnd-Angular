@@ -62,7 +62,8 @@ export class InfoPageComponent implements OnInit, OnDestroy {
     // Get Languaje clickeado en header
     const ObserverLanguaje$ = this.serviceHeader.languaje.subscribe(
       resp => {
-        this.isLangEnglish = resp,
+        this.isLangEnglish = resp, console.log(resp);
+        
           this.translate.use(this.translate.currentLang)
       }
     );
@@ -122,13 +123,13 @@ export class InfoPageComponent implements OnInit, OnDestroy {
       })
 
     // const ObserverQuestions$ = this.scholarchipService.becadosPreguntas$('RWxpd0NjWGR6ZWJXOXBnUmhnb1hiQT09').subscribe(
-      const ObserverQuestions$ = this.scholarchipService.becadosPreguntas$(this.receivedId).subscribe(
+    const ObserverQuestions$ = this.scholarchipService.becadosPreguntas$(this.receivedId).subscribe(
       pregunta => {
         this.preguntas = pregunta
       }
     )
 
-    this.listObservers$ = [ObserverLanguaje$, ObserverGetParameter$,
+    this.listObservers$ = [ObserverGetParameter$,
       ObserverGetScholarchip$, ObserverSettings$, ObserveGetFamily$, ObserverQuestions$,
       ObserverGastos$, ObserverMateriales$, ObserverTransport$, ObserverTraductions$]
   }

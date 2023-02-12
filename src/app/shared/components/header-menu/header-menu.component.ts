@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { HeaderService } from '@shared/services/header.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-header-menu',
@@ -14,7 +15,7 @@ export class HeaderMenuComponent implements OnInit {
   @Input() isDetail: true | false = false;
 
   // Actually Languaje
-  enLang: boolean = true;
+  enLang!: boolean;
   lang: any;
 
   constructor(private router: Router,
@@ -22,13 +23,11 @@ export class HeaderMenuComponent implements OnInit {
     public serviceHeader: HeaderService,
     private route: ActivatedRoute) {
     this.translate.addLangs(['en', 'es'])
+    this.translate.setDefaultLang('en');
     // this.translate.use('en')
   }
 
   ngOnInit(): void {
-    if(this.translate.currentLang == undefined){
-      this.serviceHeader.languaje.emit('en')
-    }
   }
 
   Gohome() {
@@ -56,18 +55,23 @@ export class HeaderMenuComponent implements OnInit {
   }
 
   changeLang() {
+    // this.enLang = this.translate.currentLang == undefined ? ;
     if (this.enLang) {
       this.enLang = false;
+      this.translate.setDefaultLang('es');
       this.translate.use('es')
     }
     else {
       this.enLang = true;
+      this.translate.setDefaultLang('es');
       this.translate.use('en')
     }
-
-    this.serviceHeader.languaje.emit(this.translate.currentLang)
+    this.serviceHeader.changeNav(this.translate.currentLang);
+    this.serviceHeader.languaje.emit(this.translate.currentLang);
+    // this.serviceHeader.languaje.next(this.translate.currentLang);
     // this.router.navigateByUrl(this.router.url,
     //   { skipLocationChange: true }).then(() => this.router.navigate(['/', this.router.url]));
 
   }
+
 }

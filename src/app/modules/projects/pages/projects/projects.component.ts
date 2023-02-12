@@ -25,7 +25,7 @@ export class ProjectsComponent implements OnInit {
   threeProjects: any[] = [];
 
   isLangEnglish: string = ""; // verifica el idioma clickeado en el header
-
+  mierda: string = "";
   receivedId: String = "";
 
   constructor(private modalService: MdbModalService,
@@ -45,31 +45,37 @@ export class ProjectsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    // this.translate.use('en');
     // Get http parameter
     const ObserverGetParameter$ = this.activatedRoute.params.subscribe(params => {
       this.receivedId = params['id'];
     });
 
+    const subscription = this.serviceHeader.navItem$
+      .subscribe(item => {
+        this.mierda = item, this.projectsService.getProjectById(this.receivedId, this.mierda).subscribe(
+          resp2 => {
+            this.project = resp2?.data, this.getImages(),
+              this.isLoader = false, this.translate.use(this.mierda)
+          },
+          error => {
+            this.errorLog(error, "No existe traducción")
+          }
+        )
+      });
+
+
+    // const observerData = 
     // Get Languaje clickeado en header
-    const ObserverLanguaje$ = this.serviceHeader.languaje.subscribe(
-      resp => {
-        this.isLangEnglish = resp,
-          this.translate.use(this.translate.currentLang),
-          this.projectsService.getProjectById(this.receivedId, this.isLangEnglish).subscribe(
-            resp2 => {
-              this.project = resp2?.data, this.getImages(),
-                this.isLoader = false
-            },
-            error => {
-              this.errorLog(error, "No existe traducción")
-            }
-          )
-      },
-      error => {
-        this.errorLog(error, "lenguaje")
-      }
-    );
+    // const ObserverLanguaje$ = this.serviceHeader.languaje.subscribe(
+    //   resp => {
+    //     this.isLangEnglish = resp,
+    //       this.translate.use(this.translate.currentLang)
+    //   },
+    //   error => {
+    //     this.errorLog(error, "lenguaje")
+    //   }
+    // );
 
     const observerAll = this.projectsService.getProjects().subscribe(
       resp => {
@@ -80,7 +86,7 @@ export class ProjectsComponent implements OnInit {
       }
     )
 
-    this.listObservers = [observerAll, ObserverGetParameter$, ObserverLanguaje$];
+    this.listObservers = [observerAll, ObserverGetParameter$, subscription];
   }
 
   getImages(): void {

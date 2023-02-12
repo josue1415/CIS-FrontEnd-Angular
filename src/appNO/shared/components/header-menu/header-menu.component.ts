@@ -58,10 +58,12 @@ export class HeaderMenuComponent implements OnInit {
   changeLang() {
     if (this.enLang) {
       this.enLang = false;
+      this.translate.setDefaultLang('es');
       this.translate.use('es')
     }
     else {
       this.enLang = true;
+      this.translate.setDefaultLang('en');
       this.translate.use('en')
     }
 
