@@ -87,6 +87,13 @@ body {
   align-items: flex-start;
   padding: 20px;
   margin-bottom: 10px;
+  height: 48vh;
+}
+
+@media screen and (max-width: 800px) {
+  .card-body2 {
+    height: 50vh;
+  }
 }
 
 .tag {

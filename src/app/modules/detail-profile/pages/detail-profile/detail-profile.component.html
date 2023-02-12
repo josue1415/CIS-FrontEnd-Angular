@@ -52,6 +52,8 @@
                 <div *ngIf="item.encid">
                   <div class="" [routerLink]="['/', redirect, item.encid]">
                     <container-element [ngSwitch]="product">
+
+                      <!-- -----PROJECTS------ -->
                       <!-- the same view can be shown in more than one case -->
                       <div *ngSwitchCase="'projects'">
                         <div class="containerCard">
@@ -74,7 +76,9 @@
                           </div>
                         </div>
                       </div>
+                      <!-- -----PROJECTS------ -->
 
+                      <!-- -----TESTIMONIES------ -->
                       <div *ngSwitchCase="'testimonies'">
                         <div class="containerCard">
                           <div class="card2">
@@ -107,7 +111,9 @@
                           </div>
                         </div>
                       </div>
+                      <!-- -----TESTIMONIES------ -->
 
+                      <!-- -----SCHOLARCHIPS------ -->
                       <!--default case when there are no matches -->
                       <div *ngSwitchDefault>
 
@@ -135,6 +141,7 @@
                           </div>
                         </div>
                       </div>
+                      <!-- -----SCHOLARCHIPS------ -->
                     </container-element>
                   </div>
                 </div>
