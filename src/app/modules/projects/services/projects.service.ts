@@ -8,26 +8,24 @@ import { catchError } from 'rxjs/operators';
 export class ProjectsService {
 
   private readonly URL = 'https://dev.elsalvador-cis.com/api';
+  private storageToken: any = localStorage.getItem('loggedTkn');
+
+  private headers = new HttpHeaders({
+    'Content-Type': 'application/json',
+    'Authorization': this.storageToken
+  });
+
+  private options = { headers: this.headers };
 
   constructor(private http: HttpClient) { }
 
   getProjects(): Observable<any> {
-    let headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer 1|Itvfo6TYWGJ0NZARXnzCYUNXJGcFxPyjWm1kDyiB'
-    });
-    let options = { headers: headers };
-    return this.http.get(`${this.URL}/proyectos-sociales?idioma=es`, options)
+    return this.http.get(`${this.URL}/proyectos-sociales?idioma=es`, this.options)
       .pipe(catchError((error: HttpErrorResponse) => throwError(error)));
   }
 
   getProjectById(id: String, lang: String): Observable<any> {
-    let headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer 1|Itvfo6TYWGJ0NZARXnzCYUNXJGcFxPyjWm1kDyiB'
-    });
-    let options = { headers: headers };
-    return this.http.get(`${this.URL}/proyectos-sociales/${id}?idioma=${lang}`, options)
+    return this.http.get(`${this.URL}/proyectos-sociales/${id}?idioma=${lang}`, this.options)
       .pipe(catchError((error: HttpErrorResponse) => throwError(error)));
   }
 }

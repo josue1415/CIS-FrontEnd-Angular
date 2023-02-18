@@ -18,6 +18,8 @@ export class HeaderMenuComponent implements OnInit {
   enLang!: boolean;
   lang: any;
 
+  listObservers: Array<Subscription> = [];
+
   constructor(private router: Router,
     public translate: TranslateService,
     public serviceHeader: HeaderService,
@@ -28,6 +30,22 @@ export class HeaderMenuComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    const ObserverLanguaje$ = this.serviceHeader.getPublicToken().subscribe(
+      resp => {
+        this.serviceHeader.setToken("Bearer  " + resp.data.token);
+      },
+      error => {
+        console.log(error, "Error de token");
+      }
+    )
+
+    this.listObservers = [ObserverLanguaje$];
+
+  }
+
+  ngOnDestroy(): void {
+    this.listObservers.forEach(u => u.unsubscribe);
   }
 
   Gohome() {

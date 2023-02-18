@@ -10,12 +10,13 @@ export class ProfilesServicesService {
 
   private readonly URL = 'https://dev.elsalvador-cis.com/api/public';
   private readonly URLToken = 'https://dev.elsalvador-cis.com/api';
+  private storageToken: any = localStorage.getItem('loggedTkn');
 
   constructor(private http: HttpClient) { }
 
   headers = new HttpHeaders({
     'Content-Type': 'application/json',
-    'Authorization': 'Bearer 1|Itvfo6TYWGJ0NZARXnzCYUNXJGcFxPyjWm1kDyiB'
+    'Authorization': this.storageToken
   });
   options = { headers: this.headers };
 

@@ -8,23 +8,22 @@ import { Observable } from 'rxjs';
 export class TestimoniesService {
   private readonly URL = 'https://dev.elsalvador-cis.com/api';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
+  
+  private storageToken: any = localStorage.getItem('loggedTkn');
+
+  private headers = new HttpHeaders({
+    'Content-Type': 'application/json',
+    'Authorization': this.storageToken
+  });
+
+  private options = { headers: this.headers };
 
   getTestimonies(): Observable<any> {
-    let headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer 1|Itvfo6TYWGJ0NZARXnzCYUNXJGcFxPyjWm1kDyiB'
-    });
-    let options = { headers: headers };
-    return this.http.get(`${this.URL}/testimonios?idioma=es`, options)
+    return this.http.get(`${this.URL}/testimonios?idioma=es`, this.options)
   }
 
   getTestimoniesById(id: any, lang: String): Observable<any> {
-    let headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer 1|Itvfo6TYWGJ0NZARXnzCYUNXJGcFxPyjWm1kDyiB'
-    });
-    let options = { headers: headers };
-    return this.http.get(`${this.URL}/testimonios/${id}?idioma=${lang}`, options)
+    return this.http.get(`${this.URL}/testimonios/${id}?idioma=${lang}`, this.options)
   }
 }

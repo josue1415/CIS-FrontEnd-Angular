@@ -74,7 +74,8 @@ export class DetailProfileComponent implements OnInit {
             this.isLoader = false;
           },
           error => {
-            this.errorLog(error, "testimonies")
+            // console.log(localStorage.getItem('loggedTkn'));
+            this.errorLog(error, "testimonies");
           }
         )
         // Filtrado para Becados, obtiene las comunidades
