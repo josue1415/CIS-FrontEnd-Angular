@@ -63,11 +63,12 @@
       </div>
     </div>
 
-    <div class="shadowInformationPersonal row col-auto justify-content-center m-0 container" style="position: relative;">
-     <hr>
+    <div class="shadowInformationPersonal row col-auto justify-content-center m-0 container"
+      style="position: relative;">
+      <hr>
       <h4>Formación académica.</h4><br><br>
       <div class="row glass">
-        <div class="col-lg-7 container m-0 justify-content-center text-center">
+        <div class="col-lg-6 container m-0 justify-content-center text-center">
           <h5 [hidden]="settings?.institucion ? '' : 'hidden'" class="lessLineHeight">
             <b>{{ "Institution"|translate }}:
             </b>{{ isLangEnglish == 'en' ? scholarchip?.institucion : becado?.institucion }}
@@ -90,70 +91,69 @@
             <b>{{ "CALIFICATION"|translate }}:<br></b>{{ becado?.promedio_notas }}
           </h5>
         </div>
-        <div class="col-lg-5">
-          <img class="sizeLogoImg" src="../../../../../assets/images/cis-logo.png"
-            alt="CIS-LOGO">
+        <div class="col-lg-6">
+          <h4>Familia.</h4>
+          <h5 [hidden]="settings?.tipo_servicio ? '' : 'hidden'" class="lessLineHeight">
+            <b>{{ "TOILET"|translate }}:
+            </b>{{ becado?.tipo_servicio }} </h5>
+          <h5 [hidden]="settings?.agua_potable ? '' : 'hidden'" class="lessLineHeight">
+            <b>{{ "WATER"|translate }}:
+            </b>{{ becado?.agua_potable }} </h5>
+          <h5 [hidden]="settings?.energia ? '' : 'hidden'" class="lessLineHeight">
+            <b>{{ "ENERGY"|translate }}:
+            </b>{{ becado?.energia }} </h5>
+
+          <h4>Horarios.</h4>
+          <h5 [hidden]="settings?.horario ? '' : 'hidden'" class="lessLineHeight ">
+            <b>{{ "Schedule"|translate }}:
+            </b>
+            <h5 class="inherit"
+              [innerHTML]="isLangEnglish == 'en' ? (scholarchip?.horario ? (scholarchip?.horario | striphtml) : '') : (becado?.horario ? (becado?.horario | striphtml) : '')">
+            </h5>
+          </h5>
+          <h5 [hidden]="settings?.horario_salida_casa ? '' : 'hidden'" class="lessLineHeight ">
+            <b>{{ "TIME_LEAVE_HOME"|translate }}: </b>
+            <h5 class="inherit"
+              [innerHTML]="isLangEnglish == 'en' ? (scholarchip?.horario_salida_casa ? (scholarchip?.horario_salida_casa | striphtml) : '') : (becado?.horario_salida_casa ? (becado?.horario_salida_casa | striphtml) : '')">
+            </h5>
+          </h5>
+          <h5 [hidden]="settings?.horario_regreso_casa ? '' : 'hidden'" class="lessLineHeight ">
+            <b>{{ "TIME_GO_HOME"|translate }}: </b>
+            <h5 class="inherit"
+              [innerHTML]="isLangEnglish == 'en' ? (scholarchip?.horario_regreso_casa ? (scholarchip?.horario_regreso_casa | striphtml) : '') : (becado?.horario_salida_casa ? (becado?.horario_salida_casa | striphtml) : '')">
+            </h5>
+          </h5>
         </div>
       </div>
       <hr class="shadowHr">
-      <div class="col-lg-4">
-        <h4>Familia.</h4>
-        <h5 [hidden]="settings?.tipo_servicio ? '' : 'hidden'" class="lessLineHeight">
-          <b>{{ "TOILET"|translate }}:
-          </b>{{ becado?.tipo_servicio }} </h5>
-        <h5 [hidden]="settings?.agua_potable ? '' : 'hidden'" class="lessLineHeight">
-          <b>{{ "WATER"|translate }}:
-          </b>{{ becado?.agua_potable }} </h5>
-        <h5 [hidden]="settings?.energia ? '' : 'hidden'" class="lessLineHeight">
-          <b>{{ "ENERGY"|translate }}:
-          </b>{{ becado?.energia }} </h5>
-      </div>
-      <div class="col-lg-4">
-        <h4>Horarios.</h4>
-        <h5 [hidden]="settings?.horario ? '' : 'hidden'" class="lessLineHeight ">
-          <b>{{ "Schedule"|translate }}:
-            </b>
-          <h5 class="inherit"
-            [innerHTML]="isLangEnglish == 'en' ? (scholarchip?.horario ? (scholarchip?.horario | striphtml) : '') : (becado?.horario ? (becado?.horario | striphtml) : '')">
-          </h5>
-        </h5>
-        <h5 [hidden]="settings?.horario_salida_casa ? '' : 'hidden'" class="lessLineHeight ">
-          <b>{{ "TIME_LEAVE_HOME"|translate }}: </b>
-          <h5 class="inherit"
-            [innerHTML]="isLangEnglish == 'en' ? (scholarchip?.horario_salida_casa ? (scholarchip?.horario_salida_casa | striphtml) : '') : (becado?.horario_salida_casa ? (becado?.horario_salida_casa | striphtml) : '')">
-          </h5>
-        </h5>
-        <h5 [hidden]="settings?.horario_regreso_casa ? '' : 'hidden'" class="lessLineHeight ">
-          <b>{{ "TIME_GO_HOME"|translate }}: </b>
-          <h5 class="inherit"
-            [innerHTML]="isLangEnglish == 'en' ? (scholarchip?.horario_regreso_casa ? (scholarchip?.horario_regreso_casa | striphtml) : '') : (becado?.horario_salida_casa ? (becado?.horario_salida_casa | striphtml) : '')">
-          </h5>
-        </h5>
-      </div>
+
     </div>
 
+    <div class="contenedor col-12">
+      <img class="sizeLogoImg hijo" src="../../../../../assets/images/cis-logo.png" alt="CIS-LOGO">
+    </div>
 
     <!-- Preguntas -->
     <div class="blog">
-    <div class="col-12 pdding1 glass " [hidden]="!settings?.impacto_vida &&
+      <div class="col-12 pdding1 glass " [hidden]="!settings?.impacto_vida &&
         !settings?.impacto_comunidad &&
         !settings?.obstaculos_educacion &&
         !settings?.propositos_finalizar ? 'hidden' : ''">
 
-      <hr class="shadowHr">
-      <h4>Impacto personal.</h4>
-      <div *ngFor="let pregunta of preguntas">
-        <h5 [hidden]="settings?.impacto_vida ? '' : 'hidden'" class="justifyText lessLineHeight"><b>
-            ¿{{ "DESCRIPCION1"|translate }}?</b>
-          <br>
-          <h5 class="inherit"
-            [innerHTML]="isLangEnglish == 'en' ? (pregunta.traduccion ? (pregunta.traduccion | striphtml) : '') : (pregunta.pregunta | striphtml)">
-          </h5>
-        </h5>
         <hr class="shadowHr">
-      </div>
+        <h4>Impacto personal.</h4>
+        <div *ngFor="let pregunta of preguntas">
+          <h5 [hidden]="settings?.impacto_vida ? '' : 'hidden'" class="justifyText lessLineHeight"><b>
+              ¿{{ "DESCRIPCION1"|translate }}?</b>
+            <br>
+            <h5 class="inherit"
+              [innerHTML]="isLangEnglish == 'en' ? (pregunta.traduccion ? (pregunta.traduccion | striphtml) : '') : (pregunta.pregunta | striphtml)">
+            </h5>
+          </h5>
+          <hr class="shadowHr">
+        </div>
 
-      <!-- <h5 [hidden]="settings?.impacto_vida ? '' : 'hidden'" class="justifyText lessLineHeight"><b>
+        <!-- <h5 [hidden]="settings?.impacto_vida ? '' : 'hidden'" class="justifyText lessLineHeight"><b>
           ¿{{ "DESCRIPCION1"|translate }}?</b>
         <br>
         <h5 class="inherit"
@@ -189,8 +189,8 @@
                      : (becado?.propositos_finalizar | striphtml)">
         </h5>
       </h5> -->
+      </div>
     </div>
-  </div>
     <!-- <hr class="shadowHr"> -->
 
     <!-- Tablas -->
