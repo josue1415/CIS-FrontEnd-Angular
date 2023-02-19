@@ -63,12 +63,12 @@
       </div>
     </div>
 
-    <div class="shadowInformationPersonal row col-auto justify-content-center m-0 container"
+    <div class="shadowInformationPersonal row col-auto  m-0 container"
       style="position: relative;">
       <hr>
-      <h4>Formación académica.</h4><br><br>
-      <div class="row glass">
-        <div class="col-lg-6 container m-0 justify-content-center text-center">
+      <div class="row">
+        <div class="col-lg-6 container m-0 ">
+          <h4 class="letraAzul">Formación académica.</h4><br>
           <h5 [hidden]="settings?.institucion ? '' : 'hidden'" class="lessLineHeight">
             <b>{{ "Institution"|translate }}:
             </b>{{ isLangEnglish == 'en' ? scholarchip?.institucion : becado?.institucion }}
@@ -92,7 +92,7 @@
           </h5>
         </div>
         <div class="col-lg-6">
-          <h4>Familia.</h4>
+          <h4 class="letraAzul">Familia.</h4><br>
           <h5 [hidden]="settings?.tipo_servicio ? '' : 'hidden'" class="lessLineHeight">
             <b>{{ "TOILET"|translate }}:
             </b>{{ becado?.tipo_servicio }} </h5>
@@ -102,8 +102,8 @@
           <h5 [hidden]="settings?.energia ? '' : 'hidden'" class="lessLineHeight">
             <b>{{ "ENERGY"|translate }}:
             </b>{{ becado?.energia }} </h5>
-
-          <h4>Horarios.</h4>
+          <hr>
+          <h4 class="letraAzul">Horarios.</h4><br>
           <h5 [hidden]="settings?.horario ? '' : 'hidden'" class="lessLineHeight ">
             <b>{{ "Schedule"|translate }}:
             </b>
