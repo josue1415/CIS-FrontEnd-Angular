@@ -134,22 +134,20 @@ export class DetailProfileComponent implements OnInit {
     if (term.length < 1) {
       this.pageSlice = this.ListGlobal.slice(0, 10);
     } else
-
-      this.pageSlice = this.filter(term.toLowerCase(), 'nombre_completo');
+      this.pageSlice = this.filter(term.toLowerCase(), this.product == 'profiles' ? 'nombre_completo' : 'nombre');
 
     return
   }
 
   updateProfileByComunities() {
-
     if (this.selectedComunity.length == undefined) {
       this.pageSlice = this.ListGlobal.slice(0, 10);
-    } else
-      this.pageSlice = this.filter(this.selectedComunity.toLowerCase(), 'nombre');
-
+    } else {
+      this.pageSlice = this.filter(this.selectedComunity.toLowerCase(), this.product == 'projects' ? 'comunidad' : (this.product == 'testimonies' ? 'comunidad' : 'nombre'));
+    }
   }
 
-  filter(term: string, type: 'nombre_completo' | 'nombre') {
+  filter(term: string, type: 'nombre_completo' | 'nombre' | 'comunidad') {
     return this.ListGlobal.filter(object => {
       return object[type].toLowerCase().includes(term);
     });
