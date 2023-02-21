@@ -132,10 +132,10 @@
                                 {{ item?.nombre_completo }}
                               </h4>
                               <hr style="color: black;">
-                              <h5>{{ "Institution" | translate }}: </h5>
-                              <h5>{{ "Career" | translate }}:</h5>
-                              <h5>{{ "LEVEL" | translate }}:</h5>
-                              <span class="tag tag-purple">Activo</span>
+                              <h5>{{ "Institution" | translate }}: {{item?.institucion_id}}</h5>
+                              <h5>{{ "Career" | translate }}: {{item?.carrera_id}}</h5>
+                              <h5>{{ "LEVEL" | translate }}: {{item?.nivel_id}}</h5>
+                              <span class="tag tag-purple">{{item?.estado}}</span>
                               <br>
                             </div>
                           </div>

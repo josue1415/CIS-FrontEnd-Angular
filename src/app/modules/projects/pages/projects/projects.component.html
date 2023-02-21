@@ -54,7 +54,7 @@
       <h4 class="container">
         <hr width="250px">
         {{ "ACTIVITIES" | translate }} </h4>
-      <div *ngIf="project?.actividades.length == 0">
+      <div class="container" *ngIf="project?.actividades.length == 0">
         <h3>No posee actividades.</h3>
       </div>
       <div *ngFor="let activity of project?.actividades; index as i">
@@ -93,7 +93,7 @@
       <h4 class="container">
         <hr width="250px">
         {{ "AUDIOVISUAL_GALLERY" | translate }} </h4>
-        <div *ngIf="images?.length == 0">
+        <div class="container" *ngIf="images?.length == 0">
           <h3>No se encontraron imagenes ni videos.</h3>
         </div>
       <section class="gallery">

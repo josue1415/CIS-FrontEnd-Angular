@@ -87,7 +87,7 @@ body {
   align-items: flex-start;
   padding: 20px;
   margin-bottom: 10px;
-  height: 48vh;
+  /* height: 40vh; */
 }
 
 @media screen and (max-width: 800px) {

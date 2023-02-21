@@ -70,7 +70,7 @@
       <ng-template #elseProject>
         <div class="col-lg-7 col-sm-12" style="z-index: 2;">
           <div class="contenedorIMG">
-            <ng-container *ngIf="projects[0]; else elseNoDataImage">
+            <ng-container *ngIf="projects[0] || projects[0]?.actividades[0] != []; else elseNoDataImage">
               <img src="{{ projects[0]?.actividades[0]?.fotografias[0]?.downloadUrl }}" height="350px">
               <div class="centerTextInImg">{{ projects[0]?.nombre }}...</div>
             </ng-container>
