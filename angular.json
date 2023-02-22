@@ -105,5 +105,8 @@
       }
     }
   },
-  "defaultProject": "webBecados"
+  "defaultProject": "webBecados",
+  "cli": {
+    "analytics": "e5c35ed4-6014-4733-8a82-0b6305239e38"
+  }
 }
