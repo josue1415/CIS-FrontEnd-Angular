@@ -63,8 +63,7 @@
       </div>
     </div>
 
-    <div class="shadowInformationPersonal row col-auto  m-0 container"
-      style="position: relative;">
+    <div class="shadowInformationPersonal row col-auto  m-0 container" style="position: relative;">
       <hr>
       <div class="row">
         <div class="col-lg-6 container m-0 ">
@@ -141,13 +140,16 @@
         !settings?.propositos_finalizar ? 'hidden' : ''">
 
         <hr class="shadowHr">
-        <h4>Impacto personal.</h4>
+        <h4>Impacto personal.</h4> <br>
         <div *ngFor="let pregunta of preguntas">
           <h5 [hidden]="settings?.impacto_vida ? '' : 'hidden'" class="justifyText lessLineHeight"><b>
-              ¿{{ "DESCRIPCION1"|translate }}?</b>
+              <h5
+                [innerHTML]="isLangEnglish == 'es' ? (pregunta.pregunta | striphtml) : (pregunta.traduccion ? (pregunta.traduccion | striphtml) : '')">
+              </h5>
+            </b>
             <br>
             <h5 class="inherit"
-              [innerHTML]="isLangEnglish == 'en' ? (pregunta.traduccion ? (pregunta.traduccion | striphtml) : '') : (pregunta.pregunta | striphtml)">
+              [innerHTML]="isLangEnglish == 'es' ? (pregunta.respuesta | striphtml) : (pregunta.respuesta_traducida ? (pregunta.respuesta_traducida | striphtml) : '')">
             </h5>
           </h5>
           <hr class="shadowHr">
